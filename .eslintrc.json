@@ -9,12 +9,7 @@
     "es2021": true,
     "jest/globals": true
   },
-  "extends": [
-    "plugin:react/recommended",
-    "airbnb",
-    "jest",
-    "airbnb-typescript"
-  ],
+  "extends": ["plugin:react/recommended", "airbnb", "airbnb-typescript"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -24,7 +19,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "jest"],
   "rules": {
     "react/prop-types": "off",
     "react/require-default-props": "off",
