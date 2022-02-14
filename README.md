@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/Zli-UoA/ryouomoi-checker-frontend/workflows/linter/badge.svg)](https://github.com/Zli-UoA/ryouomoi-checker-frontend/actions) 
+
 # 両想いチェッカーフロントエンド
 
 ## ブランチの命名規則
