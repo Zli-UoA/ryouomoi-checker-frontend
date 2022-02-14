@@ -7,6 +7,10 @@ jobs:
   linter:
     runs-on: ubuntu-latest
     steps:
+    - name: Install npm dependencies
+      run: |
+        npm install
+
     - name: Run ESLint
       run: |
         npm run eslint
