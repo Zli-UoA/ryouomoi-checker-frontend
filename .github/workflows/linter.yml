@@ -1,0 +1,16 @@
+name: linter
+
+on:
+  push:
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run ESLint
+      run: |
+        npm run eslint
+
+    - name: Run Stylelint
+      run: |
+        npm run stylelint
