@@ -1,7 +1,7 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "selector-class-pattern": "[a-z]+[--|__][A-Z-a-z]+"
+    "selector-class-pattern": "[A-Z-a-z]+[--|__][A-Z-a-z]+"
   },
   "ignoreFiles": ["build/"]
 }
