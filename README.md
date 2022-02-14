@@ -25,5 +25,9 @@
 面倒であればローカルのこのリポジトリ上で以下のコマンドをコピペ
 
 ```bash
+# 上書きしてコピー
 cp --force .git_hooks/* .git/hooks/
+
+# 実行権限を付与
+chmod +x .git/hooks/*
 ```
