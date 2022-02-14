@@ -7,6 +7,16 @@ jobs:
   linter:
     runs-on: ubuntu-latest
     steps:
+
+    - name: Test
+      run: |
+        node -v
+        npm -v
+        ls
+        pwd
+        git status
+        git branch
+
     - name: Install npm dependencies
       run: |
         npm install
