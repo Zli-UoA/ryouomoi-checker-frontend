@@ -20,14 +20,15 @@
 
 ## Git フックの設定
 
-`.git_hooks/` ディレクトリの中身をローカルの `.git/hooks/` 以下にコピーする
+`.git_hooks/` ディレクトリを Git フックディレクトリ として扱う  
+※`.git_hooks/` とはいえ実行権限与えないと動かないので注意
 
-面倒であればローカルのこのリポジトリ上で以下のコマンドをコピペ
+面倒であればローカルのこのリポジトリ上で以下のコマンドをコピペして 1 回実行すれば OK
 
 ```bash
-# 上書きしてコピー
-cp --force .git_hooks/* .git/hooks/
+# .git_hooks を .git/hooks の代わりに認識
+git config --local core.hooksPath .git_hooks
 
 # 実行権限を付与
-chmod +x .git/hooks/*
+chmod a+x .git_hooks/*
 ```
