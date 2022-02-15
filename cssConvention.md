@@ -8,7 +8,7 @@ blockName__elementName--modifier_value
 
 component 一個を block とする
 
-block一個に対しその名前の css ファイルを作成、適応する
+block 一個に対しその名前の css ファイルを作成、適応する
 
 ## 汎用modifier
 
@@ -32,7 +32,7 @@ block一個に対しその名前の css ファイルを作成、適応する
     - color_primarySolidThin
   - secondary
     - color_secondary
-    - color_secondary(-)Solid
+    - color_secondarySolid
   - white
     - color_white
     - color_white-a20(必要かわからない)
