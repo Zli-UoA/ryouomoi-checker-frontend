@@ -1,11 +1,21 @@
 #!/usr/bin/python3
 import subprocess
 
-result = subprocess.run('git rev-parse --abbrev-ref HEAD', shell=True, capture_output=True, text=True)
+def verify_commit_branch():
+  result = subprocess.run('git rev-parse --abbrev-ref HEAD', shell=True, capture_output=True, text=True)
 
-branch = result.stdout
+  branch = result.stdout
 
-if branch == 'main\n':
-  prefix = 'fatal: '
-  print(prefix + 'Please do not commit to the main branch.')
-  exit(1)
+  if branch == 'main\n':
+    prefix = 'fatal: '
+    print(prefix + 'Please do not commit to the main branch.')
+    exit(1)
+
+
+def verify_linter():
+  subprocess.run('npm run eslint', shell=True)
+  subprocess.run('npm run stylelint', shell=True)
+
+
+verify_commit_branch()
+verify_linter()
