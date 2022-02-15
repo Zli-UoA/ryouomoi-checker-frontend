@@ -64,16 +64,17 @@ block 一個に対しその名前の css(scss) ファイルを作成、適応す
 - shadow
   - 汎用にする必要はなさそう
 
-- sp
-  - `sp_4`
-  - `sp_8`
-  - `sp_16`
-  - `sp_24`
-  - `sp_32`
-  - `sp_40`
-  - `sp_48`
-  - `sp_56`
-  - `sp_64`
-  - `sp_72`
-  - `sp_80`
-  - `sp_88`
+- margin
+  - `mg_{top, right, bottom, left}-4`
+  - `mg_{top, right, bottom, left}-8`
+  - `mg_{top, right, bottom, left}-16`
+  - `mg_{top, right, bottom, left}-24`
+  - `mg_{top, right, bottom, left}-32`
+  - `mg_{top, right, bottom, left}-40`
+  - `mg_{top, right, bottom, left}-48`
+  - `mg_{top, right, bottom, left}-56`
+  - `mg_{top, right, bottom, left}-64`
+  - `mg_{top, right, bottom, left}-72`
+  - `mg_{top, right, bottom, left}-80`
+  - `mg_{top, right, bottom, left}-88`
+  - `mg_{top, right, bottom, left}-120`
