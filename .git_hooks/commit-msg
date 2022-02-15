@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+import sys
+import re
+import codecs
+
+path = sys.argv[1]
+
+with codecs.open(path, mode='r', encoding='utf-8') as f:
+  commit_message = f.read()
+  
+  if re.match(r'#[0-9]+:', commit_message) == None:
+    prefix = 'fatal: '
+    spaces = ' ' * len(prefix)
+    print(prefix + 'No issue number at the beginning of the commit message.')
+    print(spaces + 'The accepted format is as follows:')
+    print(spaces + spaces + '#[0-9]+:')
+    print()
+    print(spaces + 'The valid example: git commit -m \'#10:Update README.md\'')
+    exit(1)
