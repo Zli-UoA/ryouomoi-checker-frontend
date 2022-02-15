@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import WelcomePage from './WelcomePage';
 
 export default {
-  title: 'Example/WelcomePage',
+  title: 'Pages/WelcomePage',
   component: WelcomePage,
 } as ComponentMeta<typeof WelcomePage>;
 

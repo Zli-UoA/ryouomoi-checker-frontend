@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import HakyokuPage from './HakyokuPage';
 
 export default {
-  title: 'Example/HakyokuPage',
+  title: 'Pages/HakyokuPage',
   component: HakyokuPage,
 } as ComponentMeta<typeof HakyokuPage>;
 

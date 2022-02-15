@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import CelebrationPage from './CelebrationPage';
 
 export default {
-  title: 'Example/CelebrationPage',
+  title: 'Pages/CelebrationPage',
   component: CelebrationPage,
 } as ComponentMeta<typeof CelebrationPage>;
 

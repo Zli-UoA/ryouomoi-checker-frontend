@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import PowerWordPage from './PowerWordPage';
 
 export default {
-  title: 'Example/PowerWordPage',
+  title: 'Pages/PowerWordPage',
   component: PowerWordPage,
 } as ComponentMeta<typeof PowerWordPage>;
 

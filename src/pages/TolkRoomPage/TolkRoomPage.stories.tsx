@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import TolkRoomPage from './TolkRoomPage';
 
 export default {
-  title: 'Example/TolkRoomPage',
+  title: 'Pages/TolkRoomPage',
   component: TolkRoomPage,
 } as ComponentMeta<typeof TolkRoomPage>;
 

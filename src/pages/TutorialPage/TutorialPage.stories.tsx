@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import TutorialPage from './TutorialPage';
 
 export default {
-  title: 'Example/TutorialPage',
+  title: 'Pages/TutorialPage',
   component: TutorialPage,
 } as ComponentMeta<typeof TutorialPage>;
 

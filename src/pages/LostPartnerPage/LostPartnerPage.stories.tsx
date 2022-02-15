@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import LostPartnerPage from './LostPartnerPage';
 
 export default {
-  title: 'Example/LostPartnerPage',
+  title: 'Pages/LostPartnerPage',
   component: LostPartnerPage,
 } as ComponentMeta<typeof LostPartnerPage>;
 

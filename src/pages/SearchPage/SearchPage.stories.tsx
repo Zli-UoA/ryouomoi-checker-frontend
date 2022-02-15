@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import SearchPage from './SearchPage';
 
 export default {
-  title: 'Example/SearchPage',
+  title: 'Pages/SearchPage',
   component: SearchPage,
 } as ComponentMeta<typeof SearchPage>;
 
