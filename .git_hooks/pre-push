@@ -1,0 +1,35 @@
+#!/usr/bin/python3
+import sys
+import re
+import subprocess
+
+# stdin: <local_ref> <local_sha1> <remote_ref> <remote_sha1>
+# sample:
+#   local_ref   = refs/heads/master
+#   local_sha1  = 68a07ee4f6af8271dc40caae6cc23f283122ed11
+#   remote_ref  = refs/heads/master
+#   remote_sha1 = efd4d512f34b11e3cf5c12433bbedd4b1532716f
+local_ref, local_sha1, remote_ref, remote_sha1 = input().split()
+
+pushing_branch = remote_ref.replace('refs/heads/', '')
+
+patterns = ['main']
+
+is_matched = False
+
+for pattern in patterns:
+  if re.match(pattern, pushing_branch) != None:
+    is_matched = True
+
+if is_matched:
+  prefix = 'warning: '
+  print(prefix + 'Push to remote ' + pushing_branch + ', continue? [y/N]', end=' ', flush=True)
+
+  res = subprocess.run('exec < /dev/tty; read ANSWER; echo $ANSWER', shell=True, capture_output=True, text=True)
+  answer = res.stdout
+
+  if answer == '\n' or answer[0] == 'n' or answer[0] == 'N':
+    print('Push cancelled.')
+    exit(1)
+  else:
+    print('OK. Push start.')
