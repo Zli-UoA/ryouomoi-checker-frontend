@@ -65,16 +65,16 @@ block 一個に対しその名前の css(scss) ファイルを作成、適応す
   - 汎用にする必要はなさそう
 
 - margin
-  - `mg_{top, right, bottom, left}-4
-  - `mg_{top, right, bottom, left}-8
-  - `mg_{top, right, bottom, left}-16
-  - `mg_{top, right, bottom, left}-24
-  - `mg_{top, right, bottom, left}-32
-  - `mg_{top, right, bottom, left}-40
-  - `mg_{top, right, bottom, left}-48
-  - `mg_{top, right, bottom, left}-56
-  - `mg_{top, right, bottom, left}-64
-  - `mg_{top, right, bottom, left}-72
-  - `mg_{top, right, bottom, left}-80
-  - `mg_{top, right, bottom, left}-88
-  - `mg_{top, right, bottom, left}-120
+  - `mg_{top, right, bottom, left}-4`
+  - `mg_{top, right, bottom, left}-8`
+  - `mg_{top, right, bottom, left}-16`
+  - `mg_{top, right, bottom, left}-24`
+  - `mg_{top, right, bottom, left}-32`
+  - `mg_{top, right, bottom, left}-40`
+  - `mg_{top, right, bottom, left}-48`
+  - `mg_{top, right, bottom, left}-56`
+  - `mg_{top, right, bottom, left}-64`
+  - `mg_{top, right, bottom, left}-72`
+  - `mg_{top, right, bottom, left}-80`
+  - `mg_{top, right, bottom, left}-88`
+  - `mg_{top, right, bottom, left}-120`
