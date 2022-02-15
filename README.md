@@ -27,8 +27,8 @@
 
 ```bash
 # .git_hooks を .git/hooks の代わりに認識
-git config --local core.hooksPath .git_hooks
+git config --local core.hooksPath .githooks
 
 # 実行権限を付与
-chmod a+x .git_hooks/*
+chmod a+x .githooks/*
 ```
