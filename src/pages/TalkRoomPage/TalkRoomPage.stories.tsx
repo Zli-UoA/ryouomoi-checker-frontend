@@ -1,15 +1,15 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import TolkRoomPage from './TolkRoomPage';
+import TalkRoomPage from './TalkRoomPage';
 
 export default {
   title: 'Pages/TolkRoomPage',
-  component: TolkRoomPage,
-} as ComponentMeta<typeof TolkRoomPage>;
+  component: TalkRoomPage,
+} as ComponentMeta<typeof TalkRoomPage>;
 
 // eslint-disable-next-line
-const Template: ComponentStory<typeof TolkRoomPage> = (args) => <TolkRoomPage {...args} />;
+const Template: ComponentStory<typeof TalkRoomPage> = (args) => <TalkRoomPage {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {};
