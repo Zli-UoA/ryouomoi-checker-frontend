@@ -80,3 +80,9 @@ export const CheckIcon: React.VFC = () => (
     <path d="M8.99997 16.1701L4.82997 12.0001L3.40997 13.4101L8.99997 19.0001L21 7.00009L19.59 5.59009L8.99997 16.1701Z" fill="#2C2E5C" />
   </svg>
 );
+
+export const SendIcon: React.VFC = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="#2C2E5C" />
+  </svg>
+);
