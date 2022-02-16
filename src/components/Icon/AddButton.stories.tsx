@@ -13,13 +13,3 @@ const Template: ComponentStory<typeof AddIcon> = (args) => <AddIcon {...args} />
 
 export const Normal = Template.bind({});
 Normal.args = {};
-
-export const Broken = Template.bind({});
-Broken.args = {
-  broken: true,
-};
-
-export const Filled = Template.bind({});
-Filled.args = {
-  filled: true,
-};
