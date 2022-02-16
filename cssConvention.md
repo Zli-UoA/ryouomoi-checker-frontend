@@ -49,7 +49,7 @@ block 一個に対しその名前の css(scss) ファイルを作成、適応す
     - `bg_white-a40`
 
 - color
-  - brimary
+  - primary
     - `color_primary`
     - `color_primarySolid`
     - `color_primarySolidThin`
