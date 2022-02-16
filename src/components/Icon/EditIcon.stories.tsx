@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { EditIcon } from './Icon';
 
 export default {
-  title: 'Component/Icon/EditIcon',
+  title: 'Components/Icon/EditIcon',
   component: EditIcon,
 } as ComponentMeta<typeof EditIcon>;
 

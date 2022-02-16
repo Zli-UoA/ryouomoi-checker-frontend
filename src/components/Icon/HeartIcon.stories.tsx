@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { HeartIcon } from './Icon';
 
 export default {
-  title: 'Component/Icon/HeartIcon',
+  title: 'Components/Icon/HeartIcon',
   component: HeartIcon,
 } as ComponentMeta<typeof HeartIcon>;
 
