@@ -1,0 +1,21 @@
+name: auto-update
+on:
+  # This will trigger on all pushes to all branches.
+  push: {}
+  # Alternatively, you can only trigger if commits are pushed to certain branches, e.g.:
+  # push:
+  #   branches:
+  #     - master
+  #     - unstable
+jobs:
+  auto-update:
+    runs-on: ubuntu-latest
+
+    name: auto-update
+    steps:
+      - name: Auto Update
+        uses: chinthakagodawita/autoupdate@v1.6.0
+
+      - uses: docker://chinthakagodawita/autoupdate-action:v1
+        env:
+          GITHUB_TOKEN: '${{ secrets.AUTO_UPDATE_TOKEN }}'
