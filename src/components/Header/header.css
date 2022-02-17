@@ -1,0 +1,9 @@
+.header {
+  background: linear-gradient(90deg, #33b9fc 0%, #337cee 100%);
+  position: fixed;
+  width: 100%;
+}
+
+.header__children {
+  padding: 16px 0;
+}
