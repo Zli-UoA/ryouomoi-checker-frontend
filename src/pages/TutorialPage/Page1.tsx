@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import '../../common.css';
 import './Page1.css';
@@ -20,7 +21,9 @@ const Page1: React.VFC = () => (
       </p>
     </div>
     <div className="page1__button">
-      <Button label="次へ" />
+      <Link to="/tutorial/page2">
+        <Button label="次へ" />
+      </Link>
     </div>
   </div>
 );
