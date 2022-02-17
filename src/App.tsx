@@ -28,7 +28,7 @@ const App: React.VFC = () => (
       /
       <Link to="search">search</Link>
       /
-      <Link to="tolkroom">tolkroom</Link>
+      <Link to="talkroom">talkroom</Link>
       /
       <Link to="welcome">welcome</Link>
     </nav>
@@ -44,7 +44,7 @@ const App: React.VFC = () => (
       <Route path="/lost-partner" element={<LostPartnerPage />} />
       <Route path="/power-word" element={<PowerWordPage />} />
       <Route path="/search" element={<SearchPage />} />
-      <Route path="/tolkroom" element={<TalkRoomPage />} />
+      <Route path="/talkroom" element={<TalkRoomPage />} />
       <Route path="/welcome" element={<WelcomePage />} />
     </Routes>
   </div>

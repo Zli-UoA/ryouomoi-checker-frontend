@@ -1,0 +1,19 @@
+.page2 {
+  padding-top: 120px;
+  text-align: center;
+}
+
+.page2__text {
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  line-height: 40px;
+}
+
+.page2__button {
+  position: absolute;
+  width: 100%;
+  bottom: 88px;
+}
