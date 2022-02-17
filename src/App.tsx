@@ -38,7 +38,7 @@ const App: React.VFC = () => (
         root page
       </Route>
       <Route path="/home" element={<HomePage />} />
-      <Route path="/tutorial" element={<TutorialPage />} />
+      <Route path="/tutorial/*" element={<TutorialPage />} />
       <Route path="/celebration" element={<CelebrationPage />} />
       <Route path="/hakyoku" element={<HakyokuPage />} />
       <Route path="/lost-partner" element={<LostPartnerPage />} />
