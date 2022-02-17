@@ -1,6 +1,5 @@
 .page2 {
   padding-top: 120px;
-  letter-spacing: 0.05em;
   text-align: center;
 }
 
@@ -9,6 +8,7 @@
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
+  letter-spacing: 0.05em;
   line-height: 40px;
 }
 
