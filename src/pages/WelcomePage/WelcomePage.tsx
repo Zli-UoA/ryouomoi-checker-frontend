@@ -21,7 +21,7 @@ const Page1: React.VFC = () => (
         </>
       </WithBackground>
     </div>
-    <h1 className="welcomePage__h1">ようこそ</h1>
+    <p className="welcomePage__welcome">ようこそ</p>
     <div className="welcomePage__button">
       <Button label="恋愛の一歩を踏み出す" />
     </div>

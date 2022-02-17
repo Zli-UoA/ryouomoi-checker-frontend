@@ -16,11 +16,13 @@
   color: #808080;
 }
 
-.welcomePage__h1 {
+.welcomePage__welcome {
   font-size: 20px;
   margin-top: 56px;
   line-height: 24px;
-  color: linear-gradient(90deg, #33b9fc 0%, #337cee 100%);
+
+  /* TODO なんかグラデーションできないのでとりま solid にしときます */
+  color: #258eef;
 }
 
 .welcomePage__button {
