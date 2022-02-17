@@ -8,7 +8,7 @@ type UseSearchInput = () => {
 };
 
 const useSearchInput: UseSearchInput = () => {
-  const { inputRef, Input } = useInput('searchInput__input');
+  const { inputRef, Input } = useInput('searchInput__input', '&#xf002;');
   return {
     inputRef,
     SearchInput: () => (
