@@ -4,8 +4,6 @@ about: バグなどの不具合を報告
 title: "[BUG] ここにタイトル"
 labels: bug
 assignees:
-  - matumoto1234
-  - eraser5th
 ---
 
 ## 不具合の詳細
