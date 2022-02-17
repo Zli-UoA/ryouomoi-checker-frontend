@@ -1,0 +1,7 @@
+.withBackground {
+  background: url("./BackgroundImage.svg") no-repeat;
+  height: 212px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 360px;
+}
