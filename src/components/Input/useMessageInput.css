@@ -1,0 +1,26 @@
+.messageInput {
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 88px;
+  width: 100%;
+  height: 32px;
+}
+
+.messageInput__input {
+  background: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  margin-left: 12px;
+  margin-right: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.messageInput__input:focus {
+  outline: none;
+}
