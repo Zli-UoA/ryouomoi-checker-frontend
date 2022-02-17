@@ -24,7 +24,6 @@
 }
 
 .userIcon--size_md {
-  display: inline-block;
   border: 2px solid #fff;
   border-radius: 50%;
   overflow: hidden;
@@ -33,7 +32,6 @@
 }
 
 .userIcon--size_lg {
-  display: inline-block;
   border: 4px solid #258eef;
   border-radius: 50%;
   overflow: hidden;
