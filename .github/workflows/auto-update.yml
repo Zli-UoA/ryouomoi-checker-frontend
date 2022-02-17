@@ -1,0 +1,17 @@
+name: auto-update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  auto-update:
+    runs-on: ubuntu-latest
+
+    name: auto-update
+    steps:
+      - name: Auto Update
+        uses: chinthakagodawita/autoupdate@v1.6.0
+        env:
+          GITHUB_TOKEN: '${{ secrets.AUTO_UPDATE_TOKEN }}'
