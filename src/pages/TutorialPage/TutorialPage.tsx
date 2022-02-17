@@ -11,7 +11,7 @@ const TutorialPage: React.VFC = () => (
       <Link to="page2">page2</Link>
     </nav>
     <Routes>
-      <Route path="page1" element={<Page1 />} />
+      <Route path="*" element={<Page1 />} />
       <Route path="page2" element={<Page2 />} />
     </Routes>
   </div>
