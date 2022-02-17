@@ -23,6 +23,10 @@
   letter-spacing: 0.05em;
 }
 
+.searchInput__input::placeholder {
+  color: #fff;
+}
+
 .searchInput__input:focus {
   outline: none;
 }
