@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 type UseInput = (className: string) => {
   inputRef: React.RefObject<HTMLInputElement>,
-  Input: JSX.Element,
+  Input: React.VFC,
 };
 
 const useInput: UseInput = (className) => {
@@ -10,7 +10,7 @@ const useInput: UseInput = (className) => {
 
   return {
     inputRef,
-    Input: <input className={className} ref={inputRef} />,
+    Input: () => <input className={className} ref={inputRef} />,
   };
 };
 
