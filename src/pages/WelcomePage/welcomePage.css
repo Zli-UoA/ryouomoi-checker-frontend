@@ -20,9 +20,9 @@
   font-size: 20px;
   margin-top: 56px;
   line-height: 24px;
-
-  /* TODO なんかグラデーションできないのでとりま solid にしときます */
-  color: #258eef;
+  background: linear-gradient(90deg, #33b9fc 0%, #337cee 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .welcomePage__button {
