@@ -8,10 +8,14 @@ type UseSearchInput = () => {
 };
 
 const useSearchInput: UseSearchInput = () => {
-  const { inputRef, Input } = useInput('searchInput');
+  const { inputRef, Input } = useInput('searchInput__input');
   return {
     inputRef,
-    SearchInput: Input,
+    SearchInput: () => (
+      <div className="searchInput">
+        <Input />
+      </div>
+    ),
   };
 };
 

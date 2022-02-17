@@ -7,9 +7,22 @@
   border-radius: 88px;
   width: 100%;
   height: 32px;
-  color: #fff;
+}
+
+.searchInput__input {
+  background: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  margin-left: 12px;
+  margin-right: 12px;
   font-size: 16px;
   line-height: 24px;
   font-family: "Noto Sans JP", sans-serif;
+  color: #fff;
   letter-spacing: 0.05em;
+}
+
+.searchInput__input:focus {
+  outline: none;
 }
