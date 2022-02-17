@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import '../../common.css';
 import './Page2.css';
@@ -24,7 +25,9 @@ const Page2: React.VFC = () => (
       </p>
     </div>
     <div className="page2__button">
-      <Button label="Twitterで登録" />
+      <Link to="/welcome">
+        <Button label="Twitterで登録" />
+      </Link>
     </div>
   </div>
 );
