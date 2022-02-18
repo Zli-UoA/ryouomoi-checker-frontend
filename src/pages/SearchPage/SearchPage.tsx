@@ -5,6 +5,7 @@ import useSearchInput from '../../components/Input/useSearchInput';
 import '../../common.css';
 import useTab from '../../hooks/useTab/useTab';
 import UserList from './UserList';
+import './searchPage.css';
 
 type User = {
   name: string,
@@ -20,8 +21,8 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
   if (users.length === 0) {
     return (
       <main className="searchPage__main">
-        <div>
-          <span className="color_primarysolid">検索ボックス</span>
+        <div className="searchPage__main--user_null">
+          <span className="color_primarySolid">検索ボックス</span>
           に
           <br />
           キーワードを入力してください
