@@ -4,7 +4,7 @@ import { BackIcon } from '../../components/Icon/Icon';
 import useSearchInput from '../../components/Input/useSearchInput';
 import '../../common.css';
 import useTab from '../../hooks/useTab/useTab';
-import UserCard from './UserCard';
+import UserList from './UserList';
 
 type User = {
   name: string,
@@ -32,11 +32,7 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
 
   return (
     <main className="searchPage__main">
-      {
-        users.map(({ name, image, id }) => (
-          <UserCard name={name} image={image} id={id} />
-        ))
-      }
+      <UserList users={users} />
     </main>
   );
 };
