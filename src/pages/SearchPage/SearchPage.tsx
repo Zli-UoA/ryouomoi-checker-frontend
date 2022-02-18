@@ -46,59 +46,12 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
   );
 };
 
-type TabName = 'all' | 'follow' | 'follower';
-type VoidFunc = () => void;
-
 type SearchPageHeaderProps = {
-  selectedTab: TabName,
-  setAll: VoidFunc,
-  setFollow: VoidFunc,
-  setFollower: VoidFunc,
+  Tab: React.VFC
 };
 
-const Tab: React.VFC<SearchPageHeaderProps> = ({
-  selectedTab, setFollow, setFollower, setAll,
-}) => (
-  <div className="tab">
-    <button
-      type="button"
-      onClick={setAll}
-      className={
-        selectedTab === 'all'
-          ? 'tab__button--selected'
-          : 'tab__button'
-      }
-    >
-      全体
-    </button>
-    <button
-      type="button"
-      onClick={setFollow}
-      className={
-        selectedTab === 'follow'
-          ? 'tab__button--selected'
-          : 'tab__button'
-      }
-    >
-      フォロー
-    </button>
-    <button
-      type="button"
-      onClick={setFollower}
-      className={
-        selectedTab === 'follower'
-          ? 'tab__button--selected'
-          : 'tab__button'
-      }
-    >
-      フォロワー
-    </button>
-  </div>
-
-);
-
 const SearchPageHeader: React.VFC<SearchPageHeaderProps> = ({
-  selectedTab, setAll, setFollower, setFollow,
+  Tab,
 }) => {
   const { SearchInput } = useSearchInput();
   return (
@@ -111,36 +64,73 @@ const SearchPageHeader: React.VFC<SearchPageHeaderProps> = ({
           <div style={{ display: 'inline-block', flexGrow: 3 }}>
             <SearchInput />
           </div>
-          <Tab
-            selectedTab={selectedTab}
-            setAll={setAll}
-            setFollow={setFollow}
-            setFollower={setFollower}
-          />
+          <Tab />
         </>
       </Header>
     </header>
   );
 };
 
-const SearchPage: React.VFC = () => {
-  const [selectedTab, setTab] = useState<'all' | 'follow' | 'follower'>('all');
-  const genSetTab = (target: TabName): VoidFunc => () => {
+type TabName = 'all' | 'follow' | 'follower';
+
+type UseTab = () => {
+  Tab: React.VFC,
+  selectedTab: TabName
+};
+
+const useTab: UseTab = () => {
+  const [selectedTab, setTab] = useState<TabName>('all');
+  const genSetTab = (target: TabName): (() => void) => () => {
     if (selectedTab === target) return;
     setTab(target);
   };
-  const setAll: VoidFunc = genSetTab('all');
-  const setFollow: VoidFunc = genSetTab('follow');
-  const setFollower: VoidFunc = genSetTab('follower');
 
+  const Tab: React.VFC = () => (
+    <div className="tab">
+      <button
+        type="button"
+        onClick={genSetTab('all')}
+        className={
+          selectedTab === 'all'
+            ? 'tab__button--selected'
+            : 'tab__button'
+        }
+      >
+        全体
+      </button>
+      <button
+        type="button"
+        onClick={genSetTab('follow')}
+        className={
+          selectedTab === 'follow'
+            ? 'tab__button--selected'
+            : 'tab__button'
+        }
+      >
+        フォロー
+      </button>
+      <button
+        type="button"
+        onClick={genSetTab('follower')}
+        className={
+          selectedTab === 'follower'
+            ? 'tab__button--selected'
+            : 'tab__button'
+        }
+      >
+        フォロワー
+      </button>
+    </div>
+  );
+
+  return { Tab, selectedTab };
+};
+
+const SearchPage: React.VFC = () => {
+  const { Tab } = useTab();
   return (
     <div className="searchPage">
-      <SearchPageHeader
-        selectedTab={selectedTab}
-        setAll={setAll}
-        setFollow={setFollow}
-        setFollower={setFollower}
-      />
+      <SearchPageHeader Tab={Tab} />
       <SearchPageMainContent
         users={(
         new Array(Math.random() < 0.5 ? 0 : 30).fill({
