@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as HeartIconSvg } from './svgIcons/HeartIcon.svg';
+import { ReactComponent as FilledHeartIconSvg } from './svgIcons/FilledHeartIcon.svg';
 import { ReactComponent as BrokenHeartIconSvg } from './svgIcons/BrokenHeartIcon.svg';
-import { ReactComponent as WhiteHeartIconSvg } from './svgIcons/WhiteHeartIcon.svg';
+import { ReactComponent as EmptyHeartIconSvg } from './svgIcons/EmptyHeartIcon.svg';
 import { ReactComponent as EditIconSvg } from './svgIcons/EditIcon.svg';
 import { ReactComponent as BackIconSvg } from './svgIcons/BackIcon.svg';
 import { ReactComponent as SearchIconSvg } from './svgIcons/SearchIcon.svg';
@@ -21,7 +21,7 @@ export const HeartIcon: React.VFC<HeartIconProps> = ({
 }) => {
   if (mode === 'filled') {
     return (
-      <HeartIconSvg />
+      <FilledHeartIconSvg />
     );
   }
 
@@ -32,7 +32,7 @@ export const HeartIcon: React.VFC<HeartIconProps> = ({
   }
 
   return (
-    <WhiteHeartIconSvg />
+    <EmptyHeartIconSvg />
   );
 };
 
