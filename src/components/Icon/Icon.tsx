@@ -69,3 +69,7 @@ export const CheckIcon: React.VFC<CheckIconProps> = ({
 export const SendIcon: React.VFC = () => (
   <SendIconSvg />
 );
+
+export const HammerHeartIcon: React.VFC = () => (
+  <HammerHeartIconSvg />
+);
