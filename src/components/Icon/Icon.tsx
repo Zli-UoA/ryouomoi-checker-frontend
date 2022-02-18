@@ -59,9 +59,7 @@ export const DeleteIcon: React.VFC = () => (
 );
 
 export const CheckIcon: React.VFC = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8.99997 16.1701L4.82997 12.0001L3.40997 13.4101L8.99997 19.0001L21 7.00009L19.59 5.59009L8.99997 16.1701Z" fill="#2C2E5C" />
-  </svg>
+  <CheckIcon />
 );
 
 export const SendIcon: React.VFC = () => (
