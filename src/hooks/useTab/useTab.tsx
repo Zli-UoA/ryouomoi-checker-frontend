@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './tab.css';
 
 type TabName = 'all' | 'follow' | 'follower';
 
@@ -21,7 +22,7 @@ const useTab: UseTab = () => {
         onClick={genSetTab('all')}
         className={
           selectedTab === 'all'
-            ? 'tab__button--selected'
+            ? 'tab__button tab__button--selected'
             : 'tab__button'
         }
       >
@@ -32,7 +33,7 @@ const useTab: UseTab = () => {
         onClick={genSetTab('follow')}
         className={
           selectedTab === 'follow'
-            ? 'tab__button--selected'
+            ? 'tab__button tab__button--selected'
             : 'tab__button'
         }
       >
@@ -43,7 +44,7 @@ const useTab: UseTab = () => {
         onClick={genSetTab('follower')}
         className={
           selectedTab === 'follower'
-            ? 'tab__button--selected'
+            ? 'tab__button tab__button--selected'
             : 'tab__button'
         }
       >
