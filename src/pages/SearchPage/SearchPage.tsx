@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../../components/Header/Header';
 import { BackIcon } from '../../components/Icon/Icon';
 import useSearchInput from '../../components/Input/useSearchInput';
 import '../../common.css';
 import UserIcon from '../../components/UserIcon/UserIcon';
+import useTab from '../../hooks/useTab/useTab';
 
 type User = {
   name: string,
@@ -69,61 +70,6 @@ const SearchPageHeader: React.VFC<SearchPageHeaderProps> = ({
       </Header>
     </header>
   );
-};
-
-type TabName = 'all' | 'follow' | 'follower';
-
-type UseTab = () => {
-  Tab: React.VFC,
-  selectedTab: TabName
-};
-
-const useTab: UseTab = () => {
-  const [selectedTab, setTab] = useState<TabName>('all');
-  const genSetTab = (target: TabName): (() => void) => () => {
-    if (selectedTab === target) return;
-    setTab(target);
-  };
-
-  const Tab: React.VFC = () => (
-    <div className="tab">
-      <button
-        type="button"
-        onClick={genSetTab('all')}
-        className={
-          selectedTab === 'all'
-            ? 'tab__button--selected'
-            : 'tab__button'
-        }
-      >
-        全体
-      </button>
-      <button
-        type="button"
-        onClick={genSetTab('follow')}
-        className={
-          selectedTab === 'follow'
-            ? 'tab__button--selected'
-            : 'tab__button'
-        }
-      >
-        フォロー
-      </button>
-      <button
-        type="button"
-        onClick={genSetTab('follower')}
-        className={
-          selectedTab === 'follower'
-            ? 'tab__button--selected'
-            : 'tab__button'
-        }
-      >
-        フォロワー
-      </button>
-    </div>
-  );
-
-  return { Tab, selectedTab };
 };
 
 const SearchPage: React.VFC = () => {
