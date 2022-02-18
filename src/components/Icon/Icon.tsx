@@ -1,4 +1,5 @@
 import React from 'react';
+import { ReactComponent as AddIconSvg } from './svgIcons/AddIcon.svg';
 
 type HeartIconProps = {
   broken?: boolean;
@@ -38,8 +39,8 @@ export const HeartIcon: React.VFC<HeartIconProps> = ({
   }
 
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16.5 3C14.76 3 13.09 3.81 12 5.09C10.91 3.81 9.24 3 7.5 3C4.42 3 2 5.42 2 8.5C2 12.28 5.4 15.36 10.55 20.04L12 21.35L13.45 20.03C18.6 15.36 22 12.28 22 8.5C22 5.42 19.58 3 16.5 3ZM12.1 18.55L12 18.65L11.9 18.55C7.14 14.24 4 11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 5.99 11.07 7.36H12.94C13.46 5.99 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 18.55Z" fill="#2C2E5C" />
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16.0001 28.4667L14.0667 26.7067C7.20008 20.48 2.66675 16.3733 2.66675 11.3333C2.66675 7.22667 5.89341 4 10.0001 4C12.3201 4 14.5467 5.08 16.0001 6.78667C17.4534 5.08 19.6801 4 22.0001 4C26.1067 4 29.3334 7.22667 29.3334 11.3333C29.3334 16.3733 24.8001 20.48 17.9334 26.72L16.0001 28.4667Z" fill="white" />
     </svg>
   );
 };
@@ -64,9 +65,7 @@ export const SearchIcon: React.VFC = () => (
 );
 
 export const AddIcon: React.VFC = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#2C2E5C" />
-  </svg>
+  <AddIconSvg />
 );
 
 export const DeleteIcon: React.VFC = () => (
