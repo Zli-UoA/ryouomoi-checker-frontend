@@ -12,9 +12,13 @@ const UserCard: React.VFC<User> = ({
   name, image, id,
 }) => (
   <div className="userCard">
-    <UserIcon size="sm" image={image} />
-    <h1 className="userCard__name">{name}</h1>
-    <h2 className="userCard__id">{id}</h2>
+    <div className="userCard__icon">
+      <UserIcon size="sm" image={image} />
+    </div>
+    <div className="userCard__text">
+      <h1 className="userCard__name">{name}</h1>
+      <h2 className="userCard__id">{id}</h2>
+    </div>
   </div>
 );
 

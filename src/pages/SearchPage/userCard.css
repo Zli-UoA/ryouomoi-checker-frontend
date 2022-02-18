@@ -1,6 +1,16 @@
 .userCard {
   width: 100%;
+  height: 56px;
   display: flex;
+  justify-content: center;
+  margin-left: 32px;
+  padding-right: 16px;
+}
+
+.userCard__text {
+  flex-grow: 1;
+  text-align: start;
+  margin-left: 16px;
 }
 
 .userCard__name {
@@ -8,8 +18,10 @@
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 8px;
   letter-spacing: 0.05em;
+  margin: none;
+  padding: none;
 }
 
 .userCard__id {
@@ -17,7 +29,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 10px;
-  line-height: 14px;
+  line-height: 10px;
   letter-spacing: 0.05em;
   color: #808080;
 }
