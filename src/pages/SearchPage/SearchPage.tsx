@@ -18,19 +18,19 @@ type SearchPageMainContentProps = {
 const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users }) => {
   if (users.length === 0) {
     return (
-      <div style={{ paddingTop: '200px' }}>
+      <main className="searchPage__main">
         <div>
           <span className="color_primarysolid">検索ボックス</span>
           に
           <br />
           キーワードを入力してください
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div style={{ paddingTop: '200px' }}>
+    <main className="searchPage__main">
       {
         users.map(({ name, image, id }) => (
           <div style={{ display: 'flex' }}>
@@ -42,26 +42,30 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
           </div>
         ))
       }
-    </div>
+    </main>
   );
 };
 
 const SearchPageHeader: React.VFC = () => {
   const { SearchInput } = useSearchInput();
   return (
-    <div>
+    <header className="searchPage__header">
       <Header>
         <>
-          <BackIcon />
-          <SearchInput />
+          <div style={{ display: 'inline-block' }}>
+            <BackIcon />
+          </div>
+          <div style={{ display: 'inline-block', flexGrow: 3 }}>
+            <SearchInput />
+          </div>
         </>
       </Header>
-    </div>
+    </header>
   );
 };
 
 const SearchPage: React.VFC = () => (
-  <div>
+  <div className="searchPage">
     <SearchPageHeader />
     <SearchPageMainContent
       users={(
