@@ -8,8 +8,11 @@ export default {
   component: AddIcon,
 } as ComponentMeta<typeof AddIcon>;
 
-// eslint-disable-next-line
-const Template: ComponentStory<typeof AddIcon> = (args) => <AddIcon {...args} />;
+const Template: ComponentStory<typeof AddIcon> = () => (
+  <div style={{ background: '#000', width: 'auto', height: 'auto' }}>
+    <AddIcon />
+  </div>
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};

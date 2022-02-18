@@ -8,8 +8,11 @@ export default {
   component: DeleteIcon,
 } as ComponentMeta<typeof DeleteIcon>;
 
-// eslint-disable-next-line
-const Template: ComponentStory<typeof DeleteIcon> = (args) => <DeleteIcon {...args} />;
+const Template: ComponentStory<typeof DeleteIcon> = () => (
+  <div style={{ background: '#000', width: 'auto', height: 'auto' }}>
+    <DeleteIcon />
+  </div>
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};
