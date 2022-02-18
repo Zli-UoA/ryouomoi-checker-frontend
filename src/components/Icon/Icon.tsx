@@ -1,5 +1,15 @@
 import React from 'react';
+import { ReactComponent as HeartIconSvg } from './svgIcons/HeartIcon.svg';
+import { ReactComponent as BrokenHeartIconSvg } from './svgIcons/BrokenHeartIcon.svg';
+import { ReactComponent as EditIconSvg } from './svgIcons/EditIcon.svg';
+import { ReactComponent as BackIconSvg } from './svgIcons/BackIcon.svg';
+import { ReactComponent as SearchIconSvg } from './svgIcons/SearchIcon.svg';
 import { ReactComponent as AddIconSvg } from './svgIcons/AddIcon.svg';
+import { ReactComponent as DeleteIconSvg } from './svgIcons/DeleteIcon.svg';
+import { ReactComponent as EnabledCheckIconSvg } from './svgIcons/EnabledCheckIcon.svg';
+import { ReactComponent as DisabledCheckIconSvg } from './svgIcons/DisabledCheckIcon.svg';
+import { ReactComponent as SendIconSvg } from './svgIcons/SendIcon.svg';
+import { ReactComponent as HammerHeartIconSvg } from './svgIcons/HammerHeartIcon.svg';
 
 type HeartIconProps = {
   broken?: boolean;
