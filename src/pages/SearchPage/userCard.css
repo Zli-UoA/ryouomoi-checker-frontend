@@ -3,14 +3,14 @@
   height: 56px;
   display: flex;
   justify-content: center;
-  margin-left: 32px;
+  padding-left: 32px;
   padding-right: 16px;
 }
 
 .userCard__text {
   flex-grow: 1;
   text-align: start;
-  margin-left: 16px;
+  padding-left: 16px;
 }
 
 .userCard__name {
@@ -20,8 +20,6 @@
   font-size: 16px;
   line-height: 8px;
   letter-spacing: 0.05em;
-  margin: none;
-  padding: none;
 }
 
 .userCard__id {
