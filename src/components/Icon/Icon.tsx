@@ -13,21 +13,19 @@ import { ReactComponent as SendIconSvg } from './svgIcons/SendIcon.svg';
 import { ReactComponent as HammerHeartIconSvg } from './svgIcons/HammerHeartIcon.svg';
 
 type HeartIconProps = {
-  broken?: boolean;
-  filled?: boolean;
+  mode?: 'broken' | 'filled' | 'empty';
 };
 
 export const HeartIcon: React.VFC<HeartIconProps> = ({
-  broken = false,
-  filled = false,
+  mode = 'empty',
 }) => {
-  if (filled) {
+  if (mode === 'filled') {
     return (
       <HeartIconSvg />
     );
   }
 
-  if (broken) {
+  if (mode === 'broken') {
     return (
       <BrokenHeartIconSvg />
     );
