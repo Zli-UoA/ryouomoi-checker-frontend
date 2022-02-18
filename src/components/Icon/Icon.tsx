@@ -58,9 +58,13 @@ export const DeleteIcon: React.VFC = () => (
   <DeleteIconSvg />
 );
 
-export const CheckIcon: React.VFC = () => (
-  <CheckIconSvg />
-);
+type CheckIconProps = {
+  isEnabled?: boolean;
+};
+
+export const CheckIcon: React.VFC<CheckIconProps> = ({
+  isEnabled = false,
+}) => (isEnabled ? <EnabledCheckIconSvg /> : <DisabledCheckIconSvg />);
 
 export const SendIcon: React.VFC = () => (
   <SendIconSvg />
