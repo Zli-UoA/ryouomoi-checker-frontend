@@ -3,8 +3,8 @@ import Header from '../../components/Header/Header';
 import { BackIcon } from '../../components/Icon/Icon';
 import useSearchInput from '../../components/Input/useSearchInput';
 import '../../common.css';
-import UserIcon from '../../components/UserIcon/UserIcon';
 import useTab from '../../hooks/useTab/useTab';
+import UserCard from './UserCard';
 
 type User = {
   name: string,
@@ -34,13 +34,7 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
     <main className="searchPage__main">
       {
         users.map(({ name, image, id }) => (
-          <div style={{ display: 'flex' }}>
-            <UserIcon size="sm" image={image} />
-            <div>
-              <h3>{name}</h3>
-              <p>{id}</p>
-            </div>
-          </div>
+          <UserCard name={name} image={image} id={id} />
         ))
       }
     </main>
