@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as HeartIconSvg } from './svgIcons/HeartIcon.svg';
 import { ReactComponent as BrokenHeartIconSvg } from './svgIcons/BrokenHeartIcon.svg';
+import { ReactComponent as WhiteHeartIconSvg } from './svgIcons/WhiteHeartIcon.svg';
 import { ReactComponent as EditIconSvg } from './svgIcons/EditIcon.svg';
 import { ReactComponent as BackIconSvg } from './svgIcons/BackIcon.svg';
 import { ReactComponent as SearchIconSvg } from './svgIcons/SearchIcon.svg';
@@ -22,36 +23,18 @@ export const HeartIcon: React.VFC<HeartIconProps> = ({
 }) => {
   if (filled) {
     return (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="url(#paint0_linear_8_1531)" />
-        <defs>
-          <linearGradient id="paint0_linear_8_1531" x1="22" y1="12.175" x2="2" y2="12.175" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#F5576C" />
-            <stop offset="1" stopColor="#F093FB" />
-          </linearGradient>
-        </defs>
-      </svg>
+      <HeartIconSvg />
     );
   }
 
   if (broken) {
     return (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16.5 3C15.54 3 14.6 3.25 13.77 3.69L12 9H15L12 19L13 10H10L11.54 4.61C10.47 3.61 9.01 3 7.5 3C4.42 3 2 5.42 2 8.5C2 12.63 6.16 15.68 12 21C17.47 16.06 22 12.74 22 8.5C22 5.42 19.58 3 16.5 3Z" fill="url(#paint0_linear_214_1801)" />
-        <defs>
-          <linearGradient id="paint0_linear_214_1801" x1="22" y1="12" x2="2" y2="12" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#F5576C" />
-            <stop offset="1" stopColor="#F093FB" />
-          </linearGradient>
-        </defs>
-      </svg>
+      <BrokenHeartIconSvg />
     );
   }
 
   return (
-    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16.0001 28.4667L14.0667 26.7067C7.20008 20.48 2.66675 16.3733 2.66675 11.3333C2.66675 7.22667 5.89341 4 10.0001 4C12.3201 4 14.5467 5.08 16.0001 6.78667C17.4534 5.08 19.6801 4 22.0001 4C26.1067 4 29.3334 7.22667 29.3334 11.3333C29.3334 16.3733 24.8001 20.48 17.9334 26.72L16.0001 28.4667Z" fill="white" />
-    </svg>
+    <WhiteHeartIconSvg />
   );
 };
 
