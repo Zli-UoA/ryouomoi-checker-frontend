@@ -1,0 +1,12 @@
+.searchPage__header {
+  display: flex;
+}
+
+.searchPage__main {
+  width: 100%;
+  padding-top: 144px;
+}
+
+.searchPage__main--user_null {
+  padding-top: 56px;
+}
