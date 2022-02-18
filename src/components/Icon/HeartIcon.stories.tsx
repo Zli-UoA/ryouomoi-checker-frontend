@@ -8,21 +8,26 @@ export default {
   component: HeartIcon,
 } as ComponentMeta<typeof HeartIcon>;
 
-const Template: ComponentStory<typeof HeartIcon> = ({ filled, broken }) => (
+const Template: ComponentStory<typeof HeartIcon> = ({ mode }) => (
   <div style={{ background: '#000', width: 'auto', height: 'auto' }}>
-    <HeartIcon filled={filled} broken={broken} />
+    <HeartIcon mode={mode} />
   </div>
 );
 
 export const Normal = Template.bind({});
 Normal.args = {};
 
+export const Empty = Template.bind({});
+Empty.args = {
+  mode: 'empty',
+};
+
 export const Broken = Template.bind({});
 Broken.args = {
-  broken: true,
+  mode: 'broken',
 };
 
 export const Filled = Template.bind({});
 Filled.args = {
-  filled: true,
+  mode: 'filled',
 };
