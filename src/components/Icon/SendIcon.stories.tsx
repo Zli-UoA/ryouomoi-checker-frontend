@@ -8,8 +8,11 @@ export default {
   component: SendIcon,
 } as ComponentMeta<typeof SendIcon>;
 
-// eslint-disable-next-line
-const Template: ComponentStory<typeof SendIcon> = (args) => <SendIcon {...args} />;
+const Template: ComponentStory<typeof SendIcon> = () => (
+  <div style={{ background: '#000', width: 'auto', height: 'auto' }}>
+    <SendIcon />
+  </div>
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};

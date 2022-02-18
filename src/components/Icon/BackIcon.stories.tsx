@@ -8,8 +8,11 @@ export default {
   component: BackIcon,
 } as ComponentMeta<typeof BackIcon>;
 
-// eslint-disable-next-line
-const Template: ComponentStory<typeof BackIcon> = (args) => <BackIcon {...args} />;
+const Template: ComponentStory<typeof BackIcon> = () => (
+  <div style={{ background: '#000', width: 'auto', height: 'auto' }}>
+    <BackIcon />
+  </div>
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};

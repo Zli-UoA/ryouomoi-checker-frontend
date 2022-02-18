@@ -8,8 +8,19 @@ export default {
   component: CheckIcon,
 } as ComponentMeta<typeof CheckIcon>;
 
-// eslint-disable-next-line
-const Template: ComponentStory<typeof CheckIcon> = (args) => <CheckIcon {...args} />;
+const Template: ComponentStory<typeof CheckIcon> = ({ isEnabled }) => (
+  <CheckIcon isEnabled={isEnabled} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};
+
+export const Enabled = Template.bind({});
+Enabled.args = {
+  isEnabled: true,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  isEnabled: false,
+};

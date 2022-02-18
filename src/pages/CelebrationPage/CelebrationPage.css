@@ -1,0 +1,33 @@
+.celebrationPage {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: bold;
+  padding-top: 120px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.celebrationPage__icon {
+  display: inline-block;
+}
+
+.celebrationPage__id {
+  font-size: 14px;
+  line-height: 20px;
+  color: #808080;
+}
+
+.celebrationPage__text {
+  font-size: 20px;
+  margin-top: 56px;
+  line-height: 24px;
+  background: linear-gradient(90deg, #33b9fc 0%, #337cee 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.celebrationPage__button {
+  position: absolute;
+  width: 100%;
+  bottom: 88px;
+}
+
