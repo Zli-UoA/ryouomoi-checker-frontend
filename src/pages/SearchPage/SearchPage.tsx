@@ -34,10 +34,7 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
       {
         users.map(({ name, image, id }) => (
           <div style={{ display: 'flex' }}>
-            <UserIcon
-              size="sm"
-              image={image}
-            />
+            <UserIcon size="sm" image={image} />
             <div>
               <h3>{name}</h3>
               <p>{id}</p>
@@ -49,29 +46,33 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
   );
 };
 
-const SearchPage: React.VFC = () => {
+const SearchPageHeader: React.VFC = () => {
   const { SearchInput } = useSearchInput();
   return (
-    <div>
-      <div style={{ display: 'box' }}>
-        <Header>
-          <>
-            <BackIcon />
-            <SearchInput />
-          </>
-        </Header>
-      </div>
-      <SearchPageMainContent
-        users={(
-          new Array(Math.random() < 0.5 ? 0 : 30).fill({
-            name: '会津夏菜子',
-            image: 'https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg',
-            id: '@kanako',
-          })
-        )}
-      />
+    <div style={{ display: 'box' }}>
+      <Header>
+        <>
+          <BackIcon />
+          <SearchInput />
+        </>
+      </Header>
     </div>
   );
 };
+
+const SearchPage: React.VFC = () => (
+  <div>
+    <SearchPageHeader />
+    <SearchPageMainContent
+      users={(
+        new Array(Math.random() < 0.5 ? 0 : 30).fill({
+          name: '会津夏菜子',
+          image: 'https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg',
+          id: '@kanako',
+        })
+      )}
+    />
+  </div>
+);
 
 export default SearchPage;
