@@ -55,7 +55,7 @@ export const AddIcon: React.VFC = () => (
 );
 
 export const DeleteIcon: React.VFC = () => (
-  
+  <DeleteIconSvg />
 );
 
 export const CheckIcon: React.VFC = () => (
