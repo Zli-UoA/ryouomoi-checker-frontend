@@ -49,7 +49,7 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
 const SearchPageHeader: React.VFC = () => {
   const { SearchInput } = useSearchInput();
   return (
-    <div style={{ display: 'box' }}>
+    <div>
       <Header>
         <>
           <BackIcon />
