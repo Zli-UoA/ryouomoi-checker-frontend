@@ -8,8 +8,11 @@ export default {
   component: SearchIcon,
 } as ComponentMeta<typeof SearchIcon>;
 
-// eslint-disable-next-line
-const Template: ComponentStory<typeof SearchIcon> = (args) => <SearchIcon {...args} />;
+const Template: ComponentStory<typeof SearchIcon> = () => (
+  <div style={{ background: '#000', width: 'auto', height: 'auto' }}>
+    <SearchIcon />
+  </div>
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};
