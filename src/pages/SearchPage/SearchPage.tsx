@@ -125,18 +125,13 @@ const SearchPageHeader: React.VFC<SearchPageHeaderProps> = ({
 
 const SearchPage: React.VFC = () => {
   const [selectedTab, setTab] = useState<'all' | 'follow' | 'follower'>('all');
-  const setAll: VoidFunc = () => {
-    if (selectedTab === 'all') return;
-    setTab('all');
+  const genSetTab = (target: TabName): VoidFunc => () => {
+    if (selectedTab === target) return;
+    setTab(target);
   };
-  const setFollow: VoidFunc = () => {
-    if (selectedTab === 'follow') return;
-    setTab('follow');
-  };
-  const setFollower: VoidFunc = () => {
-    if (selectedTab === 'follower') return;
-    setTab('follower');
-  };
+  const setAll: VoidFunc = genSetTab('all');
+  const setFollow: VoidFunc = genSetTab('follow');
+  const setFollower: VoidFunc = genSetTab('follower');
 
   return (
     <div className="searchPage">
