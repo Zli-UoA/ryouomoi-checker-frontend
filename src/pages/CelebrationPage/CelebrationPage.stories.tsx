@@ -8,8 +8,7 @@ export default {
   component: CelebrationPage,
 } as ComponentMeta<typeof CelebrationPage>;
 
-// eslint-disable-next-line
-const Template: ComponentStory<typeof CelebrationPage> = (args) => <CelebrationPage {...args} />;
+const Template: ComponentStory<typeof CelebrationPage> = () => <CelebrationPage />;
 
 export const Primary = Template.bind({});
 Primary.args = {};
