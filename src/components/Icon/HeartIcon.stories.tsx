@@ -8,8 +8,11 @@ export default {
   component: HeartIcon,
 } as ComponentMeta<typeof HeartIcon>;
 
-// eslint-disable-next-line
-const Template: ComponentStory<typeof HeartIcon> = (args) => <HeartIcon {...args} />;
+const Template: ComponentStory<typeof HeartIcon> = ({ filled, broken }) => (
+  <div style={{ background: '#000', width: 'auto', height: 'auto' }}>
+    <HeartIcon filled={filled} broken={broken} />
+  </div>
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};
