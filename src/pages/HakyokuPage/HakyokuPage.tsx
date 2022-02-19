@@ -13,8 +13,8 @@ const HakyokuPage: React.VFC = () => (
     </button>
     <div className="">
       <WithBackground>
-        <div className="hakyokuPage__user">
-          <div className="hakypkuPage__icon">
+        <>
+          <div className="hakyokuPage__icon">
             <UserIcon
               size="lg"
               image="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg"
@@ -22,7 +22,7 @@ const HakyokuPage: React.VFC = () => (
           </div>
           <p className="hakyokuPage__name">会津太郎</p>
           <p className="hakyokuPage__id">@aizu_taro</p>
-        </div>
+        </>
       </WithBackground>
     </div>
     <p className="hakyokuPage__mainText">
