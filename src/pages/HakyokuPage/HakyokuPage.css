@@ -2,7 +2,6 @@
   font-family: "Noto Sans JP", sans-serif;
   padding-top: 120px;
   letter-spacing: 0.05em;
-  text-align: center;
 }
 
 .hakyokuPage__heartButton {
@@ -46,7 +45,6 @@
   font-size: 14px;
   line-height: 20px;
   text-align: center;
-  letter-spacing: 0.05em;
   color: #808080;
   margin-top: 40px;
 }
