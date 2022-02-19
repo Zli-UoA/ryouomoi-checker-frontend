@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../../components/Button/Button';
 import '../../common.css';
 import './HakyokuPage.css';
 import WithBackground from '../../components/WithBackground/WithBackground';
@@ -35,9 +34,6 @@ const HakyokuPage: React.VFC = () => (
       <br />
       進めてください
     </p>
-    <div className="hakyokuPage__button">
-      <Button label="恋愛の一歩を踏み出す" />
-    </div>
   </div>
 );
 
