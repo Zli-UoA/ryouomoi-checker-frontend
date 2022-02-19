@@ -12,7 +12,7 @@ import subprocess
 try: 
   local_ref, local_sha1, remote_ref, remote_sha1 = input().split()
 
-except e:
+except EOFError as e:
   prefix = 'warning: '
   spaces = ' ' * len(prefix)
   print(prefix + 'Read the EOF without follows as:')
