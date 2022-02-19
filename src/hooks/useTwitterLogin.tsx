@@ -22,7 +22,7 @@ const UseTwitterLogin: React.VFC = () => {
   }
 
   if (error) {
-  // eslint-disable-next-line
+    // eslint-disable-next-line
     console.error(error);
   }
 
