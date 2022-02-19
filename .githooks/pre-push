@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sys
 import re
 import subprocess
 
@@ -15,8 +14,8 @@ try:
 except EOFError as e:
   prefix = 'warning: '
   spaces = ' ' * len(prefix)
-  print(prefix + 'Read the EOF without follows as:')
-  print(spaces + '<local_ref>, <local_sha1>, <remote_ref> and <remote_sha1>')
+  print(prefix + 'Read the EOF!')
+  print(spaces + 'Maybe you have nothing to push.')
   exit(0)
 
 
