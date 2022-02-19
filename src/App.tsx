@@ -31,6 +31,8 @@ const App: React.VFC = () => (
       <Link to="talkroom">talkroom</Link>
       /
       <Link to="welcome">welcome</Link>
+      /
+      <Link to="power-word">power-word</Link>
     </nav>
 
     <Routes>
