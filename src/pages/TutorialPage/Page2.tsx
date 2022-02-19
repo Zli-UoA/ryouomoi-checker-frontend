@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '../../components/Button/Button';
 import '../../common.css';
 import './Page2.css';
+import UseTwitterLogin from '../../hooks/UseTwitterLogin';
 
 const Page2: React.VFC = () => (
   <div className="page2">
@@ -25,9 +24,7 @@ const Page2: React.VFC = () => (
       </p>
     </div>
     <div className="page2__button">
-      <Link to="/welcome">
-        <Button label="Twitterで登録" />
-      </Link>
+      <UseTwitterLogin />
     </div>
   </div>
 );
