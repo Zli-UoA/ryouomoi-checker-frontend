@@ -18,8 +18,13 @@ const useNavigateToHome = (): void => {
   const navigate = useNavigate();
   const query = useQuery();
   useEffect(() => {
-    if (localStorage.getItem('ryouomoi-checker-token') && !query.get('auth_token')) {
-      navigate('/home');
+    if (!query.get('auth_token')) {
+      if (localStorage.getItem('ryouomoi-checker-token')) {
+        navigate('/home');
+      }
+      if (!localStorage.getItem('ryouomoi-checker-token')) {
+        navigate('tutorial');
+      }
     }
   }, [localStorage]);
 };
