@@ -3,9 +3,9 @@ import UserCard from './UserCard';
 import './userList.css';
 
 type User = {
-  name: string,
-  image: string,
-  id: string
+  displayName: string,
+  imageUrl: string,
+  screenName: string
 };
 
 type UserListProps = {
@@ -16,8 +16,8 @@ const UserList: React.VFC<UserListProps> = ({
   users,
 }) => (
   <div className="userList">
-    {users.map(({ name, image, id }) => (
-      <UserCard name={name} image={image} id={id} />
+    {users.map(({ displayName, imageUrl, screenName }) => (
+      <UserCard displayName={displayName} imageUrl={imageUrl} screenName={screenName} />
     ))}
   </div>
 );
