@@ -5,7 +5,9 @@ import { AddIcon } from '../Icon/Icon';
 
 const AddButton: React.VFC = () => (
   <div className="addButton">
-    <AddIcon />
+    <div className="addButton__icon">
+      <AddIcon />
+    </div>
   </div>
 );
 
