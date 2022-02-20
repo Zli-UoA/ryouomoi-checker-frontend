@@ -1,7 +1,5 @@
-import React from 'react';
 import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import useHeartRating from '../../components/HeartRating/useHeartRating';
 import useQuery from '../../hooks/useQuery';
 import '../../common.css';
 import './homePage.css';
@@ -20,7 +18,7 @@ const useNavigateToWelcome = (): void => {
   }, [query]);
 };
 
-const HomePageHeader: React.VFC = () => {
+const HomePageHeader: React.VFC = () => (
   <Header>
     <div className="homePage__header">
       <Link to="/search">
@@ -85,9 +83,7 @@ const HomePageContent: React.VFC = () => (
 );
 
 const HomePage: React.VFC = () => {
-  const { HeartRating } = useHeartRating();
   useNavigateToWelcome();
-  
   return (
     <>
       <HomePageHeader />
