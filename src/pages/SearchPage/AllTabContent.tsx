@@ -14,9 +14,22 @@ const AllTabContent: React.VFC = () => {
     screenName: '@kanako',
   });
 
+  if (data.length === 0) {
+    return (
+      <main className="searchPage__main">
+        <div className="searchPage__main--user_null">
+          <span className="color_primarySolid">検索ボックス</span>
+          に
+          <br />
+          キーワードを入力してください
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="searchPage__main">
-      <UserList users={data || []} />
+      <UserList users={data} />
     </main>
   );
 };
