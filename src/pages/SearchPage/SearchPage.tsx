@@ -1,4 +1,5 @@
 import React from 'react';
+import { useFetch } from 'usehooks-ts';
 import Header from '../../components/Header/Header';
 import { BackIcon } from '../../components/Icon/Icon';
 import useSearchInput from '../../components/Input/useSearchInput';
@@ -18,6 +19,22 @@ type SearchPageMainContentProps = {
 };
 
 const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users }) => {
+  const token = localStorage.getItem('ryouomoi-checker-token');
+
+  const { data, error } = useFetch('http://localhost:8080/friends/follower', {
+    headers: new Headers({ Authorization: `Bearer: ${token}` }),
+  });
+
+  if (data) {
+    // eslint-disable-next-line
+    console.log(data);
+  }
+
+  if (error) {
+    // eslint-disable-next-line
+    console.error(error);
+  }
+
   if (users.length === 0) {
     return (
       <main className="searchPage__main">
