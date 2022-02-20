@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sys
 import re
 import subprocess
 
@@ -9,7 +8,16 @@ import subprocess
 #   local_sha1  = 68a07ee4f6af8271dc40caae6cc23f283122ed11
 #   remote_ref  = refs/heads/master
 #   remote_sha1 = efd4d512f34b11e3cf5c12433bbedd4b1532716f
-local_ref, local_sha1, remote_ref, remote_sha1 = input().split()
+try: 
+  local_ref, local_sha1, remote_ref, remote_sha1 = input().split()
+
+except EOFError as e:
+  prefix = 'warning: '
+  spaces = ' ' * len(prefix)
+  print(prefix + 'Read the EOF!')
+  print(spaces + 'Maybe you have nothing to push.')
+  exit(0)
+
 
 pushing_branch = remote_ref.replace('refs/heads/', '')
 

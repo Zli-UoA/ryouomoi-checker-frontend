@@ -1,18 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import useHeartRating from '../../components/HeartRating/useHeartRating';
+import useQuery from '../../hooks/useQuery';
 import '../../common.css';
 import './homePage.css';
 import Header from '../../components/Header/Header';
 import AddButton from '../../components/AddButton/AddButton';
 import UserIcon from '../../components/UserIcon/UserIcon';
 
-const HomePageHeader: React.VFC = () => (
+const useNavigateToWelcome = (): void => {
+  const navigate = useNavigate();
+  const query = useQuery();
+  useEffect(() => {
+    const token = query.get('auth_token');
+    if (token) {
+      navigate(`/welcome?auth_token=${token}`);
+    }
+  }, [query]);
+};
+
+const HomePageHeader: React.VFC = () => {
   <Header>
     <div className="homePage__header">
       <Link to="/search">
         <AddButton />
       </Link>
-
       <div>
         <div className="homePage__title">
           両想いチェッカー
@@ -71,11 +84,16 @@ const HomePageContent: React.VFC = () => (
   </>
 );
 
-const HomePage: React.VFC = () => (
-  <>
-    <HomePageHeader />
-    <HomePageContent />
-  </>
-);
+const HomePage: React.VFC = () => {
+  const { HeartRating } = useHeartRating();
+  useNavigateToWelcome();
+  
+  return (
+    <>
+      <HomePageHeader />
+      <HomePageContent />
+    </>
+  );
+};
 
 export default HomePage;

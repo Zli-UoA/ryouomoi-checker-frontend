@@ -1,0 +1,50 @@
+.hakyokuPage {
+  font-family: "Noto Sans JP", sans-serif;
+  padding-top: 120px;
+  letter-spacing: 0.05em;
+}
+
+.hakyokuPage__heartButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgb(0 0 0 / 0%);
+  border-radius: 50%;
+  border: none;
+  height: 48px;
+  width: 48px;
+}
+
+.hakyokuPage__icon {
+  width: 158px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hakyokuPage__name {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.hakyokuPage__id {
+  font-size: 14px;
+  line-height: 20px;
+  color: #808080;
+}
+
+.hakyokuPage__mainText {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 64px;
+  line-height: 24px;
+}
+
+.hakyokuPage__subText {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #808080;
+  margin-top: 40px;
+}
