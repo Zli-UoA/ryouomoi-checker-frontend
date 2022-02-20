@@ -8,8 +8,9 @@ const useNavigateToWelcome = (): void => {
   const navigate = useNavigate();
   const query = useQuery();
   useEffect(() => {
-    if (query.get('auth_token')) {
-      navigate('/welcome');
+    const token = query.get('auth_token');
+    if (token) {
+      navigate(`/welcome?auth_token=${token}`);
     }
   }, [query]);
 };
