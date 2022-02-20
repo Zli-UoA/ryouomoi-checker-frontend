@@ -1,12 +1,12 @@
 import React from 'react';
-import './button.css';
+import './addButton.css';
 import '../../common.css';
 import { AddIcon } from '../Icon/Icon';
 
-const Button: React.VFC = () => (
+const AddButton: React.VFC = () => (
   <div className="addButton">
     <AddIcon />
   </div>
 );
 
-export default Button;
+export default AddButton;

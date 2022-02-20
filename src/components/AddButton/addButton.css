@@ -3,25 +3,5 @@
   width: 32px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
-
-/*
-position: static;
-width: 32px;
-height: 32px;
-left: 0px;
-top: 2px;
-
-
-background: rgba(255, 255, 255, 0.2);
-
-
-border: 1px solid rgba(255, 255, 255, 0.4);
-box-sizing: border-box;
-
-
-flex: none;
-order: 0;
-flex-grow: 0;
-margin: 0px 16px;
-*/
