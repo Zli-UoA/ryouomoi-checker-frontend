@@ -2,7 +2,7 @@ import React from 'react';
 import { useFetch } from 'usehooks-ts';
 import UserList from './UserList';
 
-const FollowTabContent: React.VFC = () => {
+const FollowerTabContent: React.VFC = () => {
   const token = localStorage.getItem('ryouomoi-checker-token');
 
   const { data } = useFetch<{
@@ -20,4 +20,4 @@ const FollowTabContent: React.VFC = () => {
   );
 };
 
-export default FollowTabContent;
+export default FollowerTabContent;
