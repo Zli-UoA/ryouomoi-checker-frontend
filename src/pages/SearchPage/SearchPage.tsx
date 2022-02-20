@@ -4,39 +4,10 @@ import { BackIcon } from '../../components/Icon/Icon';
 import useSearchInput from '../../components/Input/useSearchInput';
 import '../../common.css';
 import useTab from '../../hooks/useTab/useTab';
-import UserList from './UserList';
 import './searchPage.css';
-
-type User = {
-  name: string,
-  image: string,
-  id: string
-};
-
-type SearchPageMainContentProps = {
-  users: User[]
-};
-
-const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users }) => {
-  if (users.length === 0) {
-    return (
-      <main className="searchPage__main">
-        <div className="searchPage__main--user_null">
-          <span className="color_primarySolid">検索ボックス</span>
-          に
-          <br />
-          キーワードを入力してください
-        </div>
-      </main>
-    );
-  }
-
-  return (
-    <main className="searchPage__main">
-      <UserList users={users} />
-    </main>
-  );
-};
+import FolloweeTabContent from './FolloweeTabContent';
+import FollowerTabContent from './FollowerTabContent';
+import AllTabContent from './AllTabContent';
 
 type SearchPageHeaderProps = {
   Tab: React.VFC
@@ -64,19 +35,30 @@ const SearchPageHeader: React.VFC<SearchPageHeaderProps> = ({
 };
 
 const SearchPage: React.VFC = () => {
-  const { Tab } = useTab();
+  const { Tab, selectedTab } = useTab();
+
+  if (selectedTab === 'all') {
+    return (
+      <div className="searchPage">
+        <SearchPageHeader Tab={Tab} />
+        <AllTabContent />
+      </div>
+    );
+  }
+
+  if (selectedTab === 'follow') {
+    return (
+      <div className="searchPage">
+        <SearchPageHeader Tab={Tab} />
+        <FolloweeTabContent />
+      </div>
+    );
+  }
+
   return (
     <div className="searchPage">
       <SearchPageHeader Tab={Tab} />
-      <SearchPageMainContent
-        users={(
-        new Array(Math.random() < 0.5 ? 0 : 30).fill({
-          name: '会津夏菜子',
-          image: 'https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg',
-          id: '@kanako',
-        })
-      )}
-      />
+      <FollowerTabContent />
     </div>
   );
 };

@@ -3,21 +3,21 @@ import UserIcon from '../../components/UserIcon/UserIcon';
 import './userCard.css';
 
 type User = {
-  name: string,
-  image: string,
-  id: string
+  displayName: string,
+  imageUrl: string,
+  screenName: string
 };
 
 const UserCard: React.VFC<User> = ({
-  name, image, id,
+  displayName, imageUrl, screenName,
 }) => (
   <div className="userCard">
     <div className="userCard__icon">
-      <UserIcon size="sm" image={image} />
+      <UserIcon size="sm" image={imageUrl} />
     </div>
     <div className="userCard__text">
-      <h1 className="userCard__name">{name}</h1>
-      <h2 className="userCard__id">{id}</h2>
+      <h1 className="userCard__name">{displayName}</h1>
+      <h2 className="userCard__id">{screenName}</h2>
     </div>
   </div>
 );
