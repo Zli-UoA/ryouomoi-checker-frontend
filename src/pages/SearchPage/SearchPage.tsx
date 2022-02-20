@@ -18,11 +18,15 @@ type SearchPageMainContentProps = {
   users: User[]
 };
 
-const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users }) => {
+const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = () => {
   const token = localStorage.getItem('ryouomoi-checker-token');
 
-  const { data, error } = useFetch('http://localhost:8080/friends/follower', {
-    headers: new Headers({ Authorization: `Bearer: ${token}` }),
+  const { data, error } = useFetch<{
+    displayName: string
+    imageUrl: string
+    screenName: string
+  }[]>('http://localhost:8080/friends/follower', {
+    headers: new Headers({ Authorization: `Bearer ${token}` }),
   });
 
   if (data) {
@@ -35,7 +39,7 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
     console.error(error);
   }
 
-  if (users.length === 0) {
+  if (!data) {
     return (
       <main className="searchPage__main">
         <div className="searchPage__main--user_null">
@@ -50,7 +54,7 @@ const SearchPageMainContent: React.VFC<SearchPageMainContentProps> = ({ users })
 
   return (
     <main className="searchPage__main">
-      <UserList users={users} />
+      <UserList users={data} />
     </main>
   );
 };
