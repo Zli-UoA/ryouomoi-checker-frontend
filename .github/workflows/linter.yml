@@ -17,7 +17,7 @@ jobs:
         key: $${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
     - name: Install npm dependencies
-      if: steps.dot_npm_chache_id.outputs.cache-hit == 'false'
+      if: steps.dot_npm_cache_id.outputs.cache-hit == 'false'
       run: |
         npm ci
 
