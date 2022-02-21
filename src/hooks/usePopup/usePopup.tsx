@@ -3,56 +3,111 @@ import './usePopup.css';
 import '../../common.css';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import useHeartRating, { ValidNumber } from '../../components/HeartRating/useHeartRating';
+import useOpenPopup, { OpenPopupProps } from './useOpenPopup';
+import PopupButton from '../../components/PopupButton/PopupButton';
+import DeleteButton from '../../components/DeleteButton/DeleteButton';
 
-type PopupProps = {
+type UsePopupProps = (
+  imageUrl: string,
+  userName: string,
+  userId: string,
+  mode: 'Add' | 'Edit'
+) => {
   isOpening: boolean,
-  setOpening: React.Dispatch<React.SetStateAction<boolean>>
-};
-
-type UsePopupProps = () => {
   selectedHeartsCount: ValidNumber,
-  Popup: React.VFC<PopupProps>
+  OpenPopup: React.VFC<OpenPopupProps>,
+  Popup: React.VFC
 };
 
-const usePopup: UsePopupProps = () => {
+const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
   const { selectedHeartsCount, HeartRating } = useHeartRating();
 
-  const Popup: React.VFC<PopupProps> = ({ isOpening, setOpening }) => {
-    type VoidFunction = () => void;
-    const closePopup: VoidFunction = () => {
+  const {
+    isOpening,
+    setOpening,
+    OpenPopup,
+  } = useOpenPopup();
+
+  const StatefulDeleteButton: React.VFC = () => {
+    if (mode === 'Add') return null;
+
+    return (
+      <div className="popup__deleteButton">
+        <DeleteButton />
+      </div>
+    );
+  };
+
+  const Popup: React.VFC = () => {
+    const closePopupState: VoidFunction = () => {
       setOpening(false);
     };
 
-    if (isOpening) {
-      return (
-        <div className="popup__overlay" role="button" tabIndex={0} onClick={closePopup}>
-          <div className="popup__content" role="button" tabIndex={0} onClick={(e) => e.stopPropagation()}>
-            <div className="bg_primary">
-              <UserIcon size="md" image="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg" />
+    if (!isOpening) return null;
 
-              <div className="popup__name">
-                会津京子
+    return (
+      <div className="popup__overlay" role="button" tabIndex={0} onClick={closePopupState}>
+        <div className="popup__content" role="button" tabIndex={0} onClick={(e) => e.stopPropagation()}>
+
+          <div className="mg_top-24">
+            <div className="popup__userIcon">
+              <UserIcon size="md" image={imageUrl} />
+            </div>
+          </div>
+
+          <StatefulDeleteButton />
+
+          <div className="popup__commonFont">
+            {/* userName と userIcon の間が 12px なので、popup__userName で margin-top を使っている */}
+            <div className="popup__userName">
+              {userName}
+            </div>
+          </div>
+
+          <div className="mg_top-8">
+            <div className="popup__commonFont">
+              <div className="popup__userId">
+                {userId}
               </div>
+            </div>
+          </div>
 
-              <div className="popup__id">
-                @kyoko
-              </div>
+          <div className="mg_top-24 mg_right-24 mg_left-24">
+            <HeartRating />
+          </div>
 
-              <HeartRating />
+          <div className="mg_top-24 mg_bottom-24 mg_left-24 mg_right-24">
+            <div className="popup__buttonGroup">
 
-              <button type="button" onClick={closePopup}>
-                close
-              </button>
+              <PopupButton label="キャンセル" onClick={closePopupState} />
+
+              <PopupButton
+                label={mode === 'Add' ? '追加' : '更新'}
+                onClick={closePopupState}
+              />
+
+              {/* TODO: mode によって動作が変化するコンポーネントの作成
+              isUpdatedLovePoint: usePostとかのカスタムフックで返ってくる予定のもの
+              postLovePoint: usePostとかのカスタムフックで返ってくる予定のもの
+
+              <PopupButton
+                label={mode === 'Add' ? '追加' : '更新'}
+                disabled={mode === 'Add' ? true : isUpdatedLovePoint}
+                onClick={postLovePoint}
+              />
+              */}
+
             </div>
           </div>
         </div>
-      );
-    }
-    return null;
+      </div>
+    );
   };
 
   return {
+    isOpening,
     selectedHeartsCount,
+    OpenPopup,
     Popup,
   };
 };
