@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './useHeartRating.css';
 import { HeartIcon } from '../Icon/Icon';
 
-type ValidNumber = 1 | 2 | 3 | 4 | 5;
+export type ValidNumber = 1 | 2 | 3 | 4 | 5;
 
 type UseHeartRating = () => {
   selectedHeartsCount: ValidNumber;
