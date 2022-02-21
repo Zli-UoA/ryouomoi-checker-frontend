@@ -9,9 +9,7 @@
 }
 
 .heartRating__button {
-  width: 35px;
-  flex-grow: 0;
-  border-radius: 50%;
-  border: none;
   background: rgb(0 0 0 / 0%);
+  padding: 0px;
+  border: none;
 }
