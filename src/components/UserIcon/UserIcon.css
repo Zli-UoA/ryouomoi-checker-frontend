@@ -1,42 +1,42 @@
 .userIcon--size_xxs {
   display: inline-block;
-  border-radius: 50%;
-  overflow: hidden;
   width: 32px;
   height: 32px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .userIcon--size_xs {
   display: inline-block;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  overflow: hidden;
   width: 36px;
   height: 36px;
+  overflow: hidden;
+  border: 1px solid #fff;
+  border-radius: 50%;
 }
 
 .userIcon--size_sm {
   display: inline-block;
-  border-radius: 50%;
-  overflow: hidden;
   width: 40px;
   height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
 }
 
 .userIcon--size_md {
-  border: 2px solid #fff;
-  border-radius: 50%;
-  overflow: hidden;
   width: 96px;
   height: 96px;
+  overflow: hidden;
+  border: 2px solid #fff;
+  border-radius: 50%;
 }
 
 .userIcon--size_lg {
-  border: 4px solid #258eef;
-  border-radius: 50%;
-  overflow: hidden;
   width: 150px;
   height: 150px;
+  overflow: hidden;
+  border: 4px solid #258eef;
+  border-radius: 50%;
 }
 
 .userIcon__image--size_xxs {

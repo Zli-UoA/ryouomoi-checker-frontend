@@ -5,15 +5,15 @@
 
 .page2__text {
   font-family: "Noto Sans JP", sans-serif;
+  font-size: 20px;
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
-  letter-spacing: 0.05em;
   line-height: 40px;
+  letter-spacing: 0.05em;
 }
 
 .page2__button {
   position: absolute;
-  width: 100%;
   bottom: 88px;
+  width: 100%;
 }
