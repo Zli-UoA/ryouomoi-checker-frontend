@@ -5,7 +5,7 @@ import '../../common.css';
 import useSearchInput from './useSearchInput';
 
 const SearchInputTest: React.VFC = () => {
-  const { SearchInput } = useSearchInput();
+  const { SearchInput } = useSearchInput(() => {});
   return (
     <div className="bg_primary">
       <SearchInput />
