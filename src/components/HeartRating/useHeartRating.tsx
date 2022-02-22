@@ -14,9 +14,7 @@ type UseHeartRating = (
 };
 
 const useHeartRating: UseHeartRating = (initCount: ValidNumber = 1) => {
-  const [selectedCount, setHeartsCount] = useState<ValidNumber>(1);
-
-  setHeartsCount(initCount);
+  const [selectedCount, setHeartsCount] = useState<ValidNumber>(initCount);
 
   const isSelected = (index: ValidNumber): 'filled' | 'empty' => (index <= selectedCount ? 'filled' : 'empty');
 
