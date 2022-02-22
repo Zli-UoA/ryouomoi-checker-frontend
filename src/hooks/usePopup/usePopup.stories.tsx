@@ -16,7 +16,7 @@ const UsePopupTest: React.VFC<UsePopupTestProps> = ({
   displayName, imageUrl, screenName, mode,
 }) => {
   const {
-    isOpening,
+    isOpen,
     selectedHeartsCount,
     OpenPopup,
     Popup,
@@ -37,7 +37,7 @@ const UsePopupTest: React.VFC<UsePopupTestProps> = ({
       </div>
 
       {selectedHeartsCount}
-      {isOpening}
+      {isOpen}
     </>
   );
 };

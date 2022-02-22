@@ -13,7 +13,7 @@ type UsePopupProps = (
   userId: string,
   mode: 'Add' | 'Edit'
 ) => {
-  isOpening: boolean,
+  isOpen: boolean,
   selectedHeartsCount: ValidNumber,
   OpenPopup: React.VFC<OpenPopupProps>,
   Popup: React.VFC
@@ -23,7 +23,7 @@ const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
   const { selectedHeartsCount, HeartRating } = useHeartRating();
 
   const {
-    isOpening,
+    isOpen,
     setOpening,
     OpenPopup,
   } = useOpenPopup();
@@ -43,7 +43,7 @@ const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
       setOpening(false);
     };
 
-    if (!isOpening) return null;
+    if (!isOpen) return null;
 
     return (
       <div className="popup__overlay" role="button" tabIndex={0} onClick={closePopupState}>
@@ -105,7 +105,7 @@ const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
   };
 
   return {
-    isOpening,
+    isOpen,
     selectedHeartsCount,
     OpenPopup,
     Popup,
