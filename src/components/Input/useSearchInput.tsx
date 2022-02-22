@@ -2,7 +2,7 @@ import React from 'react';
 import useInput from '../../hooks/useInput';
 import './useSearchInput.css';
 
-type UseSearchInput = (onEnter: () => {}) => {
+type UseSearchInput = (onEnter: () => void)=> {
   inputRef: React.RefObject<HTMLInputElement>;
   SearchInput: React.VFC;
 };
