@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import { BackIcon } from '../../components/Icon/Icon';
 import useSearchInput, { OnEnter } from '../../components/Input/useSearchInput';
@@ -52,9 +53,11 @@ const useSearchPageHeader: UseSearchPageHeader = (Tab, onEnter) => {
       <header className="searchPage__header">
         <Header>
           <>
-            <div style={{ display: 'inline-block' }}>
-              <BackIcon />
-            </div>
+            <Link to="/home">
+              <div style={{ display: 'inline-block' }}>
+                <BackIcon />
+              </div>
+            </Link>
             <div style={{ display: 'inline-block', flexGrow: 3 }}>
               <SearchInput />
             </div>
