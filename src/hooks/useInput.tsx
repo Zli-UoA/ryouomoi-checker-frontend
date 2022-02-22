@@ -2,7 +2,9 @@ import React, { useRef } from 'react';
 
 type UseInput = (className: string, placeholder: string) => {
   inputRef: React.RefObject<HTMLInputElement>,
-  Input: React.VFC,
+  Input: React.VFC<{
+    onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void }
+  >,
 };
 
 const useInput: UseInput = (className, placeholder) => {
@@ -10,7 +12,14 @@ const useInput: UseInput = (className, placeholder) => {
 
   return {
     inputRef,
-    Input: () => <input className={className} ref={inputRef} placeholder={placeholder} />,
+    Input: ({ onKeyPress }) => (
+      <input
+        className={className}
+        ref={inputRef}
+        placeholder={placeholder}
+        onKeyPress={onKeyPress}
+      />
+    ),
   };
 };
 

@@ -1,47 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header/Header';
 import { BackIcon } from '../../components/Icon/Icon';
-import useSearchInput from '../../components/Input/useSearchInput';
+import useSearchInput, { OnEnter } from '../../components/Input/useSearchInput';
 import '../../common.css';
 import useTab from '../../hooks/useTab/useTab';
 import './searchPage.css';
 import FolloweeTabContent from './FolloweeTabContent';
 import FollowerTabContent from './FollowerTabContent';
 import AllTabContent from './AllTabContent';
+import User from '../../types/User';
 
-type SearchPageHeaderProps = {
-  Tab: React.VFC
+type UseSearchPageHeader = (Tab: React.VFC, onEnter: OnEnter) => ({
+  SearchPageHeader: React.VFC;
+});
+
+type UseOnEnter = () => {
+  result: User[];
+  onEnter: OnEnter;
 };
 
-const SearchPageHeader: React.VFC<SearchPageHeaderProps> = ({
-  Tab,
-}) => {
-  const { SearchInput } = useSearchInput();
-  return (
-    <header className="searchPage__header">
-      <Header>
-        <>
-          <div style={{ display: 'inline-block' }}>
-            <BackIcon />
-          </div>
-          <div style={{ display: 'inline-block', flexGrow: 3 }}>
-            <SearchInput />
-          </div>
-          <Tab />
-        </>
-      </Header>
-    </header>
-  );
+const useOnEnter: UseOnEnter = () => {
+  const [result, setResult] = useState<User[]>([]);
+
+  const onEnter: OnEnter = async (inputRef) => {
+    const token = localStorage.getItem('ryouomoi-checker-token');
+    if (inputRef.current?.value === '') {
+      return;
+    }
+
+    const query = inputRef.current?.value;
+    const res = await fetch(
+      `http://localhost:8080/friends/search?query=${query}`,
+      {
+        headers: new Headers({ Authorization: `Bearer ${token}` }),
+      },
+    );
+
+    setResult(await res.json());
+  };
+
+  return {
+    result, onEnter,
+  };
+};
+
+const useSearchPageHeader: UseSearchPageHeader = (Tab, onEnter) => {
+  const { SearchInput } = useSearchInput(onEnter);
+
+  return ({
+    SearchPageHeader: () => (
+      <header className="searchPage__header">
+        <Header>
+          <>
+            <div style={{ display: 'inline-block' }}>
+              <BackIcon />
+            </div>
+            <div style={{ display: 'inline-block', flexGrow: 3 }}>
+              <SearchInput />
+            </div>
+            <Tab />
+          </>
+        </Header>
+      </header>
+    ),
+  });
 };
 
 const SearchPage: React.VFC = () => {
   const { Tab, selectedTab } = useTab();
+  const { result, onEnter } = useOnEnter();
+  const { SearchPageHeader } = useSearchPageHeader(Tab, onEnter);
+
+  // eslint-disable-next-line
+  console.log('result', result);
 
   if (selectedTab === 'all') {
     return (
       <div className="searchPage">
-        <SearchPageHeader Tab={Tab} />
-        <AllTabContent />
+        <SearchPageHeader />
+        <AllTabContent data={result} />
       </div>
     );
   }
@@ -49,7 +86,7 @@ const SearchPage: React.VFC = () => {
   if (selectedTab === 'follow') {
     return (
       <div className="searchPage">
-        <SearchPageHeader Tab={Tab} />
+        <SearchPageHeader />
         <FolloweeTabContent />
       </div>
     );
@@ -57,7 +94,7 @@ const SearchPage: React.VFC = () => {
 
   return (
     <div className="searchPage">
-      <SearchPageHeader Tab={Tab} />
+      <SearchPageHeader />
       <FollowerTabContent />
     </div>
   );
