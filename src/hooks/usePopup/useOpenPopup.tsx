@@ -5,13 +5,13 @@ export type OpenPopupProps = {
 };
 
 type UseOpenPopup = () => {
-  isOpening: boolean,
+  isOpen: boolean,
   setOpening: React.Dispatch<React.SetStateAction<boolean>>,
   OpenPopup: React.VFC<OpenPopupProps>
 };
 
 const useOpenPopup: UseOpenPopup = () => {
-  const [isOpening, setOpening] = useState(false);
+  const [isOpen, setOpening] = useState(false);
 
   const openPopupState: VoidFunction = () => {
     setOpening(true);
@@ -24,7 +24,7 @@ const useOpenPopup: UseOpenPopup = () => {
   );
 
   return {
-    isOpening,
+    isOpen,
     setOpening,
     OpenPopup,
   };
