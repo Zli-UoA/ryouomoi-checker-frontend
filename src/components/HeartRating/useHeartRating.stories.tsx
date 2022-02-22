@@ -5,11 +5,23 @@ import '../../common.css';
 import useHeartRating from './useHeartRating';
 
 const HeartRatingTest: React.VFC = () => {
-  const { selectedHeartsCount, HeartRating } = useHeartRating();
+  const {
+    selectedCount,
+    clearCount,
+    HeartRating,
+  } = useHeartRating();
   return (
     <div className="bg_primary">
       <HeartRating />
-      {selectedHeartsCount}
+
+      <p>
+        selectedCount is
+        {selectedCount}
+      </p>
+
+      <button type="button" onClick={clearCount}>
+        clearCount!
+      </button>
     </div>
   );
 };
@@ -19,7 +31,6 @@ export default {
   component: HeartRatingTest,
 } as ComponentMeta<typeof HeartRatingTest>;
 
-// eslint-disable-next-line
 const Template: ComponentStory<typeof HeartRatingTest> = () => <HeartRatingTest />;
 
-export const Primary = Template.bind({});
+export const Normal = Template.bind({});
