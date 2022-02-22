@@ -2,18 +2,25 @@ import React from 'react';
 import useInput from '../../hooks/useInput';
 import './useSearchInput.css';
 
-type UseSearchInput = () => {
+type UseSearchInput = (onEnter: () => {}) => {
   inputRef: React.RefObject<HTMLInputElement>;
   SearchInput: React.VFC;
 };
 
-const useSearchInput: UseSearchInput = () => {
-  const { inputRef, Input } = useInput('searchInput__input fas', '検索する');
+const useSearchInput: UseSearchInput = (onEnter) => {
+  const { inputRef, Input } = useInput('searchInput__input', '検索する');
+
   return {
     inputRef,
     SearchInput: () => (
       <div className="searchInput">
-        <Input />
+        <Input onKeyPress={async (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            onEnter();
+          }
+        }}
+        />
       </div>
     ),
   };
