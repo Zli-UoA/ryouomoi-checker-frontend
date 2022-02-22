@@ -33,8 +33,8 @@
     "eject": "react-scripts eject",
     "eslint": "eslint src/ --ext .ts,.tsx",
     "eslint:fix": "eslint src/ --ext .ts,.tsx --fix",
-    "stylelint": "stylelint src/*.css",
-    "stylelint:fix": "stylelint src/*.css --fix",
+    "stylelint": "stylelint \"src/**/*.css\"",
+    "stylelint:fix": "stylelint \"src/**/*.css\" --fix",
     "fmt": "npm run eslint:fix; npm run stylelint:fix",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"

@@ -1,32 +1,32 @@
 .userCard {
-  height: 56px;
   display: flex;
   justify-content: center;
-  padding-left: 32px;
+  height: 56px;
   padding-right: 16px;
+  padding-left: 32px;
 }
 
 .userCard__text {
   flex-grow: 1;
-  text-align: start;
   padding-left: 16px;
+  text-align: start;
 }
 
 .userCard__name {
   font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
   line-height: 8px;
   letter-spacing: 0.05em;
 }
 
 .userCard__id {
   font-family: "Noto Sans JP", sans-serif;
+  font-size: 10px;
   font-style: normal;
   font-weight: 500;
-  font-size: 10px;
   line-height: 10px;
-  letter-spacing: 0.05em;
   color: #808080;
+  letter-spacing: 0.05em;
 }

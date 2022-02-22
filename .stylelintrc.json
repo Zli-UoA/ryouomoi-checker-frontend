@@ -1,7 +1,12 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recess-order"
+  ],
   "rules": {
     "selector-class-pattern": "[A-Z-a-z]+[--|__][A-Z-a-z]+"
   },
-  "ignoreFiles": ["build/"]
+  "ignoreFiles": [
+    "build/"
+  ]
 }

@@ -1,25 +1,25 @@
 .tab {
-  justify-content: center;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   height: 32px;
   padding-top: 24px;
-  padding-left: 24px;
   padding-right: 24px;
+  padding-left: 24px;
 }
 
 .tab__button {
-  font-family: "Noto Sans JP", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 0.05em;
-  color: #fff;
-  border: none;
   flex-grow: 1;
   max-width: 104px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 18px;
+  color: #fff;
+  letter-spacing: 0.05em;
   background: rgb(0 0 0 / 0%);
+  border: none;
 }
 
 .tab__button--selected {
