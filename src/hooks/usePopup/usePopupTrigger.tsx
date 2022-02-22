@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 
-export type OpenPopupProps = {
+export type PopupTriggerProps = {
   children: JSX.Element
 };
 
-type UseOpenPopup = () => {
+type UsePopupTrigger = () => {
   isOpen: boolean,
   setOpening: React.Dispatch<React.SetStateAction<boolean>>,
-  OpenPopup: React.VFC<OpenPopupProps>
+  PopupTrigger: React.VFC<PopupTriggerProps>
 };
 
-const useOpenPopup: UseOpenPopup = () => {
+const usePopupTrigger: UsePopupTrigger = () => {
   const [isOpen, setOpening] = useState(false);
 
   const openPopupState: VoidFunction = () => {
     setOpening(true);
   };
 
-  const OpenPopup: React.VFC<OpenPopupProps> = ({ children }) => (
+  const PopupTrigger: React.VFC<PopupTriggerProps> = ({ children }) => (
     <div role="button" tabIndex={0} onClick={openPopupState}>
       {children}
     </div>
@@ -26,8 +26,8 @@ const useOpenPopup: UseOpenPopup = () => {
   return {
     isOpen,
     setOpening,
-    OpenPopup,
+    PopupTrigger,
   };
 };
 
-export default useOpenPopup;
+export default usePopupTrigger;

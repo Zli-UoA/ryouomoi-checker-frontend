@@ -18,19 +18,19 @@ const UsePopupTest: React.VFC<UsePopupTestProps> = ({
   const {
     isOpen,
     selectedHeartsCount,
-    OpenPopup,
+    PopupTrigger,
     Popup,
   } = usePopup(imageUrl, displayName, screenName, mode);
 
   return (
     <>
-      <OpenPopup>
+      <PopupTrigger>
         <UserCard
           displayName={displayName}
           imageUrl={imageUrl}
           screenName={screenName}
         />
-      </OpenPopup>
+      </PopupTrigger>
 
       <div className="bg_primary">
         <Popup />

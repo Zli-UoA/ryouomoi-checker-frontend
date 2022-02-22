@@ -3,7 +3,7 @@ import './usePopup.css';
 import '../../common.css';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import useHeartRating, { ValidNumber } from '../../components/HeartRating/useHeartRating';
-import useOpenPopup, { OpenPopupProps } from './useOpenPopup';
+import usePopupTrigger, { PopupTriggerProps } from './usePopupTrigger';
 import PopupButton from '../../components/PopupButton/PopupButton';
 import DeleteButton from '../../components/DeleteButton/DeleteButton';
 
@@ -15,7 +15,7 @@ type UsePopupProps = (
 ) => {
   isOpen: boolean,
   selectedHeartsCount: ValidNumber,
-  OpenPopup: React.VFC<OpenPopupProps>,
+  PopupTrigger: React.VFC<PopupTriggerProps>,
   Popup: React.VFC
 };
 
@@ -25,8 +25,8 @@ const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
   const {
     isOpen,
     setOpening,
-    OpenPopup,
-  } = useOpenPopup();
+    PopupTrigger,
+  } = usePopupTrigger();
 
   const StatefulDeleteButton: React.VFC = () => {
     if (mode === 'Add') return null;
@@ -107,7 +107,7 @@ const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
   return {
     isOpen,
     selectedHeartsCount,
-    OpenPopup,
+    PopupTrigger,
     Popup,
   };
 };
