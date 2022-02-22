@@ -4,13 +4,13 @@ export type OpenPopupProps = {
   children: JSX.Element
 };
 
-type UseOpenPopupProps = () => {
+type UseOpenPopup = () => {
   isOpening: boolean,
   setOpening: React.Dispatch<React.SetStateAction<boolean>>,
   OpenPopup: React.VFC<OpenPopupProps>
 };
 
-const useOpenPopup: UseOpenPopupProps = () => {
+const useOpenPopup: UseOpenPopup = () => {
   const [isOpening, setOpening] = useState(false);
 
   const openPopupState: VoidFunction = () => {
