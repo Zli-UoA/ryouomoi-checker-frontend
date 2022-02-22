@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header/Header';
 import { BackIcon } from '../../components/Icon/Icon';
 import useSearchInput, { OnEnter } from '../../components/Input/useSearchInput';
@@ -10,32 +10,33 @@ import FollowerTabContent from './FollowerTabContent';
 import AllTabContent from './AllTabContent';
 import User from '../../types/User';
 
-type UseSearchPageHeader = (Tab: React.VFC) => ({
-  result: React.MutableRefObject<User[]>;
+type UseSearchPageHeader = (Tab: React.VFC, onEnter: OnEnter) => ({
   SearchPageHeader: React.VFC;
 });
 
 type UseOnEnter = () => {
-  result: React.MutableRefObject<User[]>;
+  result: User[];
   onEnter: OnEnter;
 };
 
 const useOnEnter: UseOnEnter = () => {
-  const result = useRef<User[]>([]);
+  const [result, setResult] = useState<User[]>([]);
 
   const onEnter: OnEnter = async (inputRef) => {
     const token = localStorage.getItem('ryouomoi-checker-token');
+    if (inputRef.current?.value === '') {
+      return;
+    }
 
+    const query = inputRef.current?.value;
     const res = await fetch(
-      `http://localhost:8080/friends/search?query=${inputRef.current?.value}`,
+      `http://localhost:8080/friends/search?query=${query}`,
       {
         headers: new Headers({ Authorization: `Bearer ${token}` }),
       },
     );
 
-    result.current = await res.json();
-    // eslint-disable-next-line
-  console.log(result)
+    setResult(await res.json());
   };
 
   return {
@@ -43,13 +44,10 @@ const useOnEnter: UseOnEnter = () => {
   };
 };
 
-const useSearchPageHeader: UseSearchPageHeader = (Tab) => {
-  const { result, onEnter } = useOnEnter();
-
+const useSearchPageHeader: UseSearchPageHeader = (Tab, onEnter) => {
   const { SearchInput } = useSearchInput(onEnter);
 
   return ({
-    result,
     SearchPageHeader: () => (
       <header className="searchPage__header">
         <Header>
@@ -70,7 +68,8 @@ const useSearchPageHeader: UseSearchPageHeader = (Tab) => {
 
 const SearchPage: React.VFC = () => {
   const { Tab, selectedTab } = useTab();
-  const { result, SearchPageHeader } = useSearchPageHeader(Tab);
+  const { result, onEnter } = useOnEnter();
+  const { SearchPageHeader } = useSearchPageHeader(Tab, onEnter);
 
   // eslint-disable-next-line
   console.log('result', result);
@@ -79,7 +78,7 @@ const SearchPage: React.VFC = () => {
     return (
       <div className="searchPage">
         <SearchPageHeader />
-        <AllTabContent data={result.current} />
+        <AllTabContent data={result} />
       </div>
     );
   }
