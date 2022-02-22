@@ -1,19 +1,19 @@
 .addButton {
-  height: 32px;
-  width: 32px;
-  background: rgb(255 255 255 / 20%);
-  border-radius: 100px;
-  border: 1px solid rgb(255 255 255 / 40%);
   position: relative;
+  width: 32px;
+  height: 32px;
+  background: rgb(255 255 255 / 20%);
+  border: 1px solid rgb(255 255 255 / 40%);
+  border-radius: 100px;
 }
 
 .addButton__icon {
-  height: 20px;
-  width: 20px;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  width: 20px;
+  height: 20px;
   margin: auto;
-  position: absolute;
 }

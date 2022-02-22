@@ -1,17 +1,17 @@
 .heartRating {
   display: flex;
+  gap: 24px;
   justify-content: center;
   height: 56px;
   background: rgb(255 255 255 / 20%);
   border: 1px solid rgb(255 255 255 / 50%);
   border-radius: 51px;
-  gap: 24px;
 }
 
 .heartRating__button {
-  width: 35px;
   flex-grow: 0;
-  border-radius: 50%;
-  border: none;
+  width: 35px;
   background: rgb(0 0 0 / 0%);
+  border: none;
+  border-radius: 50%;
 }

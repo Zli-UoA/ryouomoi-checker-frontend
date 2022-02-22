@@ -1,30 +1,30 @@
 .homePage__header {
   display: flex;
-  justify-content: space-between;
-  margin-left: 16px;
-  margin-right: 16px;
   align-items: center;
+  justify-content: space-between;
+  margin-right: 16px;
+  margin-left: 16px;
 }
 
 .homePage__title {
   font-family: "Noto Sans JP", sans-serif;
+  font-size: 20px;
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
   line-height: 24px;
-  letter-spacing: 0.05em;
   color: #fff;
+  letter-spacing: 0.05em;
 }
 
 .homePage__text {
   font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
   line-height: 32px;
+  color: #808080;
   text-align: center;
   letter-spacing: 0.05em;
-  color: #808080;
 }
 
 .homePage__secondaryText {
