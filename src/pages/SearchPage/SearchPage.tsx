@@ -1,6 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import { BackIcon } from '../../components/Icon/Icon';
 import useSearchInput, { OnEnter } from '../../components/Input/useSearchInput';
