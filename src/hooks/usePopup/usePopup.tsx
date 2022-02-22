@@ -7,7 +7,7 @@ import usePopupTrigger, { PopupTriggerProps } from './usePopupTrigger';
 import PopupButton from '../../components/PopupButton/PopupButton';
 import DeleteButton from '../../components/DeleteButton/DeleteButton';
 
-type UsePopupProps = (
+type UsePopup = (
   imageUrl: string,
   userName: string,
   userId: string,
@@ -19,12 +19,12 @@ type UsePopupProps = (
   Popup: React.VFC
 };
 
-const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
+const usePopup: UsePopup = (imageUrl, userName, userId, mode) => {
   const { selectedHeartsCount, HeartRating } = useHeartRating();
 
   const {
     isOpen,
-    setOpening,
+    closePopup,
     PopupTrigger,
   } = usePopupTrigger();
 
@@ -39,14 +39,10 @@ const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
   };
 
   const Popup: React.VFC = () => {
-    const closePopupState: VoidFunction = () => {
-      setOpening(false);
-    };
-
     if (!isOpen) return null;
 
     return (
-      <div className="popup__overlay" role="button" tabIndex={0} onClick={closePopupState}>
+      <div className="popup__overlay" role="button" tabIndex={0} onClick={closePopup}>
         <div className="popup__content" role="button" tabIndex={0} onClick={(e) => e.stopPropagation()}>
 
           <div className="mg_top-24">
@@ -79,11 +75,11 @@ const usePopup: UsePopupProps = (imageUrl, userName, userId, mode) => {
           <div className="mg_top-24 mg_bottom-24 mg_left-24 mg_right-24">
             <div className="popup__buttonGroup">
 
-              <PopupButton label="キャンセル" onClick={closePopupState} />
+              <PopupButton label="キャンセル" onClick={closePopup} />
 
               <PopupButton
                 label={mode === 'Add' ? '追加' : '更新'}
-                onClick={closePopupState}
+                onClick={closePopup}
               />
 
               {/* TODO: mode によって動作が変化するコンポーネントの作成
