@@ -3,16 +3,24 @@ import './useHeartRating.css';
 import { HeartIcon } from '../Icon/Icon';
 
 export type ValidNumber = 1 | 2 | 3 | 4 | 5;
+type VoidFunction = () => void;
 
-type UseHeartRating = () => {
-  selectedHeartsCount: ValidNumber;
+type UseHeartRating = (
+  initCount?: ValidNumber
+) => {
+  selectedCount: ValidNumber;
+  clearCount: VoidFunction;
   HeartRating: React.VFC;
 };
 
-const useHeartRating: UseHeartRating = () => {
-  const [selectedHeartsCount, setHeartsCount] = useState<ValidNumber>(1);
+const useHeartRating: UseHeartRating = (initCount: ValidNumber = 1) => {
+  const [selectedCount, setHeartsCount] = useState<ValidNumber>(initCount);
 
-  const isSelected = (index: ValidNumber): 'filled' | 'empty' => (index <= selectedHeartsCount ? 'filled' : 'empty');
+  const isSelected = (index: ValidNumber): 'filled' | 'empty' => (index <= selectedCount ? 'filled' : 'empty');
+
+  const clearCount: VoidFunction = () => {
+    setHeartsCount(1);
+  };
 
   const HeartRating: React.VFC = () => (
     <div className="heartRating">
@@ -35,7 +43,8 @@ const useHeartRating: UseHeartRating = () => {
   );
 
   return {
-    selectedHeartsCount,
+    selectedCount,
+    clearCount,
     HeartRating,
   };
 };

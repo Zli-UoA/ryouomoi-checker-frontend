@@ -21,6 +21,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "jest"],
   "rules": {
+    "no-console": ["warn"],
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "jsx-a11y/click-events-have-key-events": "off",
