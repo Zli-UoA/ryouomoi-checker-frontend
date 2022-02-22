@@ -1,8 +1,8 @@
 .powerWordPage {
-  font-family: "Noto Serif JP", sans-serif;
   padding-top: 120px;
-  letter-spacing: 0.05em;
+  font-family: "Noto Serif JP", sans-serif;
   text-align: center;
+  letter-spacing: 0.05em;
 }
 
 .powerWordPage__discription {
@@ -16,13 +16,13 @@
 }
 
 .powerWordPage__powerWord {
-  font-size: 20px;
   margin-top: 56px;
-  line-height: 24px;
+  margin-right: 16px;
+  margin-left: 16px;
+  font-size: 20px;
   font-style: normal;
   font-weight: bold;
-  margin-left: 16px;
-  margin-right: 16px;
+  line-height: 24px;
 
   /* 文字のグラデーション */
   background: linear-gradient(90deg, #33b9fc 0%, #337cee 100%);
@@ -32,6 +32,6 @@
 
 .powerWordPage__button {
   position: absolute;
-  width: 100%;
   bottom: 88px;
+  width: 100%;
 }
