@@ -36,7 +36,9 @@ export default {
   component: HeartRatingTest,
 } as ComponentMeta<typeof HeartRatingTest>;
 
-const Template: ComponentStory<typeof HeartRatingTest> = () => <HeartRatingTest />;
+const Template: ComponentStory<typeof HeartRatingTest> = ({ initCount }) => (
+  <HeartRatingTest initCount={initCount} />
+);
 
 export const Normal = Template.bind({});
 Normal.args = {};
