@@ -12,7 +12,7 @@ const toValidNumber: ToValidNumber = (n: number) => {
 };
 
 type UseGetLovePoint = (id: string) => {
-  currentLovePoint: ValidNumber,
+  lovePoint: ValidNumber,
   error: Error | undefined,
 };
 
@@ -23,13 +23,13 @@ const useGetLovePoint: UseGetLovePoint = (id: string) => {
 
   const { data, error } = useFetch<DataType>(`${baseURL}/friends/${id}`);
 
-  let currentLovePoint: ValidNumber = 1;
+  let lovePoint: ValidNumber = 1;
   if (data !== undefined) {
-    currentLovePoint = toValidNumber(data.lovePoint);
+    lovePoint = toValidNumber(data.lovePoint);
   }
 
   return {
-    currentLovePoint,
+    lovePoint,
     error,
   };
 };
