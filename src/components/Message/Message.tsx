@@ -1,4 +1,5 @@
 import React from 'react';
+import './message.css';
 
 type MessageProps = {
   content: string;

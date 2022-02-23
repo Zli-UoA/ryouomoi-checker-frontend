@@ -1,0 +1,31 @@
+.message__cover--color_primary {
+  background: linear-gradient(90deg, #33b9fc 0%, #337cee 100%);
+  border-radius: 16px;
+}
+
+.message__content--color_primary {
+  padding: 8px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 150%;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.message__cover--color_gray {
+  background: #f4f9fe;
+  border-radius: 16px;
+}
+
+.message__content--color_gray {
+  padding: 8px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 150%;
+  color: #2c2e5c;
+  letter-spacing: 0.05em;
+}
