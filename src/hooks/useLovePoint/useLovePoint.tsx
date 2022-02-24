@@ -1,11 +1,11 @@
-import { useFetch } from 'usehooks-ts';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useGetLovePoint from './useGetLovePoint';
 
-const baseURL = 'http://localhost::8080';
+type VoidFunction = () => void;
+const baseURL = 'http://localhost:8080';
 
 type UseLovePoint = (id: string) => {
-  postLovePoint: (lovePoint: ValidNumber) => void,
+  usePostLovePoint: (lovePoint: ValidNumber) => VoidFunction;
   lovePoint: ValidNumber,
 };
 
@@ -19,26 +19,23 @@ const useLovePoint: UseLovePoint = (id: string) => {
     console.error(GETerror);
   }
 
-  type PostLovePoint = (lovePoint: ValidNumber) => boolean;
-  const postLovePoint: PostLovePoint = (newLovePoint) => {
-    type DataType = {
-      match_success: boolean,
+  const token = localStorage.getItem('ryouomoi-checker-token');
+
+  type UsePostLovePoint = (lovePoint: ValidNumber) => VoidFunction;
+  const usePostLovePoint: UsePostLovePoint = (newLovePoint) => {
+    const usePost: VoidFunction = () => {
+      fetch(`${baseURL}/friends/${id}`, {
+        method: 'POST',
+        body: JSON.stringify({ lovePoint: newLovePoint }),
+        headers: new Headers({ Authorization: `Bearer ${token}` }),
+      });
     };
-    const { data, error } = useFetch<DataType>(`${baseURL}/friends/${id}`, {
-      method: 'POST',
-      body: JSON.stringify({ newLovePoint }),
-    });
 
-    if (error) {
-      console.error(error);
-    }
-
-    if (data === undefined) return false;
-    return data.match_success;
+    return usePost;
   };
 
   return {
-    postLovePoint,
+    usePostLovePoint,
     lovePoint,
   };
 };
