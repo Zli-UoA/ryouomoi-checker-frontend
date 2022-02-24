@@ -14,7 +14,9 @@ const LeveledUserList: React.VFC<LeveledUserListProps> = ({ level, users }) => {
     return (
       <>
         <HeartValue value={level} />
-        <UserList users={users} />
+        <div className="mg_top-8">
+          <UserList users={users} />
+        </div>
         <div style={{ height: '64px' }} />
       </>
     );
