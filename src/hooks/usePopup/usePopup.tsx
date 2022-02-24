@@ -23,6 +23,7 @@ type UsePopup = (
 
 const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
   const {
+    postLovePoint,
     lovePoint: oldLovePoint,
     selectedCount,
     HeartRating,
@@ -87,7 +88,7 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
               <PopupButton
                 label={mode === 'Add' ? '追加' : '更新'}
                 disabled={mode === 'Add' ? false : selectedCount === oldLovePoint}
-                onClick={closePopup}
+                onClick={() => { postLovePoint(selectedCount); closePopup(); }}
               />
             </div>
           </div>
