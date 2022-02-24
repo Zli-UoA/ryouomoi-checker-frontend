@@ -57,29 +57,6 @@ const HomePageContent: React.VFC = () => (
 
           を登録しよう
         </p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        a
       </div>
     </div>
   </>
