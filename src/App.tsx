@@ -5,7 +5,7 @@ import {
 import './App.css';
 import useQuery from './hooks/useQuery';
 import CelebrationPage from './pages/CelebrationPage/CelebrationPage';
-import HakyokuPage from './pages/HakyokuPage/HakyokuPage';
+import HakyokuPage from './pages/HakyokuProcessPage/HakyokuProcessPage';
 import HomePage from './pages/HomePage/HomePage';
 import LostPartnerPage from './pages/LostPartnerPage/LostPartnerPage';
 import PowerWordPage from './pages/PowerWordPage/PowerWordPage';
