@@ -21,3 +21,13 @@
   border: 2px solid #fff;
   border-radius: 50%;
 }
+
+.radioButton__label {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  color: #2c2e5c;
+  letter-spacing: 0.05em;
+}
