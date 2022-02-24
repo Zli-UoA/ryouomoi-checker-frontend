@@ -3,8 +3,12 @@ import './deleteButton.css';
 import '../../common.css';
 import { DeleteIcon } from '../Icon/Icon';
 
-const DeleteButton: React.VFC = () => (
-  <button type="button" className="deleteButton">
+type DeleteButtonProps = {
+  onClick?: () => void;
+};
+
+const DeleteButton: React.VFC<DeleteButtonProps> = ({ onClick }) => (
+  <button type="button" onClick={onClick} className="deleteButton">
     <div className="deleteButton__icon">
       <DeleteIcon />
     </div>
