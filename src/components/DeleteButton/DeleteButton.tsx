@@ -4,11 +4,11 @@ import '../../common.css';
 import { DeleteIcon } from '../Icon/Icon';
 
 const DeleteButton: React.VFC = () => (
-  <div className="deleteButton">
+  <button type="button" className="deleteButton">
     <div className="deleteButton__icon">
       <DeleteIcon />
     </div>
-  </div>
+  </button>
 );
 
 export default DeleteButton;
