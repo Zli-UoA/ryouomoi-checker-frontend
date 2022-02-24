@@ -2,12 +2,14 @@ import React from 'react';
 import PopupUserCard from '../PopupUserCard/PopupUserCard';
 import { User } from '../../pages/SearchPage/UserCard';
 
+export type UserCardsInfo = {
+  user: User,
+  id: string,
+  mode: 'Add' | 'Edit',
+}[];
+
 type PopupUserListProps = {
-  userCardsInfo: {
-    user: User,
-    id: string,
-    mode: 'Add' | 'Edit',
-  }[]
+  userCardsInfo: UserCardsInfo
 };
 
 const PopupUserList: React.VFC<PopupUserListProps> = ({ userCardsInfo }) => (
