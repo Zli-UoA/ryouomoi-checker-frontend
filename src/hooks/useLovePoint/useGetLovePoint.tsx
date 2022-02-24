@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useFetch } from 'usehooks-ts';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 
@@ -14,7 +15,7 @@ const toValidNumber: ToValidNumber = (n: number) => {
 type UseGetLovePoint = (id: string) => {
   lovePoint: ValidNumber,
   error: Error | undefined,
-  isLoading: () => boolean,
+  isLoading: boolean,
 };
 
 const useGetLovePoint: UseGetLovePoint = (id: string) => {
@@ -28,11 +29,13 @@ const useGetLovePoint: UseGetLovePoint = (id: string) => {
     headers: new Headers({ Authorization: `Bearer ${token}` }),
   });
 
-  const isLoading = (): boolean => data === undefined;
+  const [isLoading, setLoading] = useState<boolean>(true);
 
-  let lovePoint: ValidNumber = 1;
+  const [lovePoint, setLovePoint] = useState<ValidNumber>(/* defaultHeartRaingValue = */ 1);
+
   if (data !== undefined) {
-    lovePoint = toValidNumber(data.lovePoint);
+    setLovePoint(toValidNumber(data.lovePoint));
+    setLoading(false);
   }
 
   return {
