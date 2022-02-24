@@ -1,39 +1,34 @@
 import React from 'react';
 import '../../common.css';
 import './HakyokuProcessPage.css';
-import WithBackground from '../../components/WithBackground/WithBackground';
+import { Link } from 'react-router-dom';
 import UserIcon from '../../components/UserIcon/UserIcon';
-import { HeartIcon } from '../../components/Icon/Icon';
+import Header from '../../components/Header/Header';
+import { BackIcon } from '../../components/Icon/Icon';
+
+const HakyokuProcessPageHeader: React.VFC = () => (
+  <Header>
+    <div className="hakyokuProcessPage__header">
+      <Link to="/celebration">
+        <BackIcon />
+      </Link>
+      <div>
+        <div className="hakyokuProcessPage__title">
+          破局手続き
+        </div>
+      </div>
+
+      <div>
+        <UserIcon image="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg" size="xs" />
+      </div>
+    </div>
+  </Header>
+
+);
 
 const HakyokuProcessPage: React.VFC = () => (
   <div className="hakyokuProcessPage">
-    <button className="hakyokuProcessPage__heartButton" type="button">
-      <HeartIcon mode="broken" />
-    </button>
-    <div className="">
-      <WithBackground>
-        <>
-          <div className="hakyokuProcessPage__icon">
-            <UserIcon
-              size="lg"
-              image="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg"
-            />
-          </div>
-          <p className="hakyokuProcessPage__name">会津太郎</p>
-          <p className="hakyokuProcessPage__id">@aizu_taro</p>
-        </>
-      </WithBackground>
-    </div>
-    <p className="hakyokuProcessPage__mainText">
-      が
-      <span className="color_secondarySolid">破局手続き</span>
-      を行いました
-    </p>
-    <p className="hakyokuProcessPage__subText">
-      右上のアイコンから手続きを
-      <br />
-      進めてください
-    </p>
+    <HakyokuProcessPageHeader />
   </div>
 );
 
