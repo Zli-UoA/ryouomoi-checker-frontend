@@ -15,7 +15,7 @@ const useNavigateToWelcome = (): void => {
     if (token) {
       navigate(`/welcome?auth_token=${token}`);
     }
-  }, [query]);
+  }, [navigate, query]);
 };
 
 const HomePageHeader: React.VFC = () => (
