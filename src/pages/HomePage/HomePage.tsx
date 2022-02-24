@@ -1,22 +1,10 @@
-import React, { useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import useQuery from '../../hooks/useQuery';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../common.css';
 import './homePage.css';
 import Header from '../../components/Header/Header';
 import AddButton from '../../components/AddButton/AddButton';
 import UserIcon from '../../components/UserIcon/UserIcon';
-
-const useNavigateToWelcome = (): void => {
-  const navigate = useNavigate();
-  const query = useQuery();
-  useEffect(() => {
-    const token = query.get('auth_token');
-    if (token) {
-      navigate(`/welcome?auth_token=${token}`);
-    }
-  }, [query]);
-};
 
 const HomePageHeader: React.VFC = () => (
   <Header>
@@ -82,14 +70,11 @@ const HomePageContent: React.VFC = () => (
   </>
 );
 
-const HomePage: React.VFC = () => {
-  useNavigateToWelcome();
-  return (
-    <>
-      <HomePageHeader />
-      <HomePageContent />
-    </>
-  );
-};
+const HomePage: React.VFC = () => (
+  <>
+    <HomePageHeader />
+    <HomePageContent />
+  </>
+);
 
 export default HomePage;

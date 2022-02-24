@@ -14,6 +14,17 @@ import TalkRoomPage from './pages/TalkRoomPage/TalkRoomPage';
 import TutorialPage from './pages/TutorialPage/TutorialPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
+const useNavigateToWelcome = (): void => {
+  const navigate = useNavigate();
+  const query = useQuery();
+  useEffect(() => {
+    const token = query.get('auth_token');
+    if (token) {
+      navigate(`/welcome?auth_token=${token}`);
+    }
+  }, [navigate, query]);
+};
+
 const useNavigateToHome = (): void => {
   const navigate = useNavigate();
   const query = useQuery();
@@ -30,6 +41,7 @@ const useNavigateToHome = (): void => {
 };
 
 const App: React.VFC = () => {
+  useNavigateToWelcome();
   useNavigateToHome();
   return (
     <div className="App">
