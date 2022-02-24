@@ -19,9 +19,7 @@ const useNavigateToWelcome = (): void => {
   const query = useQuery();
   useEffect(() => {
     const token = query.get('auth_token');
-    console.log('ahoy');
     if (token) {
-      console.log('lets go');
       navigate(`/welcome?auth_token=${token}`);
     }
   }, [navigate, query]);
