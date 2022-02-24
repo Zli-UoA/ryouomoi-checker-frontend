@@ -39,6 +39,9 @@ const HomePageHeader: React.VFC = () => (
 
 const HomePageContent: React.VFC = () => (
   <>
+    {/* TODO: ここに/me/lovers/が空であれば↓、空でなければUserListを表示するようにする */}
+    {/* TODO: useFetch で /me/lovers/ をたたく. UserData[] を返すだけ */}
+    {/* TODO: これで、if(data) と if(data.ユーザーリストが空) で分岐するだけになる */}
     {/* 空のdivだが、ヘッダーが position: fixed なためヘッダー分(64px)を調整 */}
     <div style={{ height: '64px' }} />
     <div className="mg_top-80">
