@@ -23,8 +23,8 @@ type UsePopup = (
 
 const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
   const {
-    usePostLovePoint: postLovePoint,
-    useDeleteLovePoint,
+    postLovePoint,
+    deleteLovePoint,
     lovePoint: oldLovePoint,
   } = useLovePoint(id);
 
@@ -36,14 +36,12 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
     PopupTrigger,
   } = usePopupTrigger();
 
-  const isUpdated = (): boolean => selectedCount === oldLovePoint;
-
   const StatefulDeleteButton: React.VFC = () => {
     if (mode === 'Add') return null;
 
     return (
       <div className="popup__deleteButton">
-        <DeleteButton onClick={useDeleteLovePoint} />
+        <DeleteButton onClick={deleteLovePoint} />
       </div>
     );
   };
@@ -88,11 +86,9 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
 
               <PopupButton
                 label={mode === 'Add' ? '追加' : '更新'}
-                disabled={mode === 'Add' ? false : isUpdated()}
+                disabled={mode === 'Add' ? false : selectedCount === oldLovePoint}
                 onClick={() => { postLovePoint(selectedCount); closePopup(); }}
               />
-              {selectedCount}
-              {oldLovePoint}
             </div>
           </div>
         </div>

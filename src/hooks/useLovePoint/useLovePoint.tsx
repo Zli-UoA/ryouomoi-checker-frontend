@@ -1,4 +1,3 @@
-import { useFetch } from 'usehooks-ts';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useGetLovePoint from './useGetLovePoint';
 
@@ -6,8 +5,8 @@ type VoidFunction = () => void;
 const baseURL = 'http://localhost:8080';
 
 type UseLovePoint = (id: string) => {
-  usePostLovePoint: (lovePoint: ValidNumber) => VoidFunction;
-  useDeleteLovePoint: VoidFunction,
+  postLovePoint: (lovePoint: ValidNumber) => VoidFunction;
+  deleteLovePoint: VoidFunction,
   lovePoint: ValidNumber,
   isLoading: boolean,
 };
@@ -25,9 +24,9 @@ const useLovePoint: UseLovePoint = (id: string) => {
 
   const token = localStorage.getItem('ryouomoi-checker-token');
 
-  type UsePostLovePoint = (lovePoint: ValidNumber) => VoidFunction;
-  const usePostLovePoint: UsePostLovePoint = (newLovePoint) => {
-    const usePost: VoidFunction = () => {
+  type PostLovePoint = (lovePoint: ValidNumber) => VoidFunction;
+  const postLovePoint: PostLovePoint = (newLovePoint) => {
+    const post: VoidFunction = () => {
       fetch(`${baseURL}/friends/${id}`, {
         method: 'POST',
         body: JSON.stringify({ lovePoint: newLovePoint }),
@@ -35,19 +34,19 @@ const useLovePoint: UseLovePoint = (id: string) => {
       });
     };
 
-    return usePost;
+    return post;
   };
 
-  const useDeleteLovePoint: VoidFunction = () => {
-    useFetch(`${baseURL}/friends/${id}`, {
+  const deleteLovePoint: VoidFunction = () => {
+    fetch(`${baseURL}/friends/${id}`, {
       method: 'DELETE',
       headers: new Headers({ Authorization: `Bearer ${token}` }),
     });
   };
 
   return {
-    usePostLovePoint,
-    useDeleteLovePoint,
+    postLovePoint,
+    deleteLovePoint,
     lovePoint,
     isLoading,
   };
