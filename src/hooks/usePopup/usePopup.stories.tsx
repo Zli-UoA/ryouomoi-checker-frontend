@@ -9,18 +9,19 @@ type UsePopupTestProps = {
   displayName: string,
   imageUrl: string,
   screenName: string,
+  id: string,
   mode: 'Add' | 'Edit'
 };
 
 const UsePopupTest: React.VFC<UsePopupTestProps> = ({
-  displayName, imageUrl, screenName, mode,
+  displayName, imageUrl, screenName, id, mode,
 }) => {
   const {
     isOpen,
-    selectedHeartsCount,
+    selectedCount,
     PopupTrigger,
     Popup,
-  } = usePopup(imageUrl, displayName, screenName, mode);
+  } = usePopup(imageUrl, displayName, screenName, id, mode);
 
   return (
     <>
@@ -36,7 +37,7 @@ const UsePopupTest: React.VFC<UsePopupTestProps> = ({
         <Popup />
       </div>
 
-      {selectedHeartsCount}
+      {selectedCount}
       {isOpen}
     </>
   );
@@ -48,12 +49,13 @@ export default {
 } as ComponentMeta<typeof UsePopupTest>;
 
 const Template: ComponentStory<typeof UsePopupTest> = ({
-  displayName, imageUrl, screenName, mode,
+  displayName, imageUrl, screenName, id, mode,
 }) => (
   <UsePopupTest
     displayName={displayName}
     imageUrl={imageUrl}
     screenName={screenName}
+    id={id}
     mode={mode}
   />
 );
