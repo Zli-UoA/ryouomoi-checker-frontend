@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-  Link, Route, Routes, useNavigate,
+  Link, Route, Routes, useLocation, useNavigate,
 } from 'react-router-dom';
 import './App.css';
 import useQuery from './hooks/useQuery';
@@ -30,16 +30,17 @@ const useNavigateToWelcome = (): void => {
 const useNavigateToHome = (): void => {
   const navigate = useNavigate();
   const query = useQuery();
+  const { pathname } = useLocation();
   useEffect(() => {
     if (!query.get('auth_token')) {
       if (localStorage.getItem('ryouomoi-checker-token')) {
         navigate('/home');
       }
-      if (!localStorage.getItem('ryouomoi-checker-token')) {
+      if (!localStorage.getItem('ryouomoi-checker-token') && pathname !== '/tutorial/page2') {
         navigate('/tutorial');
       }
     }
-  }, [navigate, query]);
+  }, [navigate, query, pathname]);
 };
 
 const App: React.VFC = () => {
