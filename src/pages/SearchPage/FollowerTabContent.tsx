@@ -9,7 +9,7 @@ const FollowerTabContent: React.VFC = () => {
     displayName: string
     imageUrl: string
     screenName: string
-  }[]>('http://localhost:8080/friends/follower', {
+  }[]>('https://ryouomoichecker.yt8492.com/api/friends/follower', {
     headers: new Headers({ Authorization: `Bearer ${token}` }),
   });
 
