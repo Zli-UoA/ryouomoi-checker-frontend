@@ -22,19 +22,19 @@ type UsePopup = (
 };
 
 const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
-  const { selectedCount, HeartRating } = useHeartRating();
+  const {
+    usePostLovePoint: postLovePoint,
+    useDeleteLovePoint,
+    lovePoint: oldLovePoint,
+  } = useLovePoint(id);
+
+  const { selectedCount, HeartRating } = useHeartRating(oldLovePoint);
 
   const {
     isOpen,
     closePopup,
     PopupTrigger,
   } = usePopupTrigger();
-
-  const {
-    usePostLovePoint: postLovePoint,
-    useDeleteLovePoint,
-    lovePoint: oldLovePoint,
-  } = useLovePoint(id);
 
   const isUpdated = (): boolean => selectedCount === oldLovePoint;
 
