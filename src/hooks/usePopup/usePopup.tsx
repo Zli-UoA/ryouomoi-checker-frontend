@@ -29,8 +29,6 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
     HeartRating,
   } = useLovePoint(id);
 
-  // const { selectedCount, HeartRating } = useHeartRating(oldLovePoint);
-
   const {
     isOpen,
     closePopup,
