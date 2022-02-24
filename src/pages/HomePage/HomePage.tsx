@@ -51,7 +51,12 @@ const toValidNumber = (n: number): ValidNumber => {
 
 const HomePageContent: React.VFC = () => {
   const baseURL = 'http://localhost:8080';
-  const { data, error } = useFetch<LoverType[]>(`${baseURL}/me/lovers/`);
+  const token = localStorage.getItem('ryouomoi-checker-token');
+  const { data, error } = useFetch<LoverType[]>(`${baseURL}/me/lovers/`, {
+    method: 'GET',
+    mode: 'no-cors',
+    headers: new Headers({ Authorization: `Bearer ${token}` }),
+  });
 
   if (error) {
     console.error(error);
