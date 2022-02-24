@@ -62,7 +62,7 @@ const HomePageContent: React.VFC = () => {
     console.error(error);
   }
 
-  if (data) {
+  if (data && data.length !== 0) {
     const leveledLovers: UserCardsInfo[] = leveledSplit(data);
 
     return (
