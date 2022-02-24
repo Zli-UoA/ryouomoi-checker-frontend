@@ -1,0 +1,46 @@
+.hakyokuProcessPage__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+.hakyokuProcessPage__title {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 24px;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.hakyokuProcessPage__text {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 32px;
+  color: #808080;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.hakyokuProcessPage__form {
+  margin-top: 24px;
+  margin-right: 48px;
+  margin-left: 48px;
+}
+
+.hakyokuProcessPage__share {
+  margin-top: 24px;
+  margin-right: 32px;
+  margin-left: 32px;
+}
+
+.hakyokuProcessPage__submitButton {
+  position: absolute;
+  bottom: 88px;
+  width: 100%;
+}
