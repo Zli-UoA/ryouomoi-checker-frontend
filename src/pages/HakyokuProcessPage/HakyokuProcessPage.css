@@ -1,10 +1,10 @@
-.hakyokuPage {
+.hakyokuProcessPage {
   padding-top: 120px;
   font-family: "Noto Sans JP", sans-serif;
   letter-spacing: 0.05em;
 }
 
-.hakyokuPage__heartButton {
+.hakyokuProcessPage__heartButton {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -15,31 +15,31 @@
   border-radius: 50%;
 }
 
-.hakyokuPage__icon {
+.hakyokuProcessPage__icon {
   width: 158px;
   margin-right: auto;
   margin-left: auto;
 }
 
-.hakyokuPage__name {
+.hakyokuProcessPage__name {
   font-size: 20px;
   font-weight: bold;
 }
 
-.hakyokuPage__id {
+.hakyokuProcessPage__id {
   font-size: 14px;
   line-height: 20px;
   color: #808080;
 }
 
-.hakyokuPage__mainText {
+.hakyokuProcessPage__mainText {
   margin-top: 64px;
   font-size: 20px;
   font-weight: bold;
   line-height: 24px;
 }
 
-.hakyokuPage__subText {
+.hakyokuProcessPage__subText {
   margin-top: 40px;
   font-size: 14px;
   font-style: normal;
