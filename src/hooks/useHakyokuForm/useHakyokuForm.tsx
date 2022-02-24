@@ -29,14 +29,14 @@ const useHakyokuForm: UseHakyokuForm = () => {
           破局理由を教えてください
         </h1>
         {
-        reasons.map((r) => (
-          <RadioButton
-            label={r}
-            onClick={genSetReason(r)}
-            selected={r === reason}
-          />
-        ))
-      }
+          reasons.map((r) => (
+            <RadioButton
+              label={r}
+              onClick={genSetReason(r)}
+              selected={r === reason}
+            />
+          ))
+        }
       </div>
     </div>
   );
