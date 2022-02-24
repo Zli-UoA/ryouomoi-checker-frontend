@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import Header from '../../components/Header/Header';
 import { BackIcon } from '../../components/Icon/Icon';
+import useHakyokuForm from '../../hooks/useHakyokuForm/useHakyokuForm';
+import useShareToggleButton from './useShareToggleButton';
 
 const HakyokuProcessPageHeader: React.VFC = () => (
   <Header>
@@ -25,13 +27,22 @@ const HakyokuProcessPageHeader: React.VFC = () => (
   </Header>
 );
 
-const HakhyokuProcessPageContent: React.VFC = () => (
-  <>
-    {/* 空のdivだが、ヘッダーが position: fixed なためヘッダー分(64px)を調整 */}
-    <div style={{ height: '64px' }} />
-    <div className="mg_top-80" />
-  </>
-);
+const HakhyokuProcessPageContent: React.VFC = () => {
+  const { HakyokuForm } = useHakyokuForm();
+  const { ShareToggleButton } = useShareToggleButton();
+  return (
+    <>
+      {/* 空のdivだが、ヘッダーが position: fixed なためヘッダー分(64px)を調整 */}
+      <div style={{ height: '64px' }} />
+      <div className="hakyokuProcessPage__form">
+        <HakyokuForm />
+      </div>
+      <div className="hakyokuProcessPage__share">
+        <ShareToggleButton />
+      </div>
+    </>
+  );
+};
 
 const HakyokuProcessPage: React.VFC = () => (
   <div className="hakyokuProcessPage">
