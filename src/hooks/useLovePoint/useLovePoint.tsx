@@ -2,7 +2,7 @@ import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useInitializedHeartRating from './useInitializedHeartRating';
 
 type VoidFunction = () => void;
-const baseURL = 'http://localhost:8080';
+const baseURL = 'https://ryouomoichecker.yt8492.com/api';
 
 type UseLovePoint = (id: string) => {
   postLovePoint: (lovePoint: ValidNumber) => void;

@@ -31,7 +31,7 @@ const useOnEnter: UseOnEnter = () => {
 
     const query = inputRef.current?.value;
     const res = await fetch(
-      `http://localhost:8080/friends/search?query=${query}`,
+      `https://ryouomoichecker.yt8492.com/api/friends/search?query=${query}`,
       {
         headers: new Headers({ Authorization: `Bearer ${token}` }),
       },
