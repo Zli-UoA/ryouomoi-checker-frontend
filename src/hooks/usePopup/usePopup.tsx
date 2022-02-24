@@ -4,6 +4,7 @@ import '../../common.css';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import useHeartRating, { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import usePopupTrigger, { PopupTriggerProps } from './usePopupTrigger';
+import useLovePoint from '../useLovePoint/useLovePoint';
 import PopupButton from '../../components/PopupButton/PopupButton';
 import DeleteButton from '../../components/DeleteButton/DeleteButton';
 
@@ -29,12 +30,20 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
     PopupTrigger,
   } = usePopupTrigger();
 
+  const {
+    usePostLovePoint: postLovePoint,
+    useDeleteLovePoint,
+    lovePoint: oldLovePoint,
+  } = useLovePoint(id);
+
+  const isUpdated = (): boolean => selectedCount === oldLovePoint;
+
   const StatefulDeleteButton: React.VFC = () => {
     if (mode === 'Add') return null;
 
     return (
       <div className="popup__deleteButton">
-        <DeleteButton />
+        <DeleteButton onClick={useDeleteLovePoint} />
       </div>
     );
   };
@@ -83,16 +92,16 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
                 onClick={closePopup}
               />
 
+              <PopupButton
+                label={mode === 'Add' ? '追加' : '更新'}
+                disabled={mode === 'Add' ? false : isUpdated()}
+                onClick={postLovePoint(selectedCount)}
+              />
               {/*
               TODO: mode によって動作が変化するコンポーネントの作成
               isUpdatedLovePoint: usePostとかのカスタムフックで返ってくる予定のもの
               postLovePoint: usePostとかのカスタムフックで返ってくる予定のもの
 
-              <PopupButton
-                label={mode === 'Add' ? '追加' : '更新'}
-                disabled={mode === 'Add' ? false : selectedCount === oldCount}
-                onClick={postLovePoint}
-              />
               */}
 
             </div>
