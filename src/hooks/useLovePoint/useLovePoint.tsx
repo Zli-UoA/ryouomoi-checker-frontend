@@ -9,6 +9,7 @@ type UseLovePoint = (id: string) => {
   deleteLovePoint: VoidFunction,
   lovePoint: ValidNumber,
   selectedCount: ValidNumber,
+  clearCount: VoidFunction,
   HeartRating: React.VFC,
 };
 
@@ -17,6 +18,7 @@ const useLovePoint: UseLovePoint = (id: string) => {
     error: GETerror,
     lovePoint,
     selectedCount,
+    clearCount,
     HeartRating,
   } = useInitializedHeartRating(id);
 
@@ -47,6 +49,7 @@ const useLovePoint: UseLovePoint = (id: string) => {
     deleteLovePoint,
     lovePoint,
     selectedCount,
+    clearCount,
     HeartRating,
   };
 };
