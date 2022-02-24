@@ -89,11 +89,6 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
 
               <PopupButton
                 label={mode === 'Add' ? '追加' : '更新'}
-                onClick={closePopup}
-              />
-
-              <PopupButton
-                label={mode === 'Add' ? '追加' : '更新'}
                 disabled={mode === 'Add' ? false : isUpdated()}
                 onClick={postLovePoint(selectedCount)}
               />
