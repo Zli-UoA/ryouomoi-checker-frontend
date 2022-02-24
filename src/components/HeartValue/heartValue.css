@@ -1,0 +1,23 @@
+.heartValue {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  width: 41px;
+  height: 56px;
+  overflow: hidden;
+}
+
+.heartValue__icon {
+  height: 24px;
+}
+
+.heartValue__text {
+  width: 9px;
+  height: 20px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+}
