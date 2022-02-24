@@ -20,8 +20,8 @@ Unselected.args = {
 };
 
 export const Selected = Template.bind({});
-Unselected.args = {
-  label: '洗濯してないよー',
+Selected.args = {
+  label: '洗濯してるよー',
   selected: true,
   onClick: () => {},
 };
