@@ -40,14 +40,14 @@
   letter-spacing: 0.05em;
 }
 
-.popup__userName {
+.popup__displayName {
   margin-top: 12px;
   font-size: 20px;
   font-weight: bold;
   line-height: 24px;
 }
 
-.popup__userId {
+.popup__screenName {
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;

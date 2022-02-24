@@ -9,8 +9,8 @@ import DeleteButton from '../../components/DeleteButton/DeleteButton';
 
 type UsePopup = (
   imageUrl: string,
-  userName: string,
-  userId: string,
+  displayName: string,
+  screenName: string,
   mode: 'Add' | 'Edit'
 ) => {
   isOpen: boolean,
@@ -19,7 +19,7 @@ type UsePopup = (
   Popup: React.VFC
 };
 
-const usePopup: UsePopup = (imageUrl, userName, userId, mode) => {
+const usePopup: UsePopup = (imageUrl, displayName, screenName, mode) => {
   const { selectedHeartsCount, HeartRating } = useHeartRating();
 
   const {
@@ -54,16 +54,16 @@ const usePopup: UsePopup = (imageUrl, userName, userId, mode) => {
           <StatefulDeleteButton />
 
           <div className="popup__commonFont">
-            {/* userName と userIcon の間が 12px なので、popup__userName で margin-top を使っている */}
-            <div className="popup__userName">
-              {userName}
+            {/* displayName と userIcon の間が 12px なので、popup__displayName で margin-top を使っている */}
+            <div className="popup__displayName">
+              {displayName}
             </div>
           </div>
 
           <div className="mg_top-8">
             <div className="popup__commonFont">
-              <div className="popup__userId">
-                {userId}
+              <div className="popup__screenName">
+                {screenName}
               </div>
             </div>
           </div>
@@ -82,13 +82,14 @@ const usePopup: UsePopup = (imageUrl, userName, userId, mode) => {
                 onClick={closePopup}
               />
 
-              {/* TODO: mode によって動作が変化するコンポーネントの作成
+              {/*
+              TODO: mode によって動作が変化するコンポーネントの作成
               isUpdatedLovePoint: usePostとかのカスタムフックで返ってくる予定のもの
               postLovePoint: usePostとかのカスタムフックで返ってくる予定のもの
 
               <PopupButton
                 label={mode === 'Add' ? '追加' : '更新'}
-                disabled={mode === 'Add' ? true : isUpdatedLovePoint}
+                disabled={mode === 'Add' ? false : selectedCount === oldCount}
                 onClick={postLovePoint}
               />
               */}
