@@ -1,29 +1,53 @@
 import React from 'react';
-import useLovePoint from '../../hooks/useLovePoint/useLovePoint';
+import UserCard from '../SearchPage/UserCard';
+import usePopup from '../../hooks/usePopup/usePopup';
 
-type UseLovePointTestProps = {
-  id: string
+type UsePopupTestProps = {
+  displayName: string,
+  imageUrl: string,
+  screenName: string,
+  id: string,
+  mode: 'Add' | 'Edit'
 };
 
-const UseLovePointTest: React.VFC<UseLovePointTestProps> = ({ id }) => {
+const UsePopupTest: React.VFC<UsePopupTestProps> = ({
+  displayName, imageUrl, screenName, id, mode,
+}) => {
   const {
-    usePostLovePoint,
-    lovePoint: oldLovePoint,
-  } = useLovePoint(id);
+    isOpen,
+    selectedCount,
+    PopupTrigger,
+    Popup,
+  } = usePopup(imageUrl, displayName, screenName, id, mode);
 
   return (
-    <div>
-      {`old     lovePoint is ${oldLovePoint}`}
+    <>
+      <PopupTrigger>
+        <UserCard
+          displayName={displayName}
+          imageUrl={imageUrl}
+          screenName={screenName}
+        />
+      </PopupTrigger>
 
-      <button type="button" onClick={usePostLovePoint(3)}>
-        post!
-      </button>
-    </div>
+      <div className="bg_primary">
+        <Popup />
+      </div>
+
+      {selectedCount}
+      {isOpen}
+    </>
   );
 };
 
 const TalkRoomPage: React.VFC = () => (
-  <UseLovePointTest id="972404402425245697" />
+  <UsePopupTest
+    displayName="いえすたにかわ"
+    imageUrl="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg"
+    screenName="Aizu Taro"
+    id="972404402425245697"
+    mode="Add"
+  />
 );
 
 export default TalkRoomPage;
