@@ -34,10 +34,10 @@ const useNavigateToHome = (): void => {
         navigate('/home');
       }
       if (!localStorage.getItem('ryouomoi-checker-token')) {
-        navigate('tutorial');
+        navigate('/tutorial');
       }
     }
-  }, [localStorage]);
+  }, [navigate, query]);
 };
 
 const App: React.VFC = () => {
