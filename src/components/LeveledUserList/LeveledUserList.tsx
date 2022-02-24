@@ -1,16 +1,15 @@
 import React from 'react';
 import HeartValue from '../HeartValue/HeartValue';
-import { UserListProps, User } from '../../pages/SearchPage/UserList';
+import UserList, { User } from '../../pages/SearchPage/UserList';
 import './leveledUserList.css';
 import { ValidNumber } from '../HeartRating/useHeartRating';
 
 type LeveledUserListProps = {
   level: ValidNumber,
-  UserList: React.VFC<UserListProps>,
   users: User[],
 };
 
-const LeveledUserList: React.VFC<LeveledUserListProps> = ({ level, UserList, users }) => {
+const LeveledUserList: React.VFC<LeveledUserListProps> = ({ level, users }) => {
   if (level === 5) {
     return (
       <>
