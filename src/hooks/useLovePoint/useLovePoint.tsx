@@ -1,19 +1,26 @@
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
-import useGetLovePoint from './useGetLovePoint';
+import useInitializedHeartRating from './useInitializedHeartRating';
 
 type VoidFunction = () => void;
 const baseURL = 'http://localhost:8080';
 
 type UseLovePoint = (id: string) => {
-  usePostLovePoint: (lovePoint: ValidNumber) => VoidFunction;
+  postLovePoint: (lovePoint: ValidNumber) => void;
+  deleteLovePoint: VoidFunction,
   lovePoint: ValidNumber,
+  selectedCount: ValidNumber,
+  clearCount: VoidFunction,
+  HeartRating: React.VFC,
 };
 
 const useLovePoint: UseLovePoint = (id: string) => {
   const {
-    lovePoint,
     error: GETerror,
-  } = useGetLovePoint(id);
+    lovePoint,
+    selectedCount,
+    clearCount,
+    HeartRating,
+  } = useInitializedHeartRating(id);
 
   if (GETerror) {
     console.error(GETerror);
@@ -21,22 +28,29 @@ const useLovePoint: UseLovePoint = (id: string) => {
 
   const token = localStorage.getItem('ryouomoi-checker-token');
 
-  type UsePostLovePoint = (lovePoint: ValidNumber) => VoidFunction;
-  const usePostLovePoint: UsePostLovePoint = (newLovePoint) => {
-    const usePost: VoidFunction = () => {
-      fetch(`${baseURL}/friends/${id}`, {
-        method: 'POST',
-        body: JSON.stringify({ lovePoint: newLovePoint }),
-        headers: new Headers({ Authorization: `Bearer ${token}` }),
-      });
-    };
+  type PostLovePoint = (lovePoint: ValidNumber) => void;
+  const postLovePoint: PostLovePoint = (newLovePoint) => {
+    fetch(`${baseURL}/friends/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({ lovePoint: newLovePoint }),
+      headers: new Headers({ Authorization: `Bearer ${token}` }),
+    });
+  };
 
-    return usePost;
+  const deleteLovePoint: VoidFunction = () => {
+    fetch(`${baseURL}/friends/${id}`, {
+      method: 'DELETE',
+      headers: new Headers({ Authorization: `Bearer ${token}` }),
+    });
   };
 
   return {
-    usePostLovePoint,
+    postLovePoint,
+    deleteLovePoint,
     lovePoint,
+    selectedCount,
+    clearCount,
+    HeartRating,
   };
 };
 
