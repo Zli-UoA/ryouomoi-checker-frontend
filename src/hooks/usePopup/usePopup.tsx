@@ -11,16 +11,17 @@ type UsePopup = (
   imageUrl: string,
   displayName: string,
   screenName: string,
+  id: string,
   mode: 'Add' | 'Edit'
 ) => {
   isOpen: boolean,
-  selectedHeartsCount: ValidNumber,
+  selectedCount: ValidNumber,
   PopupTrigger: React.VFC<PopupTriggerProps>,
   Popup: React.VFC
 };
 
-const usePopup: UsePopup = (imageUrl, displayName, screenName, mode) => {
-  const { selectedHeartsCount, HeartRating } = useHeartRating();
+const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
+  const { selectedCount, HeartRating } = useHeartRating();
 
   const {
     isOpen,
@@ -103,7 +104,7 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, mode) => {
 
   return {
     isOpen,
-    selectedHeartsCount,
+    selectedCount,
     PopupTrigger,
     Popup,
   };
