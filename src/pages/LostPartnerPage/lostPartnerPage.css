@@ -1,0 +1,50 @@
+.lostPartnerPage {
+  padding-top: 120px;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.lostPartnerPage__heartButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: rgb(0 0 0 / 0%);
+  border: none;
+  border-radius: 50%;
+}
+
+.lostPartnerPage__icon {
+  width: 158px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.lostPartnerPage__name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.lostPartnerPage__id {
+  font-size: 14px;
+  line-height: 20px;
+  color: #808080;
+}
+
+.lostPartnerPage__mainText {
+  margin-top: 64px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+.lostPartnerPage__subText {
+  margin-top: 40px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  color: #808080;
+  text-align: center;
+}
