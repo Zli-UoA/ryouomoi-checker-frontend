@@ -2,7 +2,6 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../common.css';
 import UserCard from '../../pages/SearchPage/UserCard';
-
 import usePopup from './usePopup';
 
 type UsePopupTestProps = {
@@ -65,6 +64,7 @@ AddMode.args = {
   displayName: 'いえすたにかわ',
   imageUrl: 'https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg',
   screenName: 'Aizu Taro',
+  id: '972404402425245697',
   mode: 'Add',
 };
 
@@ -73,5 +73,6 @@ EditMode.args = {
   displayName: 'いえすたにかわ',
   imageUrl: 'https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg',
   screenName: 'Aizu Taro',
+  id: '972404402425245697',
   mode: 'Edit',
 };
