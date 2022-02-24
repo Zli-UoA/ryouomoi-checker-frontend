@@ -3,12 +3,12 @@ import HeartValue from '../HeartValue/HeartValue';
 import PopupUserList, { UserCardsInfo } from '../PopupUserList/PopupUserList';
 import { ValidNumber } from '../HeartRating/useHeartRating';
 
-type LeveledUserListProps = {
+type LeveledPopupUserListProps = {
   level: ValidNumber,
   userCardsInfo: UserCardsInfo
 };
 
-const LeveledUserList: React.VFC<LeveledUserListProps> = ({ level, userCardsInfo }) => {
+const LeveledPopupUserList: React.VFC<LeveledPopupUserListProps> = ({ level, userCardsInfo }) => {
   if (level === 5) {
     return (
       <>
@@ -31,4 +31,4 @@ const LeveledUserList: React.VFC<LeveledUserListProps> = ({ level, userCardsInfo
   );
 };
 
-export default LeveledUserList;
+export default LeveledPopupUserList;
