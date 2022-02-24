@@ -21,8 +21,6 @@ const useGetLovePoint: UseGetLovePoint = (id: string) => {
     lovePoint: number
   };
 
-  console.log(id);
-
   const token = localStorage.getItem('ryouomoi-checker-token');
 
   const { data, error } = useFetch<DataType>(`${baseURL}/me/lovers/${id}`, {
