@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import RadioButton from '../../components/RadioButton/RadioButton';
+import './useHakyokuForm.css';
 
 type UseHakyokuForm = () => {
   reason: string | undefined;
@@ -23,10 +24,11 @@ const useHakyokuForm: UseHakyokuForm = () => {
 
   const HakyokuForm: React.VFC = () => (
     <div className="hakyokuForm">
-      <h1 className="hakyokuForm__title">
-        破局理由を教えてください
-      </h1>
-      {
+      <div className="hakyokuForm__inner">
+        <h1 className="hakyokuForm__title">
+          破局理由を教えてください
+        </h1>
+        {
         reasons.map((r) => (
           <RadioButton
             label={r}
@@ -35,6 +37,7 @@ const useHakyokuForm: UseHakyokuForm = () => {
           />
         ))
       }
+      </div>
     </div>
   );
 
