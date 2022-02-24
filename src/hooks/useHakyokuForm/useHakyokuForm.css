@@ -1,0 +1,22 @@
+.hakyokuForm {
+  background: #f4f9fe;
+  border-radius: 8px;
+}
+
+.hakyokuForm__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+}
+
+.hakyokuForm__title {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  color: #258eef;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
