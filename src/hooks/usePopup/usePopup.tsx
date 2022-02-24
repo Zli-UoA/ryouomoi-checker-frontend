@@ -84,7 +84,6 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
 
           <div className="mg_top-24 mg_bottom-24 mg_left-24 mg_right-24">
             <div className="popup__buttonGroup">
-
               <PopupButton label="キャンセル" onClick={closePopup} />
 
               <PopupButton
@@ -92,13 +91,6 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
                 disabled={mode === 'Add' ? false : isUpdated()}
                 onClick={postLovePoint(selectedCount)}
               />
-              {/*
-              TODO: mode によって動作が変化するコンポーネントの作成
-              isUpdatedLovePoint: usePostとかのカスタムフックで返ってくる予定のもの
-              postLovePoint: usePostとかのカスタムフックで返ってくる予定のもの
-
-              */}
-
             </div>
           </div>
         </div>
