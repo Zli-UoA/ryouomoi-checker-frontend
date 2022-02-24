@@ -5,7 +5,7 @@ type VoidFunction = () => void;
 const baseURL = 'http://localhost:8080';
 
 type UseLovePoint = (id: string) => {
-  postLovePoint: (lovePoint: ValidNumber) => VoidFunction;
+  postLovePoint: (lovePoint: ValidNumber) => void;
   deleteLovePoint: VoidFunction,
   lovePoint: ValidNumber,
   selectedCount: ValidNumber,
@@ -26,17 +26,13 @@ const useLovePoint: UseLovePoint = (id: string) => {
 
   const token = localStorage.getItem('ryouomoi-checker-token');
 
-  type PostLovePoint = (lovePoint: ValidNumber) => VoidFunction;
+  type PostLovePoint = (lovePoint: ValidNumber) => void;
   const postLovePoint: PostLovePoint = (newLovePoint) => {
-    const post: VoidFunction = () => {
-      fetch(`${baseURL}/friends/${id}`, {
-        method: 'POST',
-        body: JSON.stringify({ lovePoint: newLovePoint }),
-        headers: new Headers({ Authorization: `Bearer ${token}` }),
-      });
-    };
-
-    return post;
+    fetch(`${baseURL}/friends/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({ lovePoint: newLovePoint }),
+      headers: new Headers({ Authorization: `Bearer ${token}` }),
+    });
   };
 
   const deleteLovePoint: VoidFunction = () => {
