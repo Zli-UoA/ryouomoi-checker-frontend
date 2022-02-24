@@ -1,21 +1,12 @@
-import { useState } from 'react';
 import { useFetch } from 'usehooks-ts';
-import { ValidNumber } from '../../components/HeartRating/useHeartRating';
+import useHeartRating, { ValidNumber } from '../../components/HeartRating/useHeartRating';
 
 const baseURL = 'http://localhost:8080';
 
-type ToValidNumber = (n: number) => ValidNumber;
-const toValidNumber: ToValidNumber = (n: number) => {
-  if (n === 1 || n === 2 || n === 3 || n === 4 || n === 5) {
-    return n;
-  }
-  return 1;
-};
-
 type UseGetLovePoint = (id: string) => {
-  lovePoint: ValidNumber,
   error: Error | undefined,
-  isLoading: boolean,
+  lovePoint: ValidNumber,
+  HeartRating: React.VFC;
 };
 
 const useGetLovePoint: UseGetLovePoint = (id: string) => {
@@ -29,20 +20,50 @@ const useGetLovePoint: UseGetLovePoint = (id: string) => {
     headers: new Headers({ Authorization: `Bearer ${token}` }),
   });
 
-  const [isLoading, setLoading] = useState<boolean>(true);
+  const { HeartRating: HeartRating1 } = useHeartRating(1);
+  const { HeartRating: HeartRating2 } = useHeartRating(2);
+  const { HeartRating: HeartRating3 } = useHeartRating(3);
+  const { HeartRating: HeartRating4 } = useHeartRating(4);
+  const { HeartRating: HeartRating5 } = useHeartRating(5);
 
-  const [lovePoint, setLovePoint] = useState<ValidNumber>(/* defaultHeartRaingValue = */ 1);
-
-  if (data !== undefined) {
-    setLovePoint(toValidNumber(data.lovePoint));
-    setLoading(false);
+  switch (data?.lovePoint) {
+    case 1:
+      return {
+        error,
+        lovePoint: 1,
+        HeartRating: HeartRating1,
+      };
+    case 2:
+      return {
+        error,
+        lovePoint: 2,
+        HeartRating: HeartRating2,
+      };
+    case 3:
+      return {
+        error,
+        lovePoint: 3,
+        HeartRating: HeartRating3,
+      };
+    case 4:
+      return {
+        error,
+        lovePoint: 4,
+        HeartRating: HeartRating4,
+      };
+    case 5:
+      return {
+        error,
+        lovePoint: 5,
+        HeartRating: HeartRating5,
+      };
+    default:
+      return {
+        error,
+        lovePoint: 1,
+        HeartRating: HeartRating1,
+      };
   }
-
-  return {
-    lovePoint,
-    error,
-    isLoading,
-  };
 };
 
 export default useGetLovePoint;
