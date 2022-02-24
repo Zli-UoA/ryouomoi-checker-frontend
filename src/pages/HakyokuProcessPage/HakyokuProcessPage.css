@@ -38,3 +38,9 @@
   margin-right: 32px;
   margin-left: 32px;
 }
+
+.hakyokuProcessPage__submitButton {
+  position: absolute;
+  bottom: 88px;
+  width: 100%;
+}
