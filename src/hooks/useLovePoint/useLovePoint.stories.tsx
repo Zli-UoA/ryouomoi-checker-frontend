@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../common.css';
-import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 
 import useLovePoint from './useLovePoint';
 
@@ -11,24 +10,15 @@ type UseLovePointTestProps = {
 
 const UseLovePointTest: React.VFC<UseLovePointTestProps> = ({ id }) => {
   const {
-    postLovePoint,
+    usePostLovePoint,
     lovePoint: oldLovePoint,
   } = useLovePoint(id);
 
-  const [lovePoint, setLovePoint] = useState<ValidNumber>(oldLovePoint);
-
-  type VoidFunction = () => void;
-  const updateLovePoint: VoidFunction = () => {
-    postLovePoint(3);
-    setLovePoint(3);
-  };
-
   return (
     <div>
-      {`current lovePoint is ${lovePoint}`}
       {`old     lovePoint is ${oldLovePoint}`}
 
-      <button type="button" onClick={updateLovePoint}>
+      <button type="button" onClick={usePostLovePoint(3)}>
         post!
       </button>
     </div>
@@ -44,5 +34,8 @@ const Template: ComponentStory<typeof UseLovePointTest> = ({ id }) => (
   <UseLovePointTest id={id} />
 );
 
+// このidは @yt8492 の内部id
 export const Normal = Template.bind({});
-Normal.args = {};
+Normal.args = {
+  id: '972404402425245697',
+};
