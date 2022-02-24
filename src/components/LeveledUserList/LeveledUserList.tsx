@@ -1,7 +1,6 @@
 import React from 'react';
 import HeartValue from '../HeartValue/HeartValue';
 import UserList, { User } from '../../pages/SearchPage/UserList';
-import './leveledUserList.css';
 import { ValidNumber } from '../HeartRating/useHeartRating';
 
 type LeveledUserListProps = {
