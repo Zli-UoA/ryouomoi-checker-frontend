@@ -1,0 +1,33 @@
+.radioButton {
+  display: flex;
+  gap: 8px;
+  background: none;
+  border: none;
+}
+
+.radioButton__checkBox {
+  display: inline-block;
+  align-self: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #258eef;
+  border-radius: 50%;
+}
+
+.radioButton__checkBox--selected {
+  width: 16px;
+  height: 16px;
+  background: #258eef;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.radioButton__label {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  color: #2c2e5c;
+  letter-spacing: 0.05em;
+}
