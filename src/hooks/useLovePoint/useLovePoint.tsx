@@ -9,12 +9,14 @@ type UseLovePoint = (id: string) => {
   usePostLovePoint: (lovePoint: ValidNumber) => VoidFunction;
   useDeleteLovePoint: VoidFunction,
   lovePoint: ValidNumber,
+  isLoading: () => boolean,
 };
 
 const useLovePoint: UseLovePoint = (id: string) => {
   const {
     lovePoint,
     error: GETerror,
+    isLoading,
   } = useGetLovePoint(id);
 
   if (GETerror) {
@@ -47,6 +49,7 @@ const useLovePoint: UseLovePoint = (id: string) => {
     usePostLovePoint,
     useDeleteLovePoint,
     lovePoint,
+    isLoading,
   };
 };
 
