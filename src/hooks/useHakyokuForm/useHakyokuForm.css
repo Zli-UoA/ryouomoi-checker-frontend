@@ -1,13 +1,13 @@
 .hakyokuForm {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
   background: #f4f9fe;
   border-radius: 8px;
 }
 
 .hakyokuForm__inner {
-  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
 }
 
 .hakyokuForm__title {
