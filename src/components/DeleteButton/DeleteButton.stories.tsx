@@ -9,11 +9,16 @@ export default {
   component: DeleteButton,
 } as ComponentMeta<typeof DeleteButton>;
 
-const Template: ComponentStory<typeof DeleteButton> = () => (
+const Template: ComponentStory<typeof DeleteButton> = ({ onClick }) => (
   <div className="bg_primary">
-    <DeleteButton />
+    <DeleteButton onClick={onClick} />
   </div>
 );
 
 export const Normal = Template.bind({});
 Normal.args = {};
+
+export const Alert = Template.bind({});
+Alert.args = {
+  onClick: () => { alert('hello!'); },
+};
