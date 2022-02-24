@@ -9,7 +9,7 @@ type UseLovePoint = (id: string) => {
   usePostLovePoint: (lovePoint: ValidNumber) => VoidFunction;
   useDeleteLovePoint: VoidFunction,
   lovePoint: ValidNumber,
-  isLoading: () => boolean,
+  isLoading: boolean,
 };
 
 const useLovePoint: UseLovePoint = (id: string) => {
