@@ -9,7 +9,13 @@
     "es2021": true,
     "jest/globals": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "airbnb-typescript","plugin:storybook/recommended"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:storybook/recommended",
+    "plugin:react-hooks/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -19,9 +25,18 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "jest"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "jest",
+    "react-hooks"
+  ],
   "rules": {
-    "no-console": ["warn"],
+    "no-console": [
+      "warn"
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
     "react/require-default-props": "off",
     "@typescript-eslint/explicit-function-return-type": [
@@ -40,7 +55,9 @@
     "react/jsx-filename-extension": [
       "warn",
       {
-        "extensions": [".tsx"]
+        "extensions": [
+          ".tsx"
+        ]
       }
     ],
     "import/extensions": [
@@ -55,7 +72,9 @@
   "overrides": [
     {
       // or whatever matches stories specified in .storybook/main.js
-      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+      "files": [
+        "*.stories.@(ts|tsx|js|jsx|mjs|cjs)"
+      ],
       "rules": {
         // example of overriding a rule
         "storybook/hierarchy-separator": "error",
