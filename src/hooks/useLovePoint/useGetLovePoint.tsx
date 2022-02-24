@@ -1,7 +1,7 @@
 import { useFetch } from 'usehooks-ts';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 
-const baseURL = 'http://localhost:8080';
+const baseURL = 'https://ryouomoichecker.yt8492.com/api';
 
 type ToValidNumber = (n: number) => ValidNumber;
 const toValidNumber: ToValidNumber = (n: number) => {

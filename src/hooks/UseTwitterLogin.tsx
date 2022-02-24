@@ -5,7 +5,7 @@ import Button from '../components/Button/Button';
 const UseTwitterLogin: React.VFC = () => {
   const { data, error } = useFetch<{
     loginUrl: string
-  }>('http://localhost:8080/twitter/login');
+  }>('https://ryouomoichecker.yt8492.com/api/twitter/login');
 
   if (data !== undefined) {
     return (
