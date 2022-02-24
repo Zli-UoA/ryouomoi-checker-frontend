@@ -14,36 +14,32 @@ import TalkRoomPage from './pages/TalkRoomPage/TalkRoomPage';
 import TutorialPage from './pages/TutorialPage/TutorialPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
-const useNavigateToWelcome = (): void => {
+const useNavigateToEachPage = (): void => {
   const navigate = useNavigate();
   const query = useQuery();
-  useEffect(() => {
-    const token = query.get('auth_token');
-    if (token) {
-      navigate(`/welcome?auth_token=${token}`);
-    }
-  }, [navigate, query]);
-};
-
-const useNavigateToHome = (): void => {
-  const navigate = useNavigate();
-  const query = useQuery();
+  const token = query.get('auth_token');
   const { pathname } = useLocation();
+
   useEffect(() => {
-    if (!query.get('auth_token')) {
-      if (localStorage.getItem('ryouomoi-checker-token')) {
-        navigate('/home');
-      }
-      if (!localStorage.getItem('ryouomoi-checker-token') && pathname !== '/tutorial/page2') {
-        navigate('/tutorial');
-      }
+    console.log('ahoy');
+    if (token) {
+      console.log('lets go');
+      navigate(`/welcome?auth_token=${token}`);
+      return;
     }
-  }, [navigate, query, pathname]);
+
+    if (localStorage.getItem('ryouomoi-checker-token')) {
+      navigate('/home');
+      return;
+    }
+    if (pathname !== '/tutorial/page2') {
+      navigate('/tutorial');
+    }
+  }, [navigate, token, pathname]);
 };
 
 const App: React.VFC = () => {
-  useNavigateToWelcome();
-  useNavigateToHome();
+  useNavigateToEachPage();
   return (
     <div className="App">
       <nav>
