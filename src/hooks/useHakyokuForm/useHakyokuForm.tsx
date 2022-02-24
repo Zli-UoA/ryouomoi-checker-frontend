@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RadioButton from '../components/RadioButton/RadioButton';
+import RadioButton from '../../components/RadioButton/RadioButton';
 
 type UseHakyokuForm = () => {
   reason: string | undefined;
