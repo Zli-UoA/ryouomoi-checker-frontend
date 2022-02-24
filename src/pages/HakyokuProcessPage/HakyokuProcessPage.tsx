@@ -23,12 +23,20 @@ const HakyokuProcessPageHeader: React.VFC = () => (
       </div>
     </div>
   </Header>
+);
 
+const HakhyokuProcessPageContent: React.VFC = () => (
+  <>
+    {/* 空のdivだが、ヘッダーが position: fixed なためヘッダー分(64px)を調整 */}
+    <div style={{ height: '64px' }} />
+    <div className="mg_top-80" />
+  </>
 );
 
 const HakyokuProcessPage: React.VFC = () => (
   <div className="hakyokuProcessPage">
     <HakyokuProcessPageHeader />
+    <HakhyokuProcessPageContent />
   </div>
 );
 
