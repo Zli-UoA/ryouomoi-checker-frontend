@@ -1,4 +1,5 @@
 import React from 'react';
+import './radioButton.css';
 
 type RadioButtonProps = {
   label: string,
@@ -12,7 +13,9 @@ const RadioButton: React.VFC<RadioButtonProps> = ({
   <button type="button" className="radioButton" onClick={onClick}>
     <div className="radioButton__checkBox">
       {
-        selected && <div className="radioButton__checkBox--selected" />
+        selected
+          ? <div className="radioButton__checkBox--selected" />
+          : null
       }
     </div>
     <p className="radioButton__label">{label}</p>
