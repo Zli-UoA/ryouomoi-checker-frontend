@@ -64,12 +64,16 @@ const HomePageContent: React.VFC = () => {
 
   if (data && data.length !== 0) {
     const leveledLovers: UserCardsInfo[] = leveledSplit(data);
+    leveledLovers.reverse();
 
     return (
       <div>
-        {leveledLovers.map((userCardsInfo, idx) => (
-          <LeveledPopupUserList level={toValidNumber(idx + 1)} userCardsInfo={userCardsInfo} />
-        ))}
+        {leveledLovers.map((userCardsInfo, idx) => {
+          if (userCardsInfo.length === 0) return null;
+          return (
+            <LeveledPopupUserList level={toValidNumber(idx + 1)} userCardsInfo={userCardsInfo} />
+          );
+        })}
       </div>
     );
   }
