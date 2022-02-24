@@ -7,6 +7,7 @@ type UseInitializedHeartRating = (id: string) => {
   error: Error | undefined,
   lovePoint: ValidNumber,
   selectedCount: ValidNumber,
+  claerCount: () => void,
   HeartRating: React.VFC,
 };
 
@@ -21,11 +22,31 @@ const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
     headers: new Headers({ Authorization: `Bearer ${token}` }),
   });
 
-  const { selectedCount: selectedCount1, HeartRating: HeartRating1 } = useHeartRating(1);
-  const { selectedCount: selectedCount2, HeartRating: HeartRating2 } = useHeartRating(2);
-  const { selectedCount: selectedCount3, HeartRating: HeartRating3 } = useHeartRating(3);
-  const { selectedCount: selectedCount4, HeartRating: HeartRating4 } = useHeartRating(4);
-  const { selectedCount: selectedCount5, HeartRating: HeartRating5 } = useHeartRating(5);
+  const {
+    selectedCount: selectedCount1,
+    HeartRating: HeartRating1,
+    clearCount: clearCount1,
+  } = useHeartRating(1);
+  const {
+    selectedCount: selectedCount2,
+    HeartRating: HeartRating2,
+    clearCount: clearCount2,
+  } = useHeartRating(2);
+  const {
+    selectedCount: selectedCount3,
+    HeartRating: HeartRating3,
+    clearCount: clearCount3,
+  } = useHeartRating(3);
+  const {
+    selectedCount: selectedCount4,
+    HeartRating: HeartRating4,
+    clearCount: clearCount4,
+  } = useHeartRating(4);
+  const {
+    selectedCount: selectedCount5,
+    HeartRating: HeartRating5,
+    clearCount: clearCount5,
+  } = useHeartRating(5);
 
   switch (data?.lovePoint) {
     case 1:
@@ -34,6 +55,7 @@ const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
         lovePoint: 1,
         selectedCount: selectedCount1,
         HeartRating: HeartRating1,
+        claerCount: clearCount1,
       };
     case 2:
       return {
@@ -41,6 +63,7 @@ const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
         lovePoint: 2,
         selectedCount: selectedCount2,
         HeartRating: HeartRating2,
+        claerCount: clearCount2,
       };
     case 3:
       return {
@@ -48,6 +71,7 @@ const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
         lovePoint: 3,
         selectedCount: selectedCount3,
         HeartRating: HeartRating3,
+        claerCount: clearCount3,
       };
     case 4:
       return {
@@ -55,6 +79,7 @@ const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
         lovePoint: 4,
         selectedCount: selectedCount4,
         HeartRating: HeartRating4,
+        claerCount: clearCount4,
       };
     case 5:
       return {
@@ -62,6 +87,7 @@ const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
         lovePoint: 5,
         selectedCount: selectedCount5,
         HeartRating: HeartRating5,
+        claerCount: clearCount5,
       };
     default:
       return {
@@ -69,6 +95,7 @@ const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
         lovePoint: 1,
         selectedCount: selectedCount1,
         HeartRating: HeartRating1,
+        claerCount: clearCount1,
       };
   }
 };
