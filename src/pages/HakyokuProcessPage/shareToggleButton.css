@@ -1,0 +1,37 @@
+.shareToggleButton {
+  display: flex;
+  gap: 16px;
+  background: none;
+  border: none;
+}
+
+.shareToggleButton__title {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  color: #2c2e5c;
+  letter-spacing: 0.05em;
+}
+
+.shareToggleButton__text {
+  text-align: start;
+}
+
+.shareToggleButton__description {
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  color: #2c2e5c;
+  letter-spacing: 0.05em;
+}
+
+.shareToggleButton__check {
+  align-self: center;
+}
