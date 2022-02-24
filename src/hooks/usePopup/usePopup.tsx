@@ -2,7 +2,7 @@ import React from 'react';
 import './usePopup.css';
 import '../../common.css';
 import UserIcon from '../../components/UserIcon/UserIcon';
-import useHeartRating, { ValidNumber } from '../../components/HeartRating/useHeartRating';
+import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import usePopupTrigger, { PopupTriggerProps } from './usePopupTrigger';
 import useLovePoint from '../useLovePoint/useLovePoint';
 import PopupButton from '../../components/PopupButton/PopupButton';
@@ -23,12 +23,12 @@ type UsePopup = (
 
 const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
   const {
-    postLovePoint,
-    deleteLovePoint,
     lovePoint: oldLovePoint,
+    selectedCount,
+    HeartRating,
   } = useLovePoint(id);
 
-  const { selectedCount, HeartRating } = useHeartRating(oldLovePoint);
+  // const { selectedCount, HeartRating } = useHeartRating(oldLovePoint);
 
   const {
     isOpen,
@@ -41,7 +41,7 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
 
     return (
       <div className="popup__deleteButton">
-        <DeleteButton onClick={deleteLovePoint} />
+        <DeleteButton />
       </div>
     );
   };
@@ -87,7 +87,7 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
               <PopupButton
                 label={mode === 'Add' ? '追加' : '更新'}
                 disabled={mode === 'Add' ? false : selectedCount === oldLovePoint}
-                onClick={() => { postLovePoint(selectedCount); closePopup(); }}
+                onClick={closePopup}
               />
             </div>
           </div>
