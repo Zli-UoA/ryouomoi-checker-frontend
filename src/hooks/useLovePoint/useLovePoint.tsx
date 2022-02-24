@@ -1,3 +1,4 @@
+import { useFetch } from 'usehooks-ts';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useGetLovePoint from './useGetLovePoint';
 
@@ -6,6 +7,7 @@ const baseURL = 'http://localhost:8080';
 
 type UseLovePoint = (id: string) => {
   usePostLovePoint: (lovePoint: ValidNumber) => VoidFunction;
+  useDeleteLovePoint: VoidFunction,
   lovePoint: ValidNumber,
 };
 
@@ -34,8 +36,16 @@ const useLovePoint: UseLovePoint = (id: string) => {
     return usePost;
   };
 
+  const useDeleteLovePoint: VoidFunction = () => {
+    useFetch(`${baseURL}/friends/${id}`, {
+      method: 'DELETE',
+      headers: new Headers({ Authorization: `Bearer ${token}` }),
+    });
+  };
+
   return {
     usePostLovePoint,
+    useDeleteLovePoint,
     lovePoint,
   };
 };
