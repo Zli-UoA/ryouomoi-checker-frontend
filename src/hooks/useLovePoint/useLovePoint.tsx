@@ -1,5 +1,5 @@
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
-import useGetLovePoint from './useGetLovePoint';
+import useInitializedHeartRating from './useInitializedHeartRating';
 
 type VoidFunction = () => void;
 const baseURL = 'http://localhost:8080';
@@ -8,15 +8,17 @@ type UseLovePoint = (id: string) => {
   postLovePoint: (lovePoint: ValidNumber) => VoidFunction;
   deleteLovePoint: VoidFunction,
   lovePoint: ValidNumber,
-  isLoading: boolean,
+  selectedCount: ValidNumber,
+  HeartRating: React.VFC,
 };
 
 const useLovePoint: UseLovePoint = (id: string) => {
   const {
-    lovePoint,
     error: GETerror,
-    isLoading,
-  } = useGetLovePoint(id);
+    lovePoint,
+    selectedCount,
+    HeartRating,
+  } = useInitializedHeartRating(id);
 
   if (GETerror) {
     console.error(GETerror);
@@ -48,7 +50,8 @@ const useLovePoint: UseLovePoint = (id: string) => {
     postLovePoint,
     deleteLovePoint,
     lovePoint,
-    isLoading,
+    selectedCount,
+    HeartRating,
   };
 };
 
