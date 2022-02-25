@@ -1,3 +1,4 @@
+import JSONbig from 'json-bigint';
 import getToken from './getToken';
 
 const fetchWithAuth = async <T = any>(url: string): Promise<T> => {
@@ -6,7 +7,10 @@ const fetchWithAuth = async <T = any>(url: string): Promise<T> => {
     headers: new Headers({ Authorization: `Bearer ${token}` }),
   });
 
-  const data: T = await res.json();
+  const data: T = JSONbig({ storeAsString: true }).parse(await res.text());
+
+  console.log('json-bigint result', data);
+
   return data;
 };
 
