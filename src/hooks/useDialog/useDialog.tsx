@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import DialogButton from './DialogButton';
 import './useDialog.css';
 import '../../common.css';
+import { baseURL } from '../../env';
+import fetchWithAuth from '../../lib/fetchWithAuth';
 
 type VoidFunction = () => void;
 type ReasonId = 1 | 2 | 3 | 4 | 5 | 6;
@@ -30,11 +32,9 @@ const useDialog: UseDialog = () => {
   };
 
   const deleteLover = (reasonId: ReasonId, arrowShare: boolean): void => {
-    const token = localStorage.getItem('ryouomoi-checker-token');
-    fetch('http://localhost:8080/me/lover', {
+    fetchWithAuth(`${baseURL}/me/lover`, {
       method: 'DELETE',
       body: JSON.stringify({ reasonId, arrowShare }),
-      headers: new Headers({ Authorization: `Bearer ${token}` }),
     });
   };
 
