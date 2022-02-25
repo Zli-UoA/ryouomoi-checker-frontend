@@ -21,18 +21,24 @@ const useNavigateToEachPage = (): void => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    console.log('ahoy');
     if (token) {
-      console.log('lets go');
       navigate(`/welcome?auth_token=${token}`);
       return;
     }
 
     if (localStorage.getItem('ryouomoi-checker-token')) {
-      navigate('/home');
-      return;
+      if (pathname === '/tutorial') {
+        navigate('/home');
+        return;
+      }
+
+      if (pathname === '/celebration') {
+        navigate('/home');
+        return;
+      }
     }
-    if (pathname !== '/tutorial/page2') {
+
+    if (!localStorage.getItem('ryouomoi-checker-token') && pathname !== '/tutorial/page2') {
       navigate('/tutorial');
     }
   }, [navigate, token, pathname]);
