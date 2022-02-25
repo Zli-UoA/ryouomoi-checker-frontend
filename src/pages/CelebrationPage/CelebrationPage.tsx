@@ -8,10 +8,7 @@ import UserIcon from '../../components/UserIcon/UserIcon';
 import HammerHeartButton from './HammerHeartButton';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURL } from '../../env';
-
-const redirect = (url: string): void => {
-  window.location.href = url;
-};
+import redirect from '../../lib/redirect';
 
 const StatefulButton: React.VFC = () => {
   type DataType = {

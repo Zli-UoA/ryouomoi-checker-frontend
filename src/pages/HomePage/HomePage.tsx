@@ -12,6 +12,7 @@ import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURL } from '../../env';
 import useGetUserInfo from '../../hooks/useGetUserInfo';
+import redirect from '../../lib/redirect';
 
 const HomePageHeader: React.VFC<{ imageUrl: string }> = ({
   imageUrl,
@@ -42,11 +43,12 @@ const toValidNumber = (n: number): ValidNumber => {
 };
 
 const HomePageContent: React.VFC = () => {
-  const { data, error } = useFetchWithAuth<LoverType[]>(`${baseURL}/me/lovers`);
-
-  if (error) {
-    console.error(error);
+  const { statusCode } = useFetchWithAuth(`${baseURL}/me/lover`);
+  if (statusCode === 200) {
+    redirect('/celebration');
   }
+
+  const { data } = useFetchWithAuth<LoverType[]>(`${baseURL}/me/lovers`);
 
   if (data && data.length !== 0) {
     const leveledLovers: UserCardsInfo[] = leveledSplit(data);
