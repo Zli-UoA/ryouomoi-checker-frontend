@@ -1,7 +1,7 @@
 import React from 'react';
+import { ValidNumber } from '../HeartRating/HeartRating';
 import HeartValue from '../HeartValue/HeartValue';
 import PopupUserList, { UserCardsInfo } from '../PopupUserList/PopupUserList';
-import { ValidNumber } from '../HeartRating/useHeartRating';
 
 type LeveledPopupUserListProps = {
   level: ValidNumber,

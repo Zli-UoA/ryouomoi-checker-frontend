@@ -8,8 +8,8 @@ export default {
   component: PopupUserCard,
 } as ComponentMeta<typeof PopupUserCard>;
 
-const Template: ComponentStory<typeof PopupUserCard> = ({ user, id, mode }) => (
-  <PopupUserCard user={user} id={id} mode={mode} />
+const Template: ComponentStory<typeof PopupUserCard> = ({ user, id }) => (
+  <PopupUserCard user={user} id={id} />
 );
 
 export const Add = Template.bind({});
@@ -20,7 +20,6 @@ Add.args = {
     screenName: 'yes_tanikawa_add',
   },
   id: '972404402425245697',
-  mode: 'Add',
 };
 
 export const Edit = Template.bind({});
@@ -31,5 +30,4 @@ Edit.args = {
     screenName: 'yes_tanikawa_edit',
   },
   id: '972404402425245697',
-  mode: 'Edit',
 };
