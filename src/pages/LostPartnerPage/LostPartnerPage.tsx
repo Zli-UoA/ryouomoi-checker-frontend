@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../common.css';
 import './lostPartnerPage.css';
 import WithBackground from '../../components/WithBackground/WithBackground';
@@ -7,9 +8,11 @@ import { HeartIcon } from '../../components/Icon/Icon';
 
 const LostPartnerPage: React.VFC = () => (
   <div className="lostPartnerPage">
-    <button className="lostPartnerPage__heartButton" type="button">
-      <HeartIcon mode="broken" />
-    </button>
+    <Link to="/hakyoku">
+      <button className="lostPartnerPage__heartButton" type="button">
+        <HeartIcon mode="broken" />
+      </button>
+    </Link>
     <div className="">
       <WithBackground>
         <>
