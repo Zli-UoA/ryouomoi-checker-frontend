@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DialogButton from './DialogButton';
 import './useDialog.css';
 import '../../common.css';
 
@@ -63,14 +64,10 @@ const useDialog: UseDialog = () => {
             </p>
           </div>
 
-          <div className="mg_top-48 mg_bottom-24">
+          <div className="mg_top-48 mg_bottom-24 mg_left-24 mg_right-24">
             <div className="dialog__buttonGroup">
-              <button type="button" onClick={closeDialog}>
-                いいえ
-              </button>
-              <button type="button" onClick={() => { deleteLover(reasonId, arrowShare); closeDialog(); }}>
-                はい
-              </button>
+              <DialogButton label="いいえ" onClick={closeDialog} />
+              <DialogButton label="はい" onClick={() => { deleteLover(reasonId, arrowShare); closeDialog(); }} />
             </div>
           </div>
         </div>
