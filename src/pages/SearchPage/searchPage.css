@@ -1,5 +1,13 @@
-.searchPage__header {
+.searchPage__IconAndInput {
   display: flex;
+  align-items: center;
+}
+
+.searchPage__input {
+  flex-grow: 3;
+  width: 280px;
+  height: 32px;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .searchPage__main {
