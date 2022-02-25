@@ -1,15 +1,11 @@
 import React from 'react';
 import { baseURL } from '../../env';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
-import PopupUserList, { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
+import PopupUserList from '../../components/PopupUserList/PopupUserList';
+import User from '../../types/User';
 
 const FollowerTabContent: React.VFC = () => {
-  const { data } = useFetchWithAuth<{
-    id: string,
-    displayName: string
-    imageUrl: string
-    screenName: string
-  }[]>(`${baseURL}/friends/follower`);
+  const { data } = useFetchWithAuth<User[]>(`${baseURL}/friends/follower`);
 
   if (data === undefined) {
     return (
@@ -19,27 +15,9 @@ const FollowerTabContent: React.VFC = () => {
     );
   }
 
-  const userCardsInfo: UserCardsInfo = new Array(data.length);
-  for (let i = 0; i < data.length; i += 1) {
-    const {
-      displayName,
-      imageUrl,
-      screenName,
-      id,
-    } = data[i];
-    userCardsInfo[i] = {
-      user: {
-        displayName,
-        imageUrl,
-        screenName,
-      },
-      id,
-    };
-  }
-
   return (
     <main className="searchPage__main">
-      <PopupUserList userCardsInfo={userCardsInfo} />
+      <PopupUserList userCardsInfo={data} />
     </main>
   );
 };
