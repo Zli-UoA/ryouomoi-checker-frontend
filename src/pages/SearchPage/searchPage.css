@@ -7,12 +7,18 @@
   flex-grow: 3;
   width: 280px;
   height: 32px;
-  font-family: "Noto Sans JP", sans-serif;
 }
 
 .searchPage__main {
   width: 100%;
   padding-top: 144px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 32px;
+  text-align: center;
+  letter-spacing: 0.05em;
 }
 
 .searchPage__main--user_null {
