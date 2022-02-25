@@ -12,7 +12,7 @@ const PopupButton: React.VFC<PopupButtonProps> = ({
   label, disabled, onClick,
 }) => (
   <button
-    className="popup__button color_white"
+    className="popupButton color_white"
     type="button"
     disabled={disabled}
     onClick={onClick}

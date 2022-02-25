@@ -82,12 +82,12 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
             <HeartRating />
           </div>
 
-          <div className="mg_top-24 mg_bottom-24 mg_left-24 mg_right-24">
+          <div className="mg_top-40">
             <div className="popup__buttonGroup">
               <PopupButton label="キャンセル" onClick={() => { closePopup(); clearCount(); }} />
 
               <PopupButton
-                label={mode === 'Add' ? '追加' : '更新'}
+                label={mode === 'Add' ? '好き！' : '更新'}
                 disabled={mode === 'Add' ? false : selectedCount === oldLovePoint}
                 onClick={() => { postLovePoint(selectedCount); closePopup(); clearCount(); }}
               />

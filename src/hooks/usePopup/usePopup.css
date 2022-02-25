@@ -21,6 +21,7 @@
   text-align: center;
   background: linear-gradient(90deg, #33b9fc 0%, #337cee 100%);
   border-radius: 16px;
+  box-shadow: 0 0 40px rgb(0 0 0 / 50%);
 }
 
 .popup__userIcon {
@@ -55,11 +56,11 @@
 
 .popup__buttonGroup {
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
 }
 
 .popup__button {
-  min-width: 88px;
   padding: 0;
   font-size: 16px;
   font-weight: bold;
