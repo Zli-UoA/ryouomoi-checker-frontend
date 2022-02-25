@@ -1,12 +1,7 @@
 import React from 'react';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import './userCard.css';
-
-export type User = {
-  displayName: string,
-  imageUrl: string,
-  screenName: string
-};
+import User from '../../types/User';
 
 const trimming = (tooLongName: string, limit: number): string => {
   let res = tooLongName;

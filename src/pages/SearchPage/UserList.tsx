@@ -1,12 +1,7 @@
 import React from 'react';
 import UserCard from './UserCard';
 import './userList.css';
-
-export type User = {
-  displayName: string,
-  imageUrl: string,
-  screenName: string
-};
+import User from '../../types/User';
 
 export type UserListProps = {
   users: User[]
