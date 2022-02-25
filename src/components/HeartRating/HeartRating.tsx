@@ -1,5 +1,5 @@
 import React from 'react';
-import './useHeartRating.css';
+import './heartRating.css';
 import { HeartIcon40 } from '../Icon/Icon';
 import ValidNumber from '../../types/ValidNumber';
 

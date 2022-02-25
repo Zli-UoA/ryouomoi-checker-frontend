@@ -1,5 +1,5 @@
 import React from 'react';
-import { ValidNumber } from '../HeartRating/HeartRating';
+import ValidNumber from '../../types/ValidNumber';
 import HeartValue from '../HeartValue/HeartValue';
 import PopupUserList, { UserCardsInfo } from '../PopupUserList/PopupUserList';
 

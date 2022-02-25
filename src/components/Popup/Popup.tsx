@@ -1,5 +1,5 @@
 import React from 'react';
-import './usePopup.css';
+import './Popup.css';
 import '../../common.css';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import HeartRating from '../HeartRating/HeartRating';
