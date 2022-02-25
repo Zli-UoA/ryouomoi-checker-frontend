@@ -9,7 +9,7 @@ import './searchPage.css';
 import FolloweeTabContent from './FolloweeTabContent';
 import FollowerTabContent from './FollowerTabContent';
 import AllTabContent from './AllTabContent';
-import User from '../../types/User';
+import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
 import fetchWithAuth from '../../lib/fetchWithAuth';
 import { baseURLmain } from '../../env';
 
@@ -18,22 +18,47 @@ type UseSearchPageHeader = (Tab: React.VFC, onEnter: OnEnter) => ({
 });
 
 type UseOnEnter = () => {
-  result: User[];
+  result: UserCardsInfo;
   onEnter: OnEnter;
 };
 
 const useOnEnter: UseOnEnter = () => {
-  const [result, setResult] = useState<User[]>([]);
+  const [result, setResult] = useState<UserCardsInfo>([]);
 
   const onEnter: OnEnter = async (inputRef) => {
     if (inputRef.current?.value === '') return;
 
     const query = inputRef.current?.value;
-    const res = await fetchWithAuth<User[]>(
-      `${baseURLmain}/friends/search?query=${query}`,
-    );
+    type DataType = {
+      id: string,
+      displayName: string,
+      imageUrl: string,
+      screenName: string,
+    };
 
-    setResult(res);
+    const data: DataType[] = await fetchWithAuth<DataType[]>(`${baseURLmain}/friends/search?query=${query}`);
+    const userCardsInfo: UserCardsInfo = new Array(data.length);
+
+    for (let i = 0; i < data.length; i += 1) {
+      const {
+        id,
+        displayName,
+        imageUrl,
+        screenName,
+      } = data[i];
+
+      userCardsInfo[i] = {
+        user: {
+          displayName,
+          imageUrl,
+          screenName,
+        },
+        id,
+        mode: 'Add',
+      };
+    }
+
+    setResult(userCardsInfo);
   };
 
   return {

@@ -1,8 +1,8 @@
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useInitializedHeartRating from './useInitializedHeartRating';
+import { baseURLmain } from '../../env';
 
 type VoidFunction = () => void;
-const baseURL = 'https://ryouomoichecker.yt8492.com/api';
 
 type UseLovePoint = (id: string) => {
   postLovePoint: (lovePoint: ValidNumber) => void;
@@ -30,7 +30,7 @@ const useLovePoint: UseLovePoint = (id: string) => {
 
   type PostLovePoint = (lovePoint: ValidNumber) => void;
   const postLovePoint: PostLovePoint = (newLovePoint) => {
-    fetch(`${baseURL}/friends/${id}`, {
+    fetch(`${baseURLmain}/friends/${id}`, {
       method: 'POST',
       body: JSON.stringify({ lovePoint: newLovePoint }),
       headers: new Headers({ Authorization: `Bearer ${token}` }),
@@ -38,7 +38,7 @@ const useLovePoint: UseLovePoint = (id: string) => {
   };
 
   const deleteLovePoint: VoidFunction = () => {
-    fetch(`${baseURL}/friends/${id}`, {
+    fetch(`${baseURLmain}/friends/${id}`, {
       method: 'DELETE',
       headers: new Headers({ Authorization: `Bearer ${token}` }),
     });
