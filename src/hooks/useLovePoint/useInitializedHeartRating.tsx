@@ -1,7 +1,6 @@
 import { useFetch } from 'usehooks-ts';
 import useHeartRating, { ValidNumber } from '../../components/HeartRating/useHeartRating';
-
-const baseURL = 'https://ryouomoichecker.yt8492.com/api';
+import { baseURL } from '../../env';
 
 type UseInitializedHeartRating = (id: string) => {
   error: Error | undefined,

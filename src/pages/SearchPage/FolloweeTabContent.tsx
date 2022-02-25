@@ -1,6 +1,6 @@
 import React from 'react';
 import PopupUserList, { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
-import { baseURLmain } from '../../env';
+import { baseURL } from '../../env';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 
 const FolloweeTabContent: React.VFC = () => {
@@ -9,7 +9,7 @@ const FolloweeTabContent: React.VFC = () => {
     displayName: string
     imageUrl: string
     screenName: string
-  }[]>(`${baseURLmain}/friends/followee`);
+  }[]>(`${baseURL}/friends/followee`);
 
   if (data === undefined) {
     return (
