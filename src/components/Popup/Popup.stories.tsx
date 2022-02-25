@@ -2,7 +2,9 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../common.css';
 import UserCard from '../../pages/SearchPage/UserCard';
-import usePopup from './usePopup';
+import useOpen from '../../hooks/useOpen';
+import Popup from './Popup';
+import useHeartRating from '../../hooks/useHeartRating';
 
 type UsePopupTestProps = {
   displayName: string,
@@ -13,30 +15,35 @@ type UsePopupTestProps = {
 };
 
 const UsePopupTest: React.VFC<UsePopupTestProps> = ({
-  displayName, imageUrl, screenName, id, mode,
+  displayName, imageUrl, screenName, id,
 }) => {
-  const {
-    isOpen,
-    selectedCount,
-    PopupTrigger,
-    Popup,
-  } = usePopup(imageUrl, displayName, screenName, id, mode);
-
+  const { isOpen, open, close } = useOpen();
+  const { rating, setRating } = useHeartRating();
   return (
     <>
-      <PopupTrigger>
+      <button type="button" onClick={open}>
         <UserCard
           displayName={displayName}
           imageUrl={imageUrl}
           screenName={screenName}
         />
-      </PopupTrigger>
+      </button>
 
       <div className="bg_primary">
-        <Popup />
+        <Popup
+          isOpen={isOpen}
+          primaryAction={close}
+          setHeartRating={setRating}
+          heartRating={rating}
+          user={{
+            displayName, imageUrl, screenName, id,
+          }}
+          cancelAction={close}
+          deleteAction={close}
+        />
       </div>
 
-      {selectedCount}
+      {rating}
       {isOpen}
     </>
   );
@@ -65,7 +72,6 @@ AddMode.args = {
   imageUrl: 'https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg',
   screenName: 'Aizu Taro',
   id: '972404402425245697',
-  mode: 'Add',
 };
 
 export const EditMode = Template.bind({});
@@ -74,5 +80,4 @@ EditMode.args = {
   imageUrl: 'https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg',
   screenName: 'Aizu Taro',
   id: '972404402425245697',
-  mode: 'Edit',
 };
