@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useOpen from '../../hooks/useOpen';
 import useHeartRating from '../../hooks/useHeartRating';
@@ -22,6 +22,10 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
     displayName: 'dummyDisplayName',
   });
 
+  useEffect(() => {
+    users.forEach((user) => setWhichUser(user));
+  }, [users]);
+
   const { rating, setRating, clearRating } = useHeartRating();
 
   const genOnCardClick = (user: User) => (): void => {
@@ -39,7 +43,10 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
   const primaryAction = async (): Promise<void> => {
     const data = await fetchWithAuth<{
       match_success: boolean
-    }>(`${baseURL}/friends/${rating}`);
+    }>(`${baseURL}/friends/${whichUser.id}`, {
+      method: 'POST',
+      body: JSON.stringify({ lovePoint: rating }),
+    });
 
     if (data.match_success) {
       localStorage.setItem('matchSuccess', 'true');
@@ -56,7 +63,10 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
   };
 
   const deleteAction = async (): Promise<void> => {
-    await fetchWithAuth(`${baseURL}/me/lovers/${whichUser.id}`);
+    console.log('target: ', whichUser);
+    fetchWithAuth(`${baseURL}/me/lovers/${whichUser.id}`, {
+      method: 'DELETE',
+    });
     close();
     clearRating();
   };
