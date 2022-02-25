@@ -6,6 +6,9 @@ import './welcomePage.css';
 import WithBackground from '../../components/WithBackground/WithBackground';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import useQuery from '../../hooks/useQuery';
+import useFetchWithAuth from '../../hooks/useFetchWithAuth';
+import { baseURLmain } from '../../env';
+import { User } from '../SearchPage/UserCard';
 
 const useStoreToken = (): void => {
   const query = useQuery();
@@ -15,9 +18,26 @@ const useStoreToken = (): void => {
   }
 };
 
+const useGetUserInfo = (): User | undefined => {
+  const { data, error } = useFetchWithAuth<User>(`${baseURLmain}/me`);
+
+  if (error) {
+    // eslint-disable-next-line
+    console.error('error in useGetUserInfo');
+  }
+
+  return data;
+};
+
 const Page1: React.VFC = () => {
   useStoreToken();
+  const data = useGetUserInfo();
   const navigate = useNavigate();
+
+  if (!data) return null;
+
+  console.log(data);
+
   return (
     <div className="welcomePage">
       <div className="">
@@ -26,11 +46,11 @@ const Page1: React.VFC = () => {
             <div className="welcomePage__icon">
               <UserIcon
                 size="lg"
-                image="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg"
+                image={data.imageUrl}
               />
             </div>
-            <p className="welcomePage__name">会津太郎</p>
-            <p className="welcomePage__id">@aizu_taro</p>
+            <p className="welcomePage__name">{data.displayName}</p>
+            <p className="welcomePage__id">{`@${data.screenName}`}</p>
           </>
         </WithBackground>
       </div>
