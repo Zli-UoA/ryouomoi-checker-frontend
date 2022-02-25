@@ -1,4 +1,5 @@
 import React from 'react';
+import { ReactComponent as FilledHeartIconSvg24px } from './svgIcons/FilledHeartIcon24px.svg';
 import { ReactComponent as FilledHeartIconSvg } from './svgIcons/FilledHeartIcon.svg';
 import { ReactComponent as BrokenHeartIconSvg } from './svgIcons/BrokenHeartIcon.svg';
 import { ReactComponent as EmptyHeartIconSvg } from './svgIcons/EmptyHeartIcon.svg';
@@ -11,6 +12,10 @@ import { ReactComponent as EnabledCheckIconSvg } from './svgIcons/EnabledCheckIc
 import { ReactComponent as DisabledCheckIconSvg } from './svgIcons/DisabledCheckIcon.svg';
 import { ReactComponent as SendIconSvg } from './svgIcons/SendIcon.svg';
 import { ReactComponent as HammerHeartIconSvg } from './svgIcons/HammerHeartIcon.svg';
+
+export const HeartIcon24: React.VFC = () => (
+  <FilledHeartIconSvg24px />
+);
 
 type HeartIconProps = {
   mode?: 'broken' | 'filled' | 'empty';

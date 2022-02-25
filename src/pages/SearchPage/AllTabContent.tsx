@@ -1,6 +1,7 @@
 import React from 'react';
 import User from '../../types/User';
 import UserList from './UserList';
+import './searchPage.css';
 
 const AllTabContent: React.VFC<{ data: User[] }> = ({ data }) => {
   if (data.length === 0) {
