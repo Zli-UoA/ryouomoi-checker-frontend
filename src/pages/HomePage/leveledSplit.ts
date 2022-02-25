@@ -1,31 +1,13 @@
-import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
-import ValidNumber from '../../types/ValidNumber';
+import User from '../../types/User';
 
-export type LoverType = {
-  user: {
-    id: number,
-    displayName: string,
-    imageUrl: string,
-    screenName: string,
-  },
-  lovePoint: ValidNumber,
-};
+// Required はオプショナルプロパティを必須にした方を返します
 
-const leveledSplit = (lovers: LoverType[]): UserCardsInfo[] => {
-  const leveledLovers: UserCardsInfo[] = [[], [], [], [], []];
+const leveledSplit = (users: Required<User>[]): Required<User>[][] => {
+  const leveledLovers: Required<User>[][] = [[], [], [], [], []];
 
-  lovers.forEach(({
-    user: {
-      id, displayName, imageUrl, screenName,
-    }, lovePoint,
-  }) => {
+  users.forEach(({ lovePoint, ...user }) => {
     leveledLovers[lovePoint - 1].push({
-      user: {
-        displayName,
-        imageUrl,
-        screenName,
-      },
-      id: String(id),
+      lovePoint, ...user,
     });
   });
 

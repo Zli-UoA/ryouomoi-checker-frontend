@@ -5,13 +5,13 @@ import './homePage.css';
 import Header from '../../components/Header/Header';
 import AddButton from '../../components/AddButton/AddButton';
 import UserIcon from '../../components/UserIcon/UserIcon';
-import leveledSplit, { LoverType } from './leveledSplit';
-import LeveledPopupUserList from '../../components/LeveledPopupUserList/LeveledPopupUserList';
-import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
+import leveledSplit from './leveledSplit';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURL } from '../../env';
 import useGetUserInfo from '../../hooks/useGetUserInfo';
-import ValidNumber from '../../types/ValidNumber';
+import Lover from '../../types/Lover';
+import PopupUserList from '../../components/PopupUserList/PopupUserList';
+import User from '../../types/User';
 
 const HomePageHeader: React.VFC<{ imageUrl: string }> = ({
   imageUrl,
@@ -34,30 +34,27 @@ const HomePageHeader: React.VFC<{ imageUrl: string }> = ({
   </Header>
 );
 
-const toValidNumber = (n: number): ValidNumber => {
-  if (n === 1 || n === 2 || n === 3 || n === 4 || n === 5) {
-    return n;
-  }
-  return /* とりあえず 1 */ 1;
-};
+const parseData = (res: Lover[]): Required<User>[] => res.map(({ user, lovePoint }) => ({
+  lovePoint, ...user,
+}));
 
 const HomePageContent: React.VFC = () => {
-  const { data, error } = useFetchWithAuth<LoverType[]>(`${baseURL}/me/lovers`);
+  const { data, error } = useFetchWithAuth<Lover[]>(`${baseURL}/me/lovers`);
 
   if (error) {
     console.error(error);
   }
 
   if (data && data.length !== 0) {
-    const leveledLovers: UserCardsInfo[] = leveledSplit(data);
+    const leveledLovers: User[][] = leveledSplit(parseData(data));
     leveledLovers.reverse();
 
     return (
       <div className="homePage__main">
-        {leveledLovers.map((userCardsInfo, idx) => {
-          if (userCardsInfo.length === 0) return null;
+        {leveledLovers.map((leveledUsers) => {
+          if (leveledUsers.length === 0) return null;
           return (
-            <LeveledPopupUserList level={toValidNumber(5 - idx)} userCardsInfo={userCardsInfo} />
+            <PopupUserList users={leveledUsers} />
           );
         })}
       </div>
