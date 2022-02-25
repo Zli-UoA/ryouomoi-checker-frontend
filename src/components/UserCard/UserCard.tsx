@@ -12,7 +12,7 @@ const trimming = (tooLongName: string, limit: number): string => {
   return res;
 };
 
-const UserCard: React.VFC<User> = ({
+const UserCard: React.VFC<Pick<User, 'displayName' | 'imageUrl' | 'screenName'>> = ({
   displayName, imageUrl, screenName,
 }) => (
   <div className="userCard">
