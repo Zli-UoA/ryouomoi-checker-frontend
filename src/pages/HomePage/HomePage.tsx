@@ -42,7 +42,7 @@ const toValidNumber = (n: number): ValidNumber => {
 };
 
 const HomePageContent: React.VFC = () => {
-  const { data, error } = useFetchWithAuth<LoverType[]>(`${baseURLmain}/me/lovers/`);
+  const { data, error } = useFetchWithAuth<LoverType[]>(`${baseURLmain}/me/lovers`);
 
   if (error) {
     console.error(error);
