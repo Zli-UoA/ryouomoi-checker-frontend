@@ -34,7 +34,6 @@ const FollowerTabContent: React.VFC = () => {
         screenName,
       },
       id,
-      mode: 'Add',
     };
   }
 

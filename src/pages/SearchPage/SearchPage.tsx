@@ -54,7 +54,6 @@ const useOnEnter: UseOnEnter = () => {
           screenName,
         },
         id,
-        mode: 'Add',
       };
     }
 

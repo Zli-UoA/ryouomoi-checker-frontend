@@ -8,10 +8,10 @@ import UserIcon from '../../components/UserIcon/UserIcon';
 import leveledSplit, { LoverType } from './leveledSplit';
 import LeveledPopupUserList from '../../components/LeveledPopupUserList/LeveledPopupUserList';
 import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
-import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURL } from '../../env';
 import useGetUserInfo from '../../hooks/useGetUserInfo';
+import ValidNumber from '../../types/ValidNumber';
 
 const HomePageHeader: React.VFC<{ imageUrl: string }> = ({
   imageUrl,

@@ -34,7 +34,6 @@ const FolloweeTabContent: React.VFC = () => {
         screenName,
       },
       id,
-      mode: 'Add',
     };
   }
 

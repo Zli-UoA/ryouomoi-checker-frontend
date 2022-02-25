@@ -1,5 +1,5 @@
 import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
-import { ValidNumber } from '../../components/HeartRating/useHeartRating';
+import ValidNumber from '../../types/ValidNumber';
 
 export type LoverType = {
   user: {
@@ -26,7 +26,6 @@ const leveledSplit = (lovers: LoverType[]): UserCardsInfo[] => {
         screenName,
       },
       id: String(id),
-      mode: 'Edit',
     });
   });
 
