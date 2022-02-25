@@ -6,9 +6,7 @@ import './welcomePage.css';
 import WithBackground from '../../components/WithBackground/WithBackground';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import useQuery from '../../hooks/useQuery';
-import useFetchWithAuth from '../../hooks/useFetchWithAuth';
-import { baseURLmain } from '../../env';
-import { User } from '../SearchPage/UserCard';
+import useGetUserInfo from '../../hooks/useGetUserInfo';
 
 const useStoreToken = (): void => {
   const query = useQuery();
@@ -16,17 +14,6 @@ const useStoreToken = (): void => {
   if (token) {
     localStorage.setItem('ryouomoi-checker-token', token);
   }
-};
-
-const useGetUserInfo = (): User | undefined => {
-  const { data, error } = useFetchWithAuth<User>(`${baseURLmain}/me`);
-
-  if (error) {
-    // eslint-disable-next-line
-    console.error('error in useGetUserInfo');
-  }
-
-  return data;
 };
 
 const Page1: React.VFC = () => {
