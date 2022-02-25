@@ -9,7 +9,7 @@ const FolloweeTabContent: React.VFC = () => {
     displayName: string
     imageUrl: string
     screenName: string
-  }[]>(baseURLmain);
+  }[]>(`${baseURLmain}/friends/followee`);
 
   if (data === undefined) {
     return (

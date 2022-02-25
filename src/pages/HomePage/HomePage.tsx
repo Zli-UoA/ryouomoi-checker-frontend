@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../common.css';
 import './homePage.css';
-import { useFetch } from 'usehooks-ts';
 import Header from '../../components/Header/Header';
 import AddButton from '../../components/AddButton/AddButton';
 import UserIcon from '../../components/UserIcon/UserIcon';
@@ -10,6 +9,8 @@ import leveledSplit, { LoverType } from './leveledSplit';
 import LeveledPopupUserList from '../../components/LeveledPopupUserList/LeveledPopupUserList';
 import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
+import useFetchWithAuth from '../../hooks/useFetchWithAuth';
+import { baseURLmain } from '../../env';
 
 const HomePageHeader: React.VFC = () => (
   <Header>
@@ -38,12 +39,7 @@ const toValidNumber = (n: number): ValidNumber => {
 };
 
 const HomePageContent: React.VFC = () => {
-  const baseURL = 'http://localhost:8080';
-  const token = localStorage.getItem('ryouomoi-checker-token');
-  const { data, error } = useFetch<LoverType[]>(`${baseURL}/me/lovers/`, {
-    method: 'GET',
-    headers: new Headers({ Authorization: `Bearer ${token}` }),
-  });
+  const { data, error } = useFetchWithAuth<LoverType[]>(`${baseURLmain}/me/lovers/`);
 
   if (error) {
     console.error(error);

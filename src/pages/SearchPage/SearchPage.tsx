@@ -10,6 +10,8 @@ import FolloweeTabContent from './FolloweeTabContent';
 import FollowerTabContent from './FollowerTabContent';
 import AllTabContent from './AllTabContent';
 import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
+import fetchWithAuth from '../../lib/fetchWithAuth';
+import { baseURLmain } from '../../env';
 
 type UseSearchPageHeader = (Tab: React.VFC, onEnter: OnEnter) => ({
   SearchPageHeader: React.VFC;
@@ -24,23 +26,17 @@ const useOnEnter: UseOnEnter = () => {
   const [result, setResult] = useState<UserCardsInfo>([]);
 
   const onEnter: OnEnter = async (inputRef) => {
-    const token = localStorage.getItem('ryouomoi-checker-token');
-    if (inputRef.current?.value === '') {
-      return;
-    }
+    if (inputRef.current?.value === '') return;
 
     const query = inputRef.current?.value;
-    const res = await fetch(`https://ryouomoichecker.yt8492.com/api/friends/search?query=${query}`, {
-      headers: new Headers({ Authorization: `Bearer ${token}` }),
-    });
-
     type DataType = {
       id: string,
       displayName: string,
       imageUrl: string,
       screenName: string,
     };
-    const data: DataType[] = await res.json();
+
+    const data: DataType[] = await fetchWithAuth<DataType[]>(`${baseURLmain}/friends/search?query=${query}`);
     const userCardsInfo: UserCardsInfo = new Array(data.length);
 
     for (let i = 0; i < data.length; i += 1) {
