@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ValidNumber } from '../components/HeartRating/HeartRating';
+import ValidNumber from '../types/ValidNumber';
 
 type UseHeartRating = () => {
   rating: ValidNumber,
