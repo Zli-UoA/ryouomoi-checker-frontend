@@ -26,6 +26,11 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
 
   const genOnCardClick = (user: User) => (): void => {
     setWhichUser(user);
+
+    if (whichUser.lovePoint) {
+      setRating(whichUser.lovePoint);
+    }
+
     open();
   };
 
