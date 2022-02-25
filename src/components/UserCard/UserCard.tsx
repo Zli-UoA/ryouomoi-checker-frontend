@@ -1,12 +1,7 @@
 import React from 'react';
-import UserIcon from '../../components/UserIcon/UserIcon';
+import UserIcon from '../UserIcon/UserIcon';
 import './userCard.css';
-
-export type User = {
-  displayName: string,
-  imageUrl: string,
-  screenName: string
-};
+import User from '../../types/User';
 
 const trimming = (tooLongName: string, limit: number): string => {
   let res = tooLongName;
@@ -17,7 +12,7 @@ const trimming = (tooLongName: string, limit: number): string => {
   return res;
 };
 
-const UserCard: React.VFC<User> = ({
+const UserCard: React.VFC<Pick<User, 'displayName' | 'imageUrl' | 'screenName'>> = ({
   displayName, imageUrl, screenName,
 }) => (
   <div className="userCard">

@@ -1,7 +1,9 @@
 type User = {
+  imageUrl: string,
   displayName: string,
   screenName: string,
-  imageUrl: string,
+  id: string,
+  lovePoint?: number,
 };
 
 export default User;
