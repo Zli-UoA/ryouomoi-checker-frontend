@@ -13,9 +13,11 @@ const useFetchWithAuth = <T>(
 ): {
     data: T | undefined;
     error: Error | undefined;
+    statusText: string | undefined;
   } => {
-  const [data, setResponse] = useState<T | undefined>(undefined);
+  const [data, setData] = useState<T | undefined>(undefined);
   const [error, setError] = useState<Error | undefined>(undefined);
+  const [statusText, setStatusText] = useState<string | undefined>(undefined);
   const token = getToken();
 
   useEffect(() => {
@@ -30,7 +32,8 @@ const useFetchWithAuth = <T>(
 
         const json: T = JSONbig({ storeAsString: true }).parse(text);
 
-        setResponse(json);
+        setData(json);
+        setStatusText(res.statusText);
       } catch (e) {
         console.error('error in useFetchWithAuth', e);
         setError(Error('error in useFetchWithAuth'));
@@ -38,9 +41,9 @@ const useFetchWithAuth = <T>(
     };
 
     doFetch();
-  }, [setError, setResponse, url, token]);
+  }, [setError, setData, url, token]);
 
-  return { data, error };
+  return { data, error, statusText };
 };
 
 export default useFetchWithAuth;
