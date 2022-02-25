@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import DialogButton from './DialogButton';
 import './useDialog.css';
 import '../../common.css';
 import { baseURL } from '../../env';
 import fetchWithAuth from '../../lib/fetchWithAuth';
-import { Link } from 'react-router-dom';
 
 type VoidFunction = () => void;
 type ReasonId = 1 | 2 | 3 | 4 | 5 | 6;
