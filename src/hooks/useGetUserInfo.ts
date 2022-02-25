@@ -1,9 +1,9 @@
 import useFetchWithAuth from './useFetchWithAuth';
 import User from '../types/User';
-import { baseURLmain } from '../env';
+import { baseURL } from '../env';
 
 const useGetUserInfo = (): User | undefined => {
-  const { data, error } = useFetchWithAuth<User>(`${baseURLmain}/me`);
+  const { data, error } = useFetchWithAuth<User>(`${baseURL}/me`);
 
   if (error) {
     // eslint-disable-next-line

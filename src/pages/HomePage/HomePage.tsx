@@ -10,7 +10,7 @@ import LeveledPopupUserList from '../../components/LeveledPopupUserList/LeveledP
 import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
-import { baseURLmain } from '../../env';
+import { baseURL } from '../../env';
 import useGetUserInfo from '../../hooks/useGetUserInfo';
 
 const HomePageHeader: React.VFC<{ imageUrl: string }> = ({
@@ -42,7 +42,7 @@ const toValidNumber = (n: number): ValidNumber => {
 };
 
 const HomePageContent: React.VFC = () => {
-  const { data, error } = useFetchWithAuth<LoverType[]>(`${baseURLmain}/me/lovers`);
+  const { data, error } = useFetchWithAuth<LoverType[]>(`${baseURL}/me/lovers`);
 
   if (error) {
     console.error(error);
@@ -53,11 +53,11 @@ const HomePageContent: React.VFC = () => {
     leveledLovers.reverse();
 
     return (
-      <div>
+      <div className="homePage__main">
         {leveledLovers.map((userCardsInfo, idx) => {
           if (userCardsInfo.length === 0) return null;
           return (
-            <LeveledPopupUserList level={toValidNumber(idx + 1)} userCardsInfo={userCardsInfo} />
+            <LeveledPopupUserList level={toValidNumber(5 - idx)} userCardsInfo={userCardsInfo} />
           );
         })}
       </div>
