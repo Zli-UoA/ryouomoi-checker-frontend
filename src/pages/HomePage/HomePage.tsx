@@ -12,6 +12,7 @@ import useGetUserInfo from '../../hooks/useGetUserInfo';
 import Lover from '../../types/Lover';
 import PopupUserList from '../../components/PopupUserList/PopupUserList';
 import User from '../../types/User';
+import redirect from '../../lib/redirect';
 
 const HomePageHeader: React.VFC<{ imageUrl: string }> = ({
   imageUrl,
@@ -43,6 +44,11 @@ const HomePageContent: React.VFC = () => {
 
   if (error) {
     console.error(error);
+  }
+
+  const { statusCode } = useFetchWithAuth(`${baseURL}/me/lover`);
+  if (statusCode === 200) {
+    redirect('/celebration');
   }
 
   if (data && data.length !== 0) {
