@@ -4,6 +4,7 @@ import './useDialog.css';
 import '../../common.css';
 import { baseURL } from '../../env';
 import fetchWithAuth from '../../lib/fetchWithAuth';
+import redirect from '../../lib/redirect';
 
 type VoidFunction = () => void;
 type ReasonId = 1 | 2 | 3 | 4 | 5 | 6;
@@ -87,7 +88,14 @@ const useDialog: UseDialog = () => {
           <div className="mg_top-48 mg_bottom-24 mg_left-24 mg_right-24">
             <div className="dialog__buttonGroup">
               <DialogButton label="いいえ" onClick={closeDialog} />
-              <DialogButton label="はい" onClick={() => { deleteLover(reasonId, arrowShare); closeDialog(); }} />
+              <DialogButton
+                label="はい"
+                onClick={() => {
+                  deleteLover(reasonId, arrowShare);
+                  closeDialog();
+                  redirect('/power-word');
+                }}
+              />
             </div>
           </div>
         </div>
