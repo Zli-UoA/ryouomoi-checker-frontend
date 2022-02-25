@@ -1,14 +1,7 @@
-import { useFetch } from 'usehooks-ts';
-import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import { baseURL } from '../../env';
-
-type ToValidNumber = (n: number) => ValidNumber;
-const toValidNumber: ToValidNumber = (n: number) => {
-  if (n === 1 || n === 2 || n === 3 || n === 4 || n === 5) {
-    return n;
-  }
-  return 1;
-};
+import toValidNumber from '../../lib/toValidNumber';
+import ValidNumber from '../../types/ValidNumber';
+import useFetchWithAuth from '../useFetchWithAuth';
 
 type UseGetLovePoint = (id: string) => {
   lovePoint: ValidNumber,
@@ -22,11 +15,7 @@ const useGetLovePoint: UseGetLovePoint = (id: string) => {
 
   console.log(id);
 
-  const token = localStorage.getItem('ryouomoi-checker-token');
-
-  const { data, error } = useFetch<DataType>(`${baseURL}/me/lovers/${id}`, {
-    headers: new Headers({ Authorization: `Bearer ${token}` }),
-  });
+  const { data, error } = useFetchWithAuth<DataType>(`${baseURL}/me/lovers/${id}`);
 
   let lovePoint: ValidNumber = 1;
   if (data !== undefined) {
