@@ -71,7 +71,9 @@ const usePopup: UsePopup = (imageUrl, displayName, screenName, id, mode) => {
           <div className="mg_top-8">
             <div className="popup__commonFont">
               <div className="popup__screenName">
-                {screenName}
+                <a href={`https://twitter.com/${screenName}`} target="_blank" rel="noreferrer">
+                  {screenName}
+                </a>
               </div>
             </div>
           </div>
