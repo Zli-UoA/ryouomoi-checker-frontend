@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import '../../common.css';
 import './CelebrationPage.css';
 import WithBackground from '../../components/WithBackground/WithBackground';
 import UserIcon from '../../components/UserIcon/UserIcon';
+import HammerHeartButton from './HammerHeartButton';
 
 const CelebrationPage: React.VFC = () => (
   <div className="celebrationPage">
+    <Link to="/hakyoku">
+      <HammerHeartButton />
+    </Link>
     <div className="">
       <WithBackground>
         <>
