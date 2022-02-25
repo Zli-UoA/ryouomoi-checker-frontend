@@ -1,33 +1,39 @@
 import React from 'react';
 import UserCard, { User } from '../../pages/SearchPage/UserCard';
-import usePopup from '../../hooks/usePopup/usePopup';
+import useOpen from '../../hooks/useOpen';
+import useHeartRating from '../../hooks/useHeartRating';
+import Popup from '../Popup/Popup';
 
 type PopupUserCardProps = {
   user: User,
   id: string,
-  mode: 'Add' | 'Edit',
 };
 
-const PopupUserCard: React.VFC<PopupUserCardProps> = ({ user, id, mode }) => {
-  const {
-    displayName,
-    imageUrl,
-    screenName,
-  } = user;
-
-  const {
-    PopupTrigger,
-    Popup,
-  } = usePopup(imageUrl, displayName, screenName, id, mode);
+const PopupUserCard: React.VFC<PopupUserCardProps> = ({ user, id }) => {
+  const { isOpen, close, open } = useOpen();
+  const { rating, setRating, clearRating } = useHeartRating();
 
   return (
     <>
       <div className="userCard">
-        <PopupTrigger>
-          <UserCard displayName={displayName} imageUrl={imageUrl} screenName={screenName} />
-        </PopupTrigger>
+        <button type="button" onClick={open}>
+          <UserCard
+            displayName={user.displayName}
+            imageUrl={user.imageUrl}
+            screenName={user.screenName}
+          />
+        </button>
       </div>
-      <Popup />
+      <Popup
+        user={{ id, ...user }}
+        isOpen={isOpen}
+        heartRating={rating}
+        setHeartRating={setRating}
+        primaryAction={() => {
+          clearRating();
+          close();
+        }}
+      />
     </>
   );
 };
