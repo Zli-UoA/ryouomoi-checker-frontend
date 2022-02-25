@@ -7,7 +7,7 @@ type VoidFunction = () => void;
 type ReasonId = 1 | 2 | 3 | 4 | 5 | 6;
 
 type DialogProps = {
-  days: number,
+  days: number | undefined,
   reasonId: ReasonId,
   arrowShare: boolean,
 };
@@ -38,7 +38,8 @@ const useDialog: UseDialog = () => {
     });
   };
 
-  const makeMessage = (days: number): string => {
+  const makeMessage = (days: number | undefined): string => {
+    if (days === undefined) return '';
     if (days < 7) {
       return 'え？何かの間違いだよね？';
     }
