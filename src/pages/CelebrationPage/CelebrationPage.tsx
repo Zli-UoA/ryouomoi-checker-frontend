@@ -9,6 +9,7 @@ import HammerHeartButton from './HammerHeartButton';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURL } from '../../env';
 import redirect from '../../lib/redirect';
+import User from '../../types/User';
 
 const StatefulButton: React.VFC = () => {
   type DataType = {
@@ -25,10 +26,13 @@ const StatefulButton: React.VFC = () => {
 };
 
 const CelebrationPage: React.VFC = () => {
-  const { statusCode } = useFetchWithAuth(`${baseURL}/me/lover`);
+  const { data, statusCode } = useFetchWithAuth<User>(`${baseURL}/me/lover`);
+
   if (statusCode === 404) {
     redirect('/lost-partner');
   }
+
+  if (data === undefined) return null;
 
   return (
     <div className="celebrationPage">
@@ -41,11 +45,11 @@ const CelebrationPage: React.VFC = () => {
             <div className="celebrationPage__icon">
               <UserIcon
                 size="lg"
-                image="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg"
+                image={data.imageUrl}
               />
             </div>
-            <p className="celebrationPage__name">会津太郎</p>
-            <p className="celebrationPage__id">@aizu_taro</p>
+            <p className="celebrationPage__name">{data.displayName}</p>
+            <p className="celebrationPage__id">{data.screenName}</p>
           </>
         </WithBackground>
       </div>
