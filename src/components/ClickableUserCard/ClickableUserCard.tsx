@@ -1,5 +1,5 @@
 import React from 'react';
-import UserCard from '../../pages/SearchPage/UserCard';
+import UserCard from '../UserCard/UserCard';
 import User from '../../types/User';
 import './clickableUserCard.css';
 
