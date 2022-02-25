@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import DialogButton from './DialogButton';
 import './useDialog.css';
 import '../../common.css';
@@ -87,7 +88,15 @@ const useDialog: UseDialog = () => {
           <div className="mg_top-48 mg_bottom-24 mg_left-24 mg_right-24">
             <div className="dialog__buttonGroup">
               <DialogButton label="いいえ" onClick={closeDialog} />
-              <DialogButton label="はい" onClick={() => { deleteLover(reasonId, arrowShare); closeDialog(); }} />
+              <Link to="/power-word">
+                <DialogButton
+                  label="はい"
+                  onClick={() => {
+                    deleteLover(reasonId, arrowShare);
+                    closeDialog();
+                  }}
+                />
+              </Link>
             </div>
           </div>
         </div>
