@@ -11,8 +11,11 @@ import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURLmain } from '../../env';
+import useGetUserInfo from '../../hooks/useGetUserInfo';
 
-const HomePageHeader: React.VFC = () => (
+const HomePageHeader: React.VFC<{ imageUrl: string }> = ({
+  imageUrl,
+}) => (
   <Header>
     <div className="homePage__header">
       <Link to="/search">
@@ -25,7 +28,7 @@ const HomePageHeader: React.VFC = () => (
       </div>
 
       <div>
-        <UserIcon image="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg" size="xs" />
+        <UserIcon image={imageUrl} size="xs" />
       </div>
     </div>
   </Header>
@@ -84,11 +87,15 @@ const HomePageContent: React.VFC = () => {
   );
 };
 
-const HomePage: React.VFC = () => (
-  <>
-    <HomePageHeader />
-    <HomePageContent />
-  </>
-);
+const HomePage: React.VFC = () => {
+  const me = useGetUserInfo();
+
+  return (
+    <>
+      <HomePageHeader imageUrl={me?.imageUrl ?? ''} />
+      <HomePageContent />
+    </>
+  );
+};
 
 export default HomePage;
