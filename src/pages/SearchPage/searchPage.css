@@ -12,15 +12,16 @@
 .searchPage__main {
   width: 100%;
   padding-top: 144px;
+}
+
+.searchPage__main--user_null {
+  padding-top: 56px;
   font-family: "Noto Sans JP", sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: bold;
   line-height: 32px;
+  color: #808080;
   text-align: center;
   letter-spacing: 0.05em;
-}
-
-.searchPage__main--user_null {
-  padding-top: 56px;
 }
