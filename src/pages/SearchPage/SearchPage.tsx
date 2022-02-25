@@ -10,6 +10,8 @@ import FolloweeTabContent from './FolloweeTabContent';
 import FollowerTabContent from './FollowerTabContent';
 import AllTabContent from './AllTabContent';
 import User from '../../types/User';
+import fetchWithAuth from '../../lib/fetchWithAuth';
+import { baseURLmain } from '../../env';
 
 type UseSearchPageHeader = (Tab: React.VFC, onEnter: OnEnter) => ({
   SearchPageHeader: React.VFC;
@@ -24,20 +26,14 @@ const useOnEnter: UseOnEnter = () => {
   const [result, setResult] = useState<User[]>([]);
 
   const onEnter: OnEnter = async (inputRef) => {
-    const token = localStorage.getItem('ryouomoi-checker-token');
-    if (inputRef.current?.value === '') {
-      return;
-    }
+    if (inputRef.current?.value === '') return;
 
     const query = inputRef.current?.value;
-    const res = await fetch(
-      `https://ryouomoichecker.yt8492.com/api/friends/search?query=${query}`,
-      {
-        headers: new Headers({ Authorization: `Bearer ${token}` }),
-      },
+    const res = await fetchWithAuth<User[]>(
+      `${baseURLmain}/friends/search?query=${query}`,
     );
 
-    setResult(await res.json());
+    setResult(res);
   };
 
   return {
