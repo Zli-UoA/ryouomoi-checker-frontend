@@ -28,7 +28,16 @@ const useDialog: UseDialog = () => {
     setOpen(false);
   };
 
-  const Dialog: React.VFC<DialogProps> = () => {
+  const deleteLover = (reasonId: ReasonId, arrowShare: boolean): void => {
+    const token = localStorage.getItem('ryouomoi-checker-token');
+    fetch('http://localhost:8080/me/lover', {
+      method: 'DELETE',
+      body: JSON.stringify({ reasonId, arrowShare }),
+      headers: new Headers({ Authorization: `Bearer ${token}` }),
+    });
+  };
+
+  const Dialog: React.VFC<DialogProps> = ({ reasonId, arrowShare }) => {
     if (!isOpen) return null;
 
     return (
@@ -42,10 +51,6 @@ const useDialog: UseDialog = () => {
                   破局
                 </span>
                 したんですか？
-
-                <br />
-
-                たった months ヶ月で？
               </p>
             </div>
           </div>
@@ -63,7 +68,7 @@ const useDialog: UseDialog = () => {
               <button type="button" onClick={closeDialog}>
                 いいえ
               </button>
-              <button type="button" onClick={closeDialog}>
+              <button type="button" onClick={() => { deleteLover(reasonId, arrowShare); closeDialog(); }}>
                 はい
               </button>
             </div>
