@@ -22,7 +22,6 @@ AddCards.args = {
         screenName: 'yes_tanikawa',
       },
       id: '972404402425245697',
-      mode: 'Add',
     },
     {
       user: {
@@ -31,7 +30,6 @@ AddCards.args = {
         screenName: 'yes_tanikawa2',
       },
       id: '972404402425245697',
-      mode: 'Add',
     },
   ],
 };
@@ -46,7 +44,6 @@ EditCards.args = {
         screenName: 'yes_tanikawa',
       },
       id: '972404402425245697',
-      mode: 'Edit',
     },
     {
       user: {
@@ -55,7 +52,6 @@ EditCards.args = {
         screenName: 'yes_tanikawa2',
       },
       id: '972404402425245697',
-      mode: 'Edit',
     },
     {
       user: {
@@ -64,7 +60,6 @@ EditCards.args = {
         screenName: 'yes_tanikawa3',
       },
       id: '972404402425245697',
-      mode: 'Edit',
     },
   ],
 };
