@@ -3,6 +3,8 @@ import {
   Link, Route, Routes, useLocation, useNavigate,
 } from 'react-router-dom';
 import './App.css';
+import { baseURLmain } from './env';
+import useFetchWithAuth from './hooks/useFetchWithAuth';
 import useQuery from './hooks/useQuery';
 import CelebrationPage from './pages/CelebrationPage/CelebrationPage';
 import HakyokuPage from './pages/HakyokuProcessPage/HakyokuProcessPage';
@@ -14,32 +16,40 @@ import TalkRoomPage from './pages/TalkRoomPage/TalkRoomPage';
 import TutorialPage from './pages/TutorialPage/TutorialPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
+const useCheckLover = (): void => {
+  const { data, error } = useFetchWithAuth(`${baseURLmain}/me/lover`);
+
+  console.log('lover', data, error);
+};
+
 const useNavigateToEachPage = (): void => {
   const navigate = useNavigate();
-  const query = useQuery();
-  const token = query.get('auth_token');
+  const queryToken = useQuery().get('auth_token');
+  const localToken = localStorage.getItem('ryouomoi-checker-token');
   const { pathname } = useLocation();
 
   useEffect(() => {
-    console.log('ahoy');
-    if (token) {
-      console.log('lets go');
-      navigate(`/welcome?auth_token=${token}`);
+    if (queryToken) {
+      navigate(`/welcome?auth_token=${queryToken}`);
       return;
     }
 
-    if (localStorage.getItem('ryouomoi-checker-token')) {
-      navigate('/home');
-      return;
+    if (localToken) {
+      if (pathname === '/tutorial') {
+        navigate('/home');
+        return;
+      }
     }
-    if (pathname !== '/tutorial/page2') {
+
+    if (!localToken && pathname !== '/tutorial/page2') {
       navigate('/tutorial');
     }
-  }, [navigate, token, pathname]);
+  }, [localToken, navigate, queryToken, pathname]);
 };
 
 const App: React.VFC = () => {
   useNavigateToEachPage();
+  useCheckLover();
   return (
     <div className="App">
       <nav>
