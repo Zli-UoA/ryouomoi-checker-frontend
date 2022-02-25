@@ -48,11 +48,7 @@ const HomePageContent: React.VFC = () => {
     redirect('/celebration');
   }
 
-  const { data, error } = useFetchWithAuth<LoverType[]>(`${baseURL}/me/lovers`);
-
-  if (error) {
-    console.error(error);
-  }
+  const { data } = useFetchWithAuth<LoverType[]>(`${baseURL}/me/lovers`);
 
   if (data && data.length !== 0) {
     const leveledLovers: UserCardsInfo[] = leveledSplit(data);
