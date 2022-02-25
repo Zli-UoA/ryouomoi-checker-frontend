@@ -1,11 +1,12 @@
 import React from 'react';
 import { useFetch } from 'usehooks-ts';
 import Button from '../components/Button/Button';
+import { baseURL } from '../env';
 
 const UseTwitterLogin: React.VFC = () => {
   const { data, error } = useFetch<{
     loginUrl: string
-  }>('https://ryouomoichecker.yt8492.com/api/twitter/login');
+  }>(`${baseURL}/twitter/login`);
 
   if (data !== undefined) {
     return (
