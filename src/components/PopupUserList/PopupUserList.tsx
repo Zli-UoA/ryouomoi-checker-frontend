@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useOpen from '../../hooks/useOpen';
 import useHeartRating from '../../hooks/useHeartRating';
 import Popup from '../Popup/Popup';
 import ClickableUserCard from '../ClickableUserCard/ClickableUserCard';
 import User from '../../types/User';
+import fetchWithAuth from '../../lib/fetchWithAuth';
+import { baseURL } from '../../env';
 
 type PopupUserListProps = {
   users: User[]
@@ -26,7 +29,18 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
     open();
   };
 
-  const primaryAction = (): void => {
+  const navigate = useNavigate();
+
+  const primaryAction = async (): Promise<void> => {
+    const data = await fetchWithAuth<{
+      match_success: boolean
+    }>(`${baseURL}/friends/${rating}`);
+
+    if (data.match_success) {
+      localStorage.setItem('matchSuccess', 'true');
+      navigate('/celebration');
+    }
+
     close();
     clearRating();
   };
