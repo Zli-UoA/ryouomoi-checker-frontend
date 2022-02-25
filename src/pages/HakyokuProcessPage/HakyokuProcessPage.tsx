@@ -10,7 +10,7 @@ import useShareToggleButton from './useShareToggleButton';
 import Button from '../../components/Button/Button';
 import useDialog from '../../hooks/useDialog/useDialog';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
-import { baseURLmain } from '../../env';
+import { baseURL } from '../../env';
 
 const HakyokuProcessPageHeader: React.VFC = () => (
   <Header>
@@ -37,7 +37,7 @@ const HakhyokuProcessPageContent: React.VFC = () => {
   const { Dialog, openDialog } = useDialog();
   const { data } = useFetchWithAuth<{
     days: number,
-  }>(`${baseURLmain}/me/lover/days`);
+  }>(`${baseURL}/me/lover/days`);
 
   return (
     <>

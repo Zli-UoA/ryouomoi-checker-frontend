@@ -10,7 +10,7 @@ type HeartValueProps = {
 
 const HeartValue: React.VFC<HeartValueProps> = ({ value }) => (
   <div className="heartValue">
-    <div className="heartValue__icon mg_top-24">
+    <div className="heartValue__icon mg_top-24 mg_left-16">
       <HeartIcon24 />
     </div>
 

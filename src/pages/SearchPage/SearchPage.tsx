@@ -11,7 +11,7 @@ import FollowerTabContent from './FollowerTabContent';
 import AllTabContent from './AllTabContent';
 import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
 import fetchWithAuth from '../../lib/fetchWithAuth';
-import { baseURLmain } from '../../env';
+import { baseURL } from '../../env';
 
 type UseSearchPageHeader = (Tab: React.VFC, onEnter: OnEnter) => ({
   SearchPageHeader: React.VFC;
@@ -36,7 +36,7 @@ const useOnEnter: UseOnEnter = () => {
       screenName: string,
     };
 
-    const data: DataType[] = await fetchWithAuth<DataType[]>(`${baseURLmain}/friends/search?query=${query}`);
+    const data: DataType[] = await fetchWithAuth<DataType[]>(`${baseURL}/friends/search?query=${query}`);
     const userCardsInfo: UserCardsInfo = new Array(data.length);
 
     for (let i = 0; i < data.length; i += 1) {

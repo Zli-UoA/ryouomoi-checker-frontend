@@ -1,6 +1,6 @@
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useInitializedHeartRating from './useInitializedHeartRating';
-import { baseURLmain } from '../../env';
+import { baseURL } from '../../env';
 
 type VoidFunction = () => void;
 
@@ -30,7 +30,7 @@ const useLovePoint: UseLovePoint = (id: string) => {
 
   type PostLovePoint = (lovePoint: ValidNumber) => void;
   const postLovePoint: PostLovePoint = (newLovePoint) => {
-    fetch(`${baseURLmain}/friends/${id}`, {
+    fetch(`${baseURL}/friends/${id}`, {
       method: 'POST',
       body: JSON.stringify({ lovePoint: newLovePoint }),
       headers: new Headers({ Authorization: `Bearer ${token}` }),
@@ -38,7 +38,7 @@ const useLovePoint: UseLovePoint = (id: string) => {
   };
 
   const deleteLovePoint: VoidFunction = () => {
-    fetch(`${baseURLmain}/friends/${id}`, {
+    fetch(`${baseURL}/friends/${id}`, {
       method: 'DELETE',
       headers: new Headers({ Authorization: `Bearer ${token}` }),
     });

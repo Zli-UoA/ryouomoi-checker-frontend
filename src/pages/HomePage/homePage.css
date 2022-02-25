@@ -16,6 +16,11 @@
   letter-spacing: 0.05em;
 }
 
+.homePage__main {
+  width: 100%;
+  padding-top: 64px;
+}
+
 .homePage__text {
   font-family: "Noto Sans JP", sans-serif;
   font-size: 16px;
