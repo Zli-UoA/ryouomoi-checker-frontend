@@ -53,13 +53,15 @@ const useSearchPageHeader: UseSearchPageHeader = (Tab, onEnter) => {
       <header className="searchPage__header">
         <Header>
           <>
-            <Link to="/home">
-              <div style={{ display: 'inline-block' }}>
-                <BackIcon />
+            <div className="searchPage__IconAndInput">
+              <div className="searchPage__headerIcon mg_left-16 mg_right-16">
+                <Link to="/home">
+                  <BackIcon />
+                </Link>
               </div>
-            </Link>
-            <div style={{ display: 'inline-block', flexGrow: 3 }}>
-              <SearchInput />
+              <div className="searchPage__input mg_right-16">
+                <SearchInput />
+              </div>
             </div>
             <Tab />
           </>
