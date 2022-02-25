@@ -19,39 +19,33 @@
   width: 328px;
   height: 248px;
   overflow: hidden;
+
+  /* common font */
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: 0.05em;
   background: #fff;
   border-radius: 8px;
 }
 
 .dialog__caption {
-  font-family: "Noto Sans JP", sans-serif;
   font-size: 20px;
-  font-style: normal;
   font-weight: bold;
   line-height: 24px;
   color: #2c2e5c;
-  text-align: center;
-  letter-spacing: 0.05em;
 }
 
 .dialog__caution {
-  font-family: "Noto Sans JP", sans-serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 20px;
   color: #2c2e5c;
-  text-align: center;
-  letter-spacing: 0.05em;
 }
 
 .dialog__buttonGroup {
-  font-family: "Noto Sans JP", sans-serif;
   font-size: 16px;
-  font-style: normal;
   font-weight: bold;
   line-height: 150%;
   color: #000;
-  text-align: center;
-  letter-spacing: 0.05em;
 }
