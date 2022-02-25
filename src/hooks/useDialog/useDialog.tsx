@@ -60,10 +60,10 @@ const useDialog: UseDialog = () => {
 
           <div className="mg_top-48 mg_bottom-24">
             <div className="dialog__buttonGroup">
-              <button type="button">
+              <button type="button" onClick={closeDialog}>
                 いいえ
               </button>
-              <button type="button">
+              <button type="button" onClick={closeDialog}>
                 はい
               </button>
             </div>
