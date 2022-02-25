@@ -8,7 +8,7 @@ const FollowerTabContent: React.VFC = () => {
     displayName: string
     imageUrl: string
     screenName: string
-  }[]>(baseURLmain);
+  }[]>(`${baseURLmain}/friends/follower`);
 
   return (
     <main className="searchPage__main">
