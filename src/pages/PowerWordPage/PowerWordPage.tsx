@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import '../../common.css';
 import './powerWordPage.css';
@@ -43,7 +44,9 @@ const PowerWordPageButtomContent: React.VFC<ButtomContentProps> = ({ remainDays,
 
   return (
     <div className="powerWordPage__buttomContent--active">
-      <Button label="新しい恋を始める" />
+      <Link to="/welcome">
+        <Button label="新しい恋を始める" />
+      </Link>
     </div>
   );
 };
