@@ -6,6 +6,7 @@ import './App.css';
 import { baseURLmain } from './env';
 import useFetchWithAuth from './hooks/useFetchWithAuth';
 import useQuery from './hooks/useQuery';
+import getToken from './lib/getToken';
 import CelebrationPage from './pages/CelebrationPage/CelebrationPage';
 import HakyokuPage from './pages/HakyokuProcessPage/HakyokuProcessPage';
 import HomePage from './pages/HomePage/HomePage';
@@ -25,7 +26,7 @@ const useCheckLover = (): void => {
 const useNavigateToEachPage = (): void => {
   const navigate = useNavigate();
   const queryToken = useQuery().get('auth_token');
-  const localToken = localStorage.getItem('ryouomoi-checker-token');
+  const localToken = getToken();
   const { pathname } = useLocation();
 
   useEffect(() => {
