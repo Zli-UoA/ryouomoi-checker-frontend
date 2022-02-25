@@ -9,19 +9,19 @@ import './searchPage.css';
 import FolloweeTabContent from './FolloweeTabContent';
 import FollowerTabContent from './FollowerTabContent';
 import AllTabContent from './AllTabContent';
-import User from '../../types/User';
+import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
 
 type UseSearchPageHeader = (Tab: React.VFC, onEnter: OnEnter) => ({
   SearchPageHeader: React.VFC;
 });
 
 type UseOnEnter = () => {
-  result: User[];
+  result: UserCardsInfo;
   onEnter: OnEnter;
 };
 
 const useOnEnter: UseOnEnter = () => {
-  const [result, setResult] = useState<User[]>([]);
+  const [result, setResult] = useState<UserCardsInfo>([]);
 
   const onEnter: OnEnter = async (inputRef) => {
     const token = localStorage.getItem('ryouomoi-checker-token');
@@ -30,14 +30,39 @@ const useOnEnter: UseOnEnter = () => {
     }
 
     const query = inputRef.current?.value;
-    const res = await fetch(
-      `https://ryouomoichecker.yt8492.com/api/friends/search?query=${query}`,
-      {
-        headers: new Headers({ Authorization: `Bearer ${token}` }),
-      },
-    );
+    const res = await fetch(`https://ryouomoichecker.yt8492.com/api/friends/search?query=${query}`, {
+      headers: new Headers({ Authorization: `Bearer ${token}` }),
+    });
 
-    setResult(await res.json());
+    type DataType = {
+      id: string,
+      displayName: string,
+      imageUrl: string,
+      screenName: string,
+    };
+    const data: DataType[] = await res.json();
+    const userCardsInfo: UserCardsInfo = new Array(data.length);
+
+    for (let i = 0; i < data.length; i += 1) {
+      const {
+        id,
+        displayName,
+        imageUrl,
+        screenName,
+      } = data[i];
+
+      userCardsInfo[i] = {
+        user: {
+          displayName,
+          imageUrl,
+          screenName,
+        },
+        id,
+        mode: 'Add',
+      };
+    }
+
+    setResult(userCardsInfo);
   };
 
   return {
