@@ -1,7 +1,7 @@
-import { baseURL } from '../../env';
-import toValidNumber from '../../lib/toValidNumber';
-import ValidNumber from '../../types/ValidNumber';
-import useFetchWithAuth from '../useFetchWithAuth';
+import { baseURL } from '../env';
+import toValidNumber from '../lib/toValidNumber';
+import ValidNumber from '../types/ValidNumber';
+import useFetchWithAuth from './useFetchWithAuth';
 
 type DataType = {
   lovePoint: ValidNumber
