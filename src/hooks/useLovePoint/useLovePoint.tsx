@@ -1,5 +1,6 @@
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
 import useInitializedHeartRating from './useInitializedHeartRating';
+import fetchWithAuth from '../../lib/fetchWithAuth';
 import { baseURL } from '../../env';
 
 type VoidFunction = () => void;
@@ -26,21 +27,17 @@ const useLovePoint: UseLovePoint = (id: string) => {
     console.error(GETerror);
   }
 
-  const token = localStorage.getItem('ryouomoi-checker-token');
-
   type PostLovePoint = (lovePoint: ValidNumber) => void;
   const postLovePoint: PostLovePoint = (newLovePoint) => {
-    fetch(`${baseURL}/friends/${id}`, {
+    fetchWithAuth(`${baseURL}/friends/${id}`, {
       method: 'POST',
       body: JSON.stringify({ lovePoint: newLovePoint }),
-      headers: new Headers({ Authorization: `Bearer ${token}` }),
     });
   };
 
   const deleteLovePoint: VoidFunction = () => {
-    fetch(`${baseURL}/friends/${id}`, {
+    fetchWithAuth(`${baseURL}/friends/${id}`, {
       method: 'DELETE',
-      headers: new Headers({ Authorization: `Bearer ${token}` }),
     });
   };
 
