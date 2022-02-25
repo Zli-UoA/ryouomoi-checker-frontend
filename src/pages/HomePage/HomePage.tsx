@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../common.css';
 import './homePage.css';
+import { useFetch } from 'usehooks-ts';
 import Header from '../../components/Header/Header';
 import AddButton from '../../components/AddButton/AddButton';
 import UserIcon from '../../components/UserIcon/UserIcon';
@@ -41,7 +42,6 @@ const HomePageContent: React.VFC = () => {
   const token = localStorage.getItem('ryouomoi-checker-token');
   const { data, error } = useFetch<LoverType[]>(`${baseURL}/me/lovers/`, {
     method: 'GET',
-    mode: 'no-cors',
     headers: new Headers({ Authorization: `Bearer ${token}` }),
   });
 
