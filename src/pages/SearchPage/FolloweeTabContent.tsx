@@ -1,4 +1,5 @@
 import React from 'react';
+import { baseURLmain } from '../../env';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import UserList from './UserList';
 
@@ -7,7 +8,7 @@ const FolloweeTabContent: React.VFC = () => {
     displayName: string
     imageUrl: string
     screenName: string
-  }[]>('https://ryouomoichecker.yt8492.com/api/friends/followee');
+  }[]>(baseURLmain);
 
   return (
     <main className="searchPage__main">

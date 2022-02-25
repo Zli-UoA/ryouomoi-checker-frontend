@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import {
   Link, Route, Routes, useLocation, useNavigate,
 } from 'react-router-dom';
-import { useFetch } from 'usehooks-ts';
 import './App.css';
-import { baseURLlocal } from './env';
+import { baseURLmain } from './env';
+import useFetchWithAuth from './hooks/useFetchWithAuth';
 import useQuery from './hooks/useQuery';
 import CelebrationPage from './pages/CelebrationPage/CelebrationPage';
 import HakyokuPage from './pages/HakyokuProcessPage/HakyokuProcessPage';
@@ -17,11 +17,7 @@ import TutorialPage from './pages/TutorialPage/TutorialPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 const useCheckLover = (): void => {
-  const token = localStorage.getItem('ryouomoi-checker-token');
-
-  const { data, error } = useFetch(`${baseURLlocal}/me/lover`, {
-    headers: new Headers({ Authorization: `Bearer ${token}` }),
-  });
+  const { data, error } = useFetchWithAuth(`${baseURLmain}/me/lover`);
 
   console.log('lover', data, error);
 };
