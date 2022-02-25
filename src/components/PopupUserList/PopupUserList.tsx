@@ -55,7 +55,8 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
     clearRating();
   };
 
-  const deleteAction = (): void => {
+  const deleteAction = async (): Promise<void> => {
+    await fetchWithAuth(`${baseURL}/me/lovers/${whichUser.id}`);
     close();
     clearRating();
   };
