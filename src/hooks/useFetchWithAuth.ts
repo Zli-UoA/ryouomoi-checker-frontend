@@ -3,8 +3,8 @@ import JSONbig from 'json-bigint';
 import getToken from '../lib/getToken';
 
 type Init = {
-  method: 'POST' | 'DELETE' | 'GET',
-  body: string,
+  method?: 'POST' | 'DELETE' | 'GET',
+  body?: string,
 };
 
 const useFetchWithAuth = <T>(

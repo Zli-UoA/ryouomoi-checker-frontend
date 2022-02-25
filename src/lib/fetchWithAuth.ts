@@ -2,8 +2,8 @@ import JSONbig from 'json-bigint';
 import getToken from './getToken';
 
 type Init = {
-  method: 'POST' | 'DELETE' | 'GET',
-  body: string,
+  method?: 'POST' | 'DELETE' | 'GET',
+  body?: string,
 };
 
 const fetchWithAuth = async <T = any>(
