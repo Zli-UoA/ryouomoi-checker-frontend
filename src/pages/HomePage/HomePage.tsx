@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { useFetch } from 'usehooks-ts';
-import useQuery from '../../hooks/useQuery';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../common.css';
 import './homePage.css';
 import Header from '../../components/Header/Header';
@@ -11,17 +9,6 @@ import leveledSplit, { LoverType } from './leveledSplit';
 import LeveledPopupUserList from '../../components/LeveledPopupUserList/LeveledPopupUserList';
 import { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
 import { ValidNumber } from '../../components/HeartRating/useHeartRating';
-
-const useNavigateToWelcome = (): void => {
-  const navigate = useNavigate();
-  const query = useQuery();
-  useEffect(() => {
-    const token = query.get('auth_token');
-    if (token) {
-      navigate(`/welcome?auth_token=${token}`);
-    }
-  }, [navigate, query]);
-};
 
 const HomePageHeader: React.VFC = () => (
   <Header>
@@ -101,14 +88,11 @@ const HomePageContent: React.VFC = () => {
   );
 };
 
-const HomePage: React.VFC = () => {
-  useNavigateToWelcome();
-  return (
-    <>
-      <HomePageHeader />
-      <HomePageContent />
-    </>
-  );
-};
+const HomePage: React.VFC = () => (
+  <>
+    <HomePageHeader />
+    <HomePageContent />
+  </>
+);
 
 export default HomePage;
