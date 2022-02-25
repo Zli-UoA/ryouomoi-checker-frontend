@@ -1,18 +1,15 @@
 import React from 'react';
-import { useFetch } from 'usehooks-ts';
+import { baseURLmain } from '../../env';
+import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import PopupUserList, { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
 
 const FollowerTabContent: React.VFC = () => {
-  const token = localStorage.getItem('ryouomoi-checker-token');
-
-  const { data } = useFetch<{
+  const { data } = useFetchWithAuth<{
     id: string,
     displayName: string
     imageUrl: string
     screenName: string
-  }[]>('https://ryouomoichecker.yt8492.com/api/friends/follower', {
-    headers: new Headers({ Authorization: `Bearer ${token}` }),
-  });
+  }[]>(baseURLmain);
 
   if (data === undefined) {
     return (
