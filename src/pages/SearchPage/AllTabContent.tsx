@@ -1,8 +1,9 @@
 import React from 'react';
 import './searchPage.css';
-import PopupUserList, { UserCardsInfo } from '../../components/PopupUserList/PopupUserList';
+import PopupUserList from '../../components/PopupUserList/PopupUserList';
+import User from '../../types/User';
 
-const AllTabContent: React.VFC<{ data: UserCardsInfo }> = ({ data }) => {
+const AllTabContent: React.VFC<{ data: User[] }> = ({ data }) => {
   if (data.length === 0) {
     return (
       <main className="searchPage__main">
@@ -18,7 +19,7 @@ const AllTabContent: React.VFC<{ data: UserCardsInfo }> = ({ data }) => {
 
   return (
     <main className="searchPage__main">
-      <PopupUserList userCardsInfo={data} />
+      <PopupUserList users={data} />
     </main>
   );
 };
