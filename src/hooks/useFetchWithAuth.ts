@@ -38,7 +38,7 @@ const useFetchWithAuth = <T>(
     };
 
     doFetch();
-  }, [init, setError, setResponse, url, token]);
+  }, [setError, setResponse, url, token]);
 
   return { data, error };
 };

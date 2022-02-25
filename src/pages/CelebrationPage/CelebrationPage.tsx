@@ -6,6 +6,26 @@ import './CelebrationPage.css';
 import WithBackground from '../../components/WithBackground/WithBackground';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import HammerHeartButton from './HammerHeartButton';
+import useFetchWithAuth from '../../hooks/useFetchWithAuth';
+import { baseURL } from '../../env';
+
+const redirect = (url: string): void => {
+  window.location.href = url;
+};
+
+const StatefulButton: React.VFC = () => {
+  type DataType = {
+    talkRoomUrl: string,
+  };
+  const { data } = useFetchWithAuth<DataType>(`${baseURL}/me/lover`, {
+    method: 'GET',
+  });
+
+  if (data === undefined) {
+    return <Button label="恋愛の一歩を踏み出す" disabled />;
+  }
+  return <Button label="恋愛の一歩を踏み出す" disabled={false} onClick={() => { redirect(data.talkRoomUrl); }} />;
+};
 
 const CelebrationPage: React.VFC = () => (
   <div className="celebrationPage">
@@ -28,7 +48,7 @@ const CelebrationPage: React.VFC = () => (
     </div>
     <p className="celebrationPage__text">両想いになりました！</p>
     <div className="celebrationPage__button">
-      <Button label="恋愛の一歩を踏み出す" />
+      <StatefulButton />
     </div>
   </div>
 );
