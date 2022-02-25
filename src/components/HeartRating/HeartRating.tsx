@@ -1,11 +1,10 @@
 import React from 'react';
 import './useHeartRating.css';
 import { HeartIcon40 } from '../Icon/Icon';
-
-export type ValidNumber = 1 | 2 | 3 | 4 | 5;
+import ValidNumber from '../../types/ValidNumber';
 
 type HeartRatingProps = {
-  selectedCount: ValidNumber
+  selectedCount: ValidNumber,
   setHeartsCount: (num: ValidNumber) => void
 };
 

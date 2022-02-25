@@ -2,17 +2,11 @@ import React from 'react';
 import './usePopup.css';
 import '../../common.css';
 import DeleteButton from '../DeleteButton/DeleteButton';
-import HeartRating, { ValidNumber } from '../HeartRating/HeartRating';
+import HeartRating from '../HeartRating/HeartRating';
 import UserIcon from '../UserIcon/UserIcon';
 import PopupButton from '../PopupButton/PopupButton';
-
-type User = {
-  imageUrl: string,
-  displayName: string,
-  screenName: string,
-  id: string,
-  lovePoint?: number,
-};
+import User from '../../types/User';
+import ValidNumber from '../../types/ValidNumber';
 
 const StatefulDeleteButton: React.VFC<{
   user: User,
