@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import '../../common.css';
-import UserCard from '../../pages/SearchPage/UserCard';
+import UserCard from '../UserCard/UserCard';
 import useOpen from '../../hooks/useOpen';
 import Popup from './Popup';
 import useHeartRating from '../../hooks/useHeartRating';

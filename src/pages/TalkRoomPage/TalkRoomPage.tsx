@@ -2,7 +2,7 @@ import React from 'react';
 import Popup from '../../components/Popup/Popup';
 import useHeartRating from '../../hooks/useHeartRating';
 import useOpen from '../../hooks/useOpen';
-import UserCard from '../SearchPage/UserCard';
+import UserCard from '../../components/UserCard/UserCard';
 
 type UsePopupTestProps = {
   displayName: string,

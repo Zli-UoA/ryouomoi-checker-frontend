@@ -1,8 +1,9 @@
 import React from 'react';
-import UserCard, { User } from '../../pages/SearchPage/UserCard';
+import UserCard from '../UserCard/UserCard';
 import useOpen from '../../hooks/useOpen';
 import useHeartRating from '../../hooks/useHeartRating';
 import Popup from '../Popup/Popup';
+import User from '../../types/User';
 
 type PopupUserCardProps = {
   user: User,
