@@ -2,7 +2,7 @@ import React from 'react';
 import UserIcon from '../../components/UserIcon/UserIcon';
 import './userCard.css';
 
-type User = {
+export type User = {
   displayName: string,
   imageUrl: string,
   screenName: string
