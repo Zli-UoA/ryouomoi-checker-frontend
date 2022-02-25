@@ -8,27 +8,13 @@ type LeveledPopupUserListProps = {
   userCardsInfo: UserCardsInfo
 };
 
-const LeveledPopupUserList: React.VFC<LeveledPopupUserListProps> = ({ level, userCardsInfo }) => {
-  if (level === 5) {
-    return (
-      <>
-        <HeartValue value={level} />
-        <div className="mg_top-8">
-          <PopupUserList userCardsInfo={userCardsInfo} />
-        </div>
-        <div style={{ height: '64px' }} />
-      </>
-    );
-  }
-  return (
-    <>
-      <div className="mg_top-8">
-        <HeartValue value={level} />
-      </div>
-      <PopupUserList userCardsInfo={userCardsInfo} />
-      <div style={{ height: '64px' }} />
-    </>
-  );
-};
+const LeveledPopupUserList: React.VFC<LeveledPopupUserListProps> = ({ level, userCardsInfo }) => (
+  <>
+    <div className="mg_top-8">
+      <HeartValue value={level} />
+    </div>
+    <PopupUserList userCardsInfo={userCardsInfo} />
+  </>
+);
 
 export default LeveledPopupUserList;

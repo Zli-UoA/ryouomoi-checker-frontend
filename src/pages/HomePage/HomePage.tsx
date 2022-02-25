@@ -53,11 +53,11 @@ const HomePageContent: React.VFC = () => {
     leveledLovers.reverse();
 
     return (
-      <div>
+      <div className="homePage__main">
         {leveledLovers.map((userCardsInfo, idx) => {
           if (userCardsInfo.length === 0) return null;
           return (
-            <LeveledPopupUserList level={toValidNumber(idx + 1)} userCardsInfo={userCardsInfo} />
+            <LeveledPopupUserList level={toValidNumber(5 - idx)} userCardsInfo={userCardsInfo} />
           );
         })}
       </div>
