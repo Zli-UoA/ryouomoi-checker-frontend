@@ -11,6 +11,23 @@ type UseInitializedHeartRating = (id: string) => {
   HeartRating: React.VFC,
 };
 
+const toValidNumber = (num: number | undefined): ValidNumber => {
+  switch (num) {
+    case 1:
+      return 1;
+    case 2:
+      return 2;
+    case 3:
+      return 3;
+    case 4:
+      return 4;
+    case 5:
+      return 5;
+    default:
+      return 1;
+  }
+};
+
 const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
   type DataType = {
     lovePoint: number
@@ -22,82 +39,11 @@ const useInitializedHeartRating: UseInitializedHeartRating = (id: string) => {
     headers: new Headers({ Authorization: `Bearer ${token}` }),
   });
 
-  const {
-    selectedCount: selectedCount1,
-    HeartRating: HeartRating1,
-    clearCount: clearCount1,
-  } = useHeartRating(1);
-  const {
-    selectedCount: selectedCount2,
-    HeartRating: HeartRating2,
-    clearCount: clearCount2,
-  } = useHeartRating(2);
-  const {
-    selectedCount: selectedCount3,
-    HeartRating: HeartRating3,
-    clearCount: clearCount3,
-  } = useHeartRating(3);
-  const {
-    selectedCount: selectedCount4,
-    HeartRating: HeartRating4,
-    clearCount: clearCount4,
-  } = useHeartRating(4);
-  const {
-    selectedCount: selectedCount5,
-    HeartRating: HeartRating5,
-    clearCount: clearCount5,
-  } = useHeartRating(5);
-
-  switch (data?.lovePoint) {
-    case 1:
-      return {
-        error,
-        lovePoint: 1,
-        selectedCount: selectedCount1,
-        HeartRating: HeartRating1,
-        clearCount: clearCount1,
-      };
-    case 2:
-      return {
-        error,
-        lovePoint: 2,
-        selectedCount: selectedCount2,
-        HeartRating: HeartRating2,
-        clearCount: clearCount2,
-      };
-    case 3:
-      return {
-        error,
-        lovePoint: 3,
-        selectedCount: selectedCount3,
-        HeartRating: HeartRating3,
-        clearCount: clearCount3,
-      };
-    case 4:
-      return {
-        error,
-        lovePoint: 4,
-        selectedCount: selectedCount4,
-        HeartRating: HeartRating4,
-        clearCount: clearCount4,
-      };
-    case 5:
-      return {
-        error,
-        lovePoint: 5,
-        selectedCount: selectedCount5,
-        HeartRating: HeartRating5,
-        clearCount: clearCount5,
-      };
-    default:
-      return {
-        error,
-        lovePoint: 1,
-        selectedCount: selectedCount1,
-        HeartRating: HeartRating1,
-        clearCount: clearCount1,
-      };
-  }
+  return {
+    error,
+    lovePoint: toValidNumber(data?.lovePoint),
+    ...useHeartRating(toValidNumber(data?.lovePoint)),
+  };
 };
 
 export default useInitializedHeartRating;
