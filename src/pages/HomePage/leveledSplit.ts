@@ -12,17 +12,14 @@ export type LoverType = {
 };
 
 const leveledSplit = (lovers: LoverType[]): UserCardsInfo[] => {
-  const leveledLovers: UserCardsInfo[] = new Array(5);
-  for (let i = 0; i < lovers.length; i += 1) {
-    const {
-      id,
-      displayName,
-      imageUrl,
-      screenName,
-    } = lovers[i].user;
-    const idx = lovers[i].lovePoint;
+  const leveledLovers: UserCardsInfo[] = [[], [], [], [], []];
 
-    leveledLovers[idx].push({
+  lovers.forEach(({
+    user: {
+      id, displayName, imageUrl, screenName,
+    }, lovePoint,
+  }) => {
+    leveledLovers[lovePoint - 1].push({
       user: {
         displayName,
         imageUrl,
@@ -31,7 +28,7 @@ const leveledSplit = (lovers: LoverType[]): UserCardsInfo[] => {
       id: String(id),
       mode: 'Edit',
     });
-  }
+  });
 
   return leveledLovers;
 };
