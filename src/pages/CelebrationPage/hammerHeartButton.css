@@ -1,0 +1,10 @@
+.hammerHeartButton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+}

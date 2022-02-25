@@ -3,7 +3,7 @@ import {
   Link, Route, Routes, useLocation, useNavigate,
 } from 'react-router-dom';
 import './App.css';
-import { baseURLmain } from './env';
+import { baseURL } from './env';
 import useFetchWithAuth from './hooks/useFetchWithAuth';
 import useQuery from './hooks/useQuery';
 import getToken from './lib/getToken';
@@ -18,7 +18,7 @@ import TutorialPage from './pages/TutorialPage/TutorialPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 const useCheckLover = (): void => {
-  const { data, error } = useFetchWithAuth(`${baseURLmain}/me/lover`);
+  const { data, error } = useFetchWithAuth(`${baseURL}/me/lover`);
 
   console.log('lover', data, error);
 };
