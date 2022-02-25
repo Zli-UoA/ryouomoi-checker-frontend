@@ -9,6 +9,8 @@ import useHakyokuForm from '../../hooks/useHakyokuForm/useHakyokuForm';
 import useShareToggleButton from './useShareToggleButton';
 import Button from '../../components/Button/Button';
 import useDialog from '../../hooks/useDialog/useDialog';
+import useFetchWithAuth from '../../hooks/useFetchWithAuth';
+import { baseURLmain } from '../../env';
 
 const HakyokuProcessPageHeader: React.VFC = () => (
   <Header>
@@ -33,6 +35,10 @@ const HakhyokuProcessPageContent: React.VFC = () => {
   const { reasonId, selected, HakyokuForm } = useHakyokuForm();
   const { checked, ShareToggleButton } = useShareToggleButton();
   const { Dialog, openDialog } = useDialog();
+  const { data } = useFetchWithAuth<{
+    days: number,
+  }>(`${baseURLmain}/me/lover/days`);
+
   return (
     <>
       {/* 空のdivだが、ヘッダーが position: fixed なためヘッダー分(64px)を調整 */}
@@ -46,7 +52,7 @@ const HakhyokuProcessPageContent: React.VFC = () => {
       <div className="hakyokuProcessPage__submitButton">
         <Button label="破局した" disabled={!selected} onClick={openDialog} />
       </div>
-      <Dialog hakyokuMonths={5} reasonId={reasonId || /* その他 = */6} arrowShare={checked} />
+      <Dialog days={data?.days} reasonId={reasonId || /* その他 = */6} arrowShare={checked} />
     </>
   );
 };
