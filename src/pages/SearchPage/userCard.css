@@ -1,14 +1,18 @@
 .userCard {
   display: flex;
-  justify-content: center;
   height: 56px;
-  padding-right: 16px;
-  padding-left: 32px;
+  overflow: hidden;
+}
+
+.userCard__icon {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 8px;
 }
 
 .userCard__text {
   flex-grow: 1;
-  padding-left: 16px;
+  width: 256px;
   text-align: start;
 }
 

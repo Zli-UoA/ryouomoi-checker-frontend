@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-  Link, Route, Routes, useNavigate,
+  Link, Route, Routes, useLocation, useNavigate,
 } from 'react-router-dom';
 import './App.css';
 import useQuery from './hooks/useQuery';
@@ -14,23 +14,32 @@ import TalkRoomPage from './pages/TalkRoomPage/TalkRoomPage';
 import TutorialPage from './pages/TutorialPage/TutorialPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
-const useNavigateToHome = (): void => {
+const useNavigateToEachPage = (): void => {
   const navigate = useNavigate();
   const query = useQuery();
+  const token = query.get('auth_token');
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    if (!query.get('auth_token')) {
-      if (localStorage.getItem('ryouomoi-checker-token')) {
-        navigate('/home');
-      }
-      if (!localStorage.getItem('ryouomoi-checker-token')) {
-        navigate('tutorial');
-      }
+    console.log('ahoy');
+    if (token) {
+      console.log('lets go');
+      navigate(`/welcome?auth_token=${token}`);
+      return;
     }
-  }, [localStorage]);
+
+    if (localStorage.getItem('ryouomoi-checker-token')) {
+      navigate('/home');
+      return;
+    }
+    if (pathname !== '/tutorial/page2') {
+      navigate('/tutorial');
+    }
+  }, [navigate, token, pathname]);
 };
 
 const App: React.VFC = () => {
-  useNavigateToHome();
+  useNavigateToEachPage();
   return (
     <div className="App">
       <nav>
