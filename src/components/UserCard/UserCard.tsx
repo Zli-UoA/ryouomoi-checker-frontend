@@ -1,5 +1,5 @@
 import React from 'react';
-import UserIcon from '../../components/UserIcon/UserIcon';
+import UserIcon from '../UserIcon/UserIcon';
 import './userCard.css';
 import User from '../../types/User';
 
