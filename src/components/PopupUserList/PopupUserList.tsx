@@ -5,7 +5,6 @@ import { User } from '../../pages/SearchPage/UserCard';
 export type UserCardsInfo = {
   user: User,
   id: string,
-  mode: 'Add' | 'Edit',
 }[];
 
 type PopupUserListProps = {
@@ -14,7 +13,7 @@ type PopupUserListProps = {
 
 const PopupUserList: React.VFC<PopupUserListProps> = ({ userCardsInfo }) => (
   <div>
-    {userCardsInfo.map(({ user, id, mode }) => <PopupUserCard user={user} id={id} mode={mode} />)}
+    {userCardsInfo.map(({ user, id }) => <PopupUserCard user={user} id={id} />)}
   </div>
 );
 
