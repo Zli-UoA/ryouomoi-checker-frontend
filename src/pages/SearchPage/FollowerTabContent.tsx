@@ -7,17 +7,17 @@ import User from '../../types/User';
 const FollowerTabContent: React.VFC = () => {
   const { data } = useFetchWithAuth<User[]>(`${baseURL}/friends/follower`);
 
-  if (data === undefined) {
+  if (!data) {
     return (
       <main className="searchPage__main">
-        <PopupUserList userCardsInfo={[]} />
+        <PopupUserList users={[]} />
       </main>
     );
   }
 
   return (
     <main className="searchPage__main">
-      <PopupUserList userCardsInfo={data} />
+      <PopupUserList users={data} />
     </main>
   );
 };

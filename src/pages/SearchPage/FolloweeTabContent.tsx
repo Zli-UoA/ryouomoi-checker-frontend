@@ -10,14 +10,14 @@ const FolloweeTabContent: React.VFC = () => {
   if (data === undefined) {
     return (
       <main className="searchPage__main">
-        <PopupUserList userCardsInfo={[]} />
+        <PopupUserList users={[]} />
       </main>
     );
   }
 
   return (
     <main className="searchPage__main">
-      <PopupUserList userCardsInfo={data} />
+      <PopupUserList users={data} />
     </main>
   );
 };

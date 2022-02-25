@@ -5,13 +5,11 @@ import Popup from '../Popup/Popup';
 import ClickableUserCard from '../ClickableUserCard/ClickableUserCard';
 import User from '../../types/User';
 
-export type UserCardsInfo = User[];
-
 type PopupUserListProps = {
-  userCardsInfo: UserCardsInfo
+  users: User[]
 };
 
-const PopupUserList: React.VFC<PopupUserListProps> = ({ userCardsInfo }) => {
+const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
   const { isOpen, close, open } = useOpen();
 
   const [whichUser, setWhichUser] = useState<User>({
@@ -30,6 +28,7 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ userCardsInfo }) => {
 
   const primaryAction = (): void => {
     close();
+    clearRating();
   };
 
   const cancelAction = (): void => {
@@ -39,11 +38,12 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ userCardsInfo }) => {
 
   const deleteAction = (): void => {
     close();
+    clearRating();
   };
 
   return (
     <div>
-      {userCardsInfo.map((user) => (
+      {users.map((user) => (
         <ClickableUserCard user={user} onClick={genOnCardClick(user)} />
       ))}
       <Popup
