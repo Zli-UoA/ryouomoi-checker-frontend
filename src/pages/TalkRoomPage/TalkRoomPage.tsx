@@ -1,40 +1,44 @@
 import React from 'react';
+import Popup from '../../components/Popup/Popup';
+import useHeartRating from '../../hooks/useHeartRating';
+import useOpen from '../../hooks/useOpen';
 import UserCard from '../SearchPage/UserCard';
-import usePopup from '../../hooks/usePopup/usePopup';
 
 type UsePopupTestProps = {
   displayName: string,
   imageUrl: string,
   screenName: string,
   id: string,
-  mode: 'Add' | 'Edit'
 };
 
 const UsePopupTest: React.VFC<UsePopupTestProps> = ({
-  displayName, imageUrl, screenName, id, mode,
+  displayName, imageUrl, screenName, id,
 }) => {
-  const {
-    isOpen,
-    selectedCount,
-    PopupTrigger,
-    Popup,
-  } = usePopup(imageUrl, displayName, screenName, id, mode);
-
+  const { isOpen, open, close } = useOpen();
+  const { setRating, rating } = useHeartRating();
   return (
     <>
-      <PopupTrigger>
+      <button type="button" onClick={open}>
         <UserCard
           displayName={displayName}
           imageUrl={imageUrl}
           screenName={screenName}
         />
-      </PopupTrigger>
+      </button>
 
       <div className="bg_primary">
-        <Popup />
+        <Popup
+          isOpen={isOpen}
+          user={{
+            displayName, imageUrl, screenName, id,
+          }}
+          primaryAction={close}
+          cancelAction={close}
+          setHeartRating={setRating}
+          heartRating={rating}
+        />
       </div>
-
-      {selectedCount}
+      {rating}
       {isOpen}
     </>
   );
@@ -46,7 +50,6 @@ const TalkRoomPage: React.VFC = () => (
     imageUrl="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg"
     screenName="Aizu Taro"
     id="972404402425245697"
-    mode="Add"
   />
 );
 
