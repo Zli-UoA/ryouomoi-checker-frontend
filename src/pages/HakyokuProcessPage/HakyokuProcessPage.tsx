@@ -8,6 +8,7 @@ import { BackIcon } from '../../components/Icon/Icon';
 import useHakyokuForm from '../../hooks/useHakyokuForm/useHakyokuForm';
 import useShareToggleButton from './useShareToggleButton';
 import Button from '../../components/Button/Button';
+import useDialog from '../../hooks/useDialog/useDialog';
 
 const HakyokuProcessPageHeader: React.VFC = () => (
   <Header>
@@ -29,8 +30,9 @@ const HakyokuProcessPageHeader: React.VFC = () => (
 );
 
 const HakhyokuProcessPageContent: React.VFC = () => {
-  const { selected, HakyokuForm } = useHakyokuForm();
-  const { ShareToggleButton } = useShareToggleButton();
+  const { reasonId, selected, HakyokuForm } = useHakyokuForm();
+  const { checked, ShareToggleButton } = useShareToggleButton();
+  const { Dialog, openDialog } = useDialog();
   return (
     <>
       {/* 空のdivだが、ヘッダーが position: fixed なためヘッダー分(64px)を調整 */}
@@ -42,8 +44,9 @@ const HakhyokuProcessPageContent: React.VFC = () => {
         <ShareToggleButton />
       </div>
       <div className="hakyokuProcessPage__submitButton">
-        <Button label="破局した" disabled={!selected} />
+        <Button label="破局した" disabled={!selected} onClick={openDialog} />
       </div>
+      <Dialog hakyokuMonths={5} reasonId={reasonId || /* その他 = */6} arrowShare={checked} />
     </>
   );
 };
