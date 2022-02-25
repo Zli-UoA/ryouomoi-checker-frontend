@@ -17,7 +17,9 @@ const useFetchWithAuth = <T>(url: string): {
           headers: new Headers({ Authorization: `Bearer ${token}` }),
         });
 
-        const json: T = JSONbig({ storeAsString: true }).parse(await res.text());
+        const text = await res.text();
+
+        const json: T = JSONbig({ storeAsString: true }).parse(text);
 
         console.log('json-bigint result', json);
 
