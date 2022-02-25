@@ -2,7 +2,7 @@ import React from 'react';
 import { HeartIcon24 } from '../Icon/Icon';
 import '../../common.css';
 import './heartValue.css';
-import { ValidNumber } from '../HeartRating/useHeartRating';
+import ValidNumber from '../../types/ValidNumber';
 
 type HeartValueProps = {
   value: ValidNumber,
