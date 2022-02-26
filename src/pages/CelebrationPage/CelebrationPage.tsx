@@ -11,28 +11,15 @@ import { baseURL } from '../../env';
 import redirect from '../../lib/redirect';
 import User from '../../types/User';
 
-const StatefulButton: React.VFC = () => {
-  type DataType = {
-    talkRoomUrl: string,
-  };
-  const { data } = useFetchWithAuth<DataType>(`${baseURL}/me/lover`, {
-    method: 'GET',
-  });
-
-  if (data === undefined) {
-    return <Button label="恋愛の一歩を踏み出す" disabled />;
-  }
-  return <Button label="恋愛の一歩を踏み出す" disabled={false} onClick={() => { redirect(data.talkRoomUrl); }} />;
-};
-
 const CelebrationPage: React.VFC = () => {
-  const { data, statusCode } = useFetchWithAuth<User>(`${baseURL}/me/lover`);
+  const { data, statusCode } = useFetchWithAuth<{
+    user: User;
+    talkRoomUrl: string
+  }>(`${baseURL}/me/lover`);
 
   if (statusCode === 404) {
     redirect('/lost-partner');
   }
-
-  if (data === undefined) return null;
 
   return (
     <div className="celebrationPage">
@@ -45,17 +32,21 @@ const CelebrationPage: React.VFC = () => {
             <div className="celebrationPage__icon">
               <UserIcon
                 size="lg"
-                image={data.imageUrl}
+                image={data?.user.imageUrl ?? ''}
               />
             </div>
-            <p className="celebrationPage__name">{data.displayName}</p>
-            <p className="celebrationPage__id">{data.screenName}</p>
+            <p className="celebrationPage__name">{data?.user.displayName}</p>
+            <p className="celebrationPage__id">{data?.user.screenName}</p>
           </>
         </WithBackground>
       </div>
       <p className="celebrationPage__text">両想いになりました！</p>
       <div className="celebrationPage__button">
-        <StatefulButton />
+        <Button
+          label="恋愛の一歩を踏み出す"
+          disabled={data === undefined}
+          onClick={() => redirect(data?.talkRoomUrl ?? '')}
+        />
       </div>
     </div>
   );
