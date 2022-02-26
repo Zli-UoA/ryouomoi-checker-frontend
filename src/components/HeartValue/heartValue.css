@@ -2,12 +2,12 @@
   display: flex;
   column-gap: 8px;
   align-items: center;
-  height: 56px;
   overflow: hidden;
 }
 
 .heartValue__icon {
-  height: 24px;
+  align-self: center;
+  justify-self: center;
 }
 
 .heartValue__text {

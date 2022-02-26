@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../common.css';
-import './homePage.css';
 import Header from '../../components/Header/Header';
 import AddButton from '../../components/AddButton/AddButton';
 import UserIcon from '../../components/UserIcon/UserIcon';
@@ -10,9 +8,12 @@ import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURL } from '../../env';
 import useGetUserInfo from '../../hooks/useGetUserInfo';
 import Lover from '../../types/Lover';
-import PopupUserList from '../../components/PopupUserList/PopupUserList';
 import User from '../../types/User';
 import redirect from '../../lib/redirect';
+import LeveledUsers from '../../components/LeveledUsers/LeveledUsers';
+import toValidNumber from '../../lib/toValidNumber';
+import '../../common.css';
+import './homePage.css';
 
 const HomePageHeader: React.VFC<{ imageUrl: string }> = ({
   imageUrl,
@@ -57,12 +58,14 @@ const HomePageContent: React.VFC = () => {
 
     return (
       <div className="homePage__main">
-        {leveledLovers.map((leveledUsers) => {
-          if (leveledUsers.length === 0) return null;
-          return (
-            <PopupUserList users={leveledUsers} />
-          );
-        })}
+        <div className="leveledUsersList">
+          {leveledLovers.map((leveledUsers, idx) => {
+            if (leveledUsers.length === 0) return null;
+            return (
+              <LeveledUsers level={toValidNumber(5 - idx)} users={leveledUsers} />
+            );
+          })}
+        </div>
       </div>
     );
   }

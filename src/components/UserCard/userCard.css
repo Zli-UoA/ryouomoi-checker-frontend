@@ -22,7 +22,9 @@
   font-style: normal;
   font-weight: bold;
   line-height: 8px;
+  text-overflow: ellipsis;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .userCard__id {
