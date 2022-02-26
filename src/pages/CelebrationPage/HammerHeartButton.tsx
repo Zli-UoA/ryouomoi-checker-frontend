@@ -2,8 +2,12 @@ import React from 'react';
 import { HammerHeartIcon } from '../../components/Icon/Icon';
 import './hammerHeartButton.css';
 
-const HammerHeartButton: React.VFC = () => (
-  <button type="button" className="hammerHeartButton">
+type HammerHeartButtonProps = {
+  onClick?: () => void;
+};
+
+const HammerHeartButton: React.VFC<HammerHeartButtonProps> = ({ onClick }) => (
+  <button type="button" className="hammerHeartButton" onClick={onClick}>
     <HammerHeartIcon />
   </button>
 );
