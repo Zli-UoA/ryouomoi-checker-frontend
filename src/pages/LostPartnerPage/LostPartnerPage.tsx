@@ -10,7 +10,9 @@ import User from '../../types/User';
 import { baseURL } from '../../env';
 
 const LostPartnerPage: React.VFC = () => {
-  const { data } = useFetchWithAuth<User>(`${baseURL}/me/lover`);
+  const { data } = useFetchWithAuth<{
+    lover: User
+  }>(`${baseURL}/me/lover`);
 
   if (data === undefined) return null;
 
@@ -27,11 +29,11 @@ const LostPartnerPage: React.VFC = () => {
             <div className="lostPartnerPage__icon">
               <UserIcon
                 size="lg"
-                image={data.imageUrl}
+                image={data.lover.imageUrl}
               />
             </div>
-            <p className="lostPartnerPage__name">{data.displayName}</p>
-            <p className="lostPartnerPage__id">{data.screenName}</p>
+            <p className="lostPartnerPage__name">{data.lover.displayName}</p>
+            <p className="lostPartnerPage__id">{data.lover.screenName}</p>
           </>
         </WithBackground>
       </div>

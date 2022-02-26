@@ -42,14 +42,13 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
 
   const primaryAction = async (): Promise<void> => {
     const data = await fetchWithAuth<{
-      match_success: boolean
+      matchSuccess: boolean
     }>(`${baseURL}/friends/${whichUser.id}`, {
       method: 'POST',
       body: JSON.stringify({ lovePoint: rating }),
     });
 
-    if (data.match_success) {
-      localStorage.setItem('matchSuccess', 'true');
+    if (data.matchSuccess) {
       navigate('/celebration');
     }
 

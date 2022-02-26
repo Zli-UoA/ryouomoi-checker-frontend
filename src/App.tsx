@@ -25,27 +25,30 @@ const useNavigateToEachPage = (): void => {
   const { statusCode } = useFetchWithAuth(`${baseURL}/me/lover`);
 
   useEffect(() => {
+    if (!localToken && !queryToken && pathname !== '/tutorial/page2') {
+      navigate('/tutorial');
+    }
+
     if (queryToken) {
       navigate(`/welcome?auth_token=${queryToken}`);
       return;
     }
 
     if (localToken) {
-      if (pathname === '/tutorial') {
+      if (pathname === '/') {
         navigate('/home');
-        return;
       }
 
       if (statusCode === 410 && pathname !== '/hakyoku') {
         navigate('/lost-partner');
       }
 
-      if (statusCode === 200) {
+      if (statusCode === 200 && pathname !== '/hakyoku') {
         navigate('/celebration');
       }
 
-      if (!localToken && pathname !== '/tutorial/page2') {
-        navigate('/tutorial');
+      if (statusCode === 425) {
+        navigate('/power-word');
       }
     }
   }, [statusCode, localToken, navigate, queryToken, pathname]);
