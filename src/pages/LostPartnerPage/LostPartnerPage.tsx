@@ -10,15 +10,11 @@ import User from '../../types/User';
 import { baseURL } from '../../env';
 
 const LostPartnerPage: React.VFC = () => {
-  const { data, error } = useFetchWithAuth<{
+  const { data } = useFetchWithAuth<{
     lover: User
   }>(`${baseURL}/me/lover`);
 
   if (data === undefined) return null;
-
-  console.error(data.lover);
-
-  console.log(error);
 
   return (
     <div className="lostPartnerPage">
