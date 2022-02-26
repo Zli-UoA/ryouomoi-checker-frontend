@@ -12,6 +12,20 @@
   letter-spacing: 0.05em;
 }
 
+.page2__caution {
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  color: #808080;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
 .page2__button {
   position: absolute;
   bottom: 88px;
