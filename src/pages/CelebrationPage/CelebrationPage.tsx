@@ -12,14 +12,10 @@ import redirect from '../../lib/redirect';
 import User from '../../types/User';
 
 const CelebrationPage: React.VFC = () => {
-  const { data, statusCode } = useFetchWithAuth<{
+  const { data } = useFetchWithAuth<{
     user: User;
     talkRoomUrl: string
   }>(`${baseURL}/me/lover`);
-
-  if (statusCode === 404) {
-    redirect('/lost-partner');
-  }
 
   return (
     <div className="celebrationPage">
@@ -32,11 +28,11 @@ const CelebrationPage: React.VFC = () => {
             <div className="celebrationPage__icon">
               <UserIcon
                 size="lg"
-                image={data?.user.imageUrl ?? ''}
+                image={data?.user?.imageUrl ?? ''}
               />
             </div>
-            <p className="celebrationPage__name">{data?.user.displayName}</p>
-            <p className="celebrationPage__id">{data?.user.screenName}</p>
+            <p className="celebrationPage__name">{data?.user?.displayName}</p>
+            <p className="celebrationPage__id">{data?.user?.screenName}</p>
           </>
         </WithBackground>
       </div>
