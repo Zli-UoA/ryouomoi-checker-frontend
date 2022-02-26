@@ -18,7 +18,7 @@
 
 .homePage__main {
   width: 100%;
-  padding-top: 64px;
+  padding-top: 72px;
 }
 
 .homePage__text {
@@ -36,4 +36,11 @@
   background: linear-gradient(270deg, #f5576c 0%, #f093fb 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.leveledUsersList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
 }
