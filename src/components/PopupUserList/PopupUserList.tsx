@@ -49,7 +49,6 @@ const PopupUserList: React.VFC<PopupUserListProps> = ({ users }) => {
     });
 
     if (data.matchSuccess) {
-      localStorage.setItem('matchSuccess', 'true');
       navigate('/celebration');
     }
 
