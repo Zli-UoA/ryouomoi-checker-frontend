@@ -17,17 +17,12 @@ import TalkRoomPage from './pages/TalkRoomPage/TalkRoomPage';
 import TutorialPage from './pages/TutorialPage/TutorialPage';
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
-const useCheckLover = (): void => {
-  const { data, error } = useFetchWithAuth(`${baseURL}/me/lover`);
-
-  console.log('lover', data, error);
-};
-
 const useNavigateToEachPage = (): void => {
   const navigate = useNavigate();
   const queryToken = useQuery().get('auth_token');
   const localToken = getToken();
   const { pathname } = useLocation();
+  const { statusCode } = useFetchWithAuth(`${baseURL}/me/lover`);
 
   useEffect(() => {
     if (queryToken) {
@@ -40,17 +35,24 @@ const useNavigateToEachPage = (): void => {
         navigate('/home');
         return;
       }
-    }
 
-    if (!localToken && pathname !== '/tutorial/page2') {
-      navigate('/tutorial');
+      if (statusCode === 410 && pathname !== '/hakyoku') {
+        navigate('/lost-partner');
+      }
+
+      if (statusCode === 200) {
+        navigate('/celebration');
+      }
+
+      if (!localToken && pathname !== '/tutorial/page2') {
+        navigate('/tutorial');
+      }
     }
-  }, [localToken, navigate, queryToken, pathname]);
+  }, [statusCode, localToken, navigate, queryToken, pathname]);
 };
 
 const App: React.VFC = () => {
   useNavigateToEachPage();
-  useCheckLover();
   return (
     <div className="App">
       <nav>
