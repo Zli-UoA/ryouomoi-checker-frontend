@@ -40,8 +40,12 @@ const useNavigateToEachPage = (): void => {
         navigate('/lost-partner');
       }
 
-      if (statusCode === 200) {
+      if (statusCode === 200 && pathname !== '/hakyoku') {
         navigate('/celebration');
+      }
+
+      if (statusCode === 425) {
+        navigate('/power-word');
       }
 
       if (!localToken && pathname !== '/tutorial/page2') {
