@@ -32,6 +32,8 @@
   position: absolute;
   top: 24px;
   right: 24px;
+  background: rgb(0 0 0 / 0%);
+  border: none;
 }
 
 .popup__commonFont {

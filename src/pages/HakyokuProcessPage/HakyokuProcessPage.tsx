@@ -11,8 +11,13 @@ import Button from '../../components/Button/Button';
 import useDialog from '../../hooks/useDialog/useDialog';
 import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURL } from '../../env';
+import User from '../../types/User';
 
-const HakyokuProcessPageHeader: React.VFC = () => (
+type HeaderProps = {
+  imageUrl: string,
+};
+
+const HakyokuProcessPageHeader: React.VFC<HeaderProps> = ({ imageUrl }) => (
   <Header>
     <div className="hakyokuProcessPage__header">
       <Link to="/celebration">
@@ -25,7 +30,7 @@ const HakyokuProcessPageHeader: React.VFC = () => (
       </div>
 
       <div>
-        <UserIcon image="https://pbs.twimg.com/profile_images/1429604062127792132/4JPTr6M9_400x400.jpg" size="xs" />
+        <UserIcon image={imageUrl} size="xs" />
       </div>
     </div>
   </Header>
@@ -57,11 +62,16 @@ const HakhyokuProcessPageContent: React.VFC = () => {
   );
 };
 
-const HakyokuProcessPage: React.VFC = () => (
-  <div className="hakyokuProcessPage">
-    <HakyokuProcessPageHeader />
-    <HakhyokuProcessPageContent />
-  </div>
-);
+const HakyokuProcessPage: React.VFC = () => {
+  const { data } = useFetchWithAuth<User>(`${baseURL}/me`);
+  if (data === undefined) return null;
+
+  return (
+    <div className="hakyokuProcessPage">
+      <HakyokuProcessPageHeader imageUrl={data.imageUrl} />
+      <HakhyokuProcessPageContent />
+    </div>
+  );
+};
 
 export default HakyokuProcessPage;
