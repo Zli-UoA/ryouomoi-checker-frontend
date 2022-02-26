@@ -21,10 +21,14 @@ const Page2: React.VFC = () => (
 
         {/* 3行目 */}
         1人とマッチします
+        <br />
       </p>
     </div>
     <div className="page2__button">
       <UseTwitterLogin />
+    </div>
+    <div className="page2__caution">
+      マッチ後はTwitterのDMを使用します
     </div>
   </div>
 );
