@@ -7,6 +7,7 @@ import UserIcon from '../UserIcon/UserIcon';
 import PopupButton from '../PopupButton/PopupButton';
 import User from '../../types/User';
 import ValidNumber from '../../types/ValidNumber';
+import redirect from '../../lib/redirect';
 
 const StatefulDeleteButton: React.VFC<{
   user: User,
@@ -36,9 +37,9 @@ const Popup: React.VFC<PopupProps> = ({
   isOpen,
   heartRating,
   setHeartRating,
-  primaryAction = () => {},
-  cancelAction = () => {},
-  deleteAction = () => {},
+  primaryAction = () => { },
+  cancelAction = () => { },
+  deleteAction = () => { },
 }) => {
   if (!isOpen) return null;
 
@@ -64,9 +65,9 @@ const Popup: React.VFC<PopupProps> = ({
         <div className="mg_top-8">
           <div className="popup__commonFont">
             <div className="popup__screenName">
-              <a href={`https://twitter.com/${user.screenName}`} target="_blank" rel="noreferrer">
+              <div role="button" tabIndex={0} onClick={() => { redirect(`https://twitter.com/${user.screenName}`); }}>
                 {user.screenName}
-              </a>
+              </div>
             </div>
           </div>
         </div>
