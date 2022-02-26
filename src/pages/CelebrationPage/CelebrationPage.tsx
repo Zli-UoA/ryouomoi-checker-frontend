@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import '../../common.css';
@@ -10,6 +10,7 @@ import useFetchWithAuth from '../../hooks/useFetchWithAuth';
 import { baseURL } from '../../env';
 import redirect from '../../lib/redirect';
 import User from '../../types/User';
+import animation from './break_heart.gif';
 
 const CelebrationPage: React.VFC = () => {
   const { data } = useFetchWithAuth<{
@@ -17,11 +18,21 @@ const CelebrationPage: React.VFC = () => {
     talkRoomUrl: string
   }>(`${baseURL}/me/lover`);
 
+  const [isHakyoku, setHakyoku] = useState(false);
+
+  if (isHakyoku) {
+    return (
+      <Link to="/hakyoku">
+        <div className="celebrationPage__animation">
+          <img src={animation} style={{ display: 'inline-block' }} alt="heart_break!" />
+        </div>
+      </Link>
+    );
+  }
+
   return (
     <div className="celebrationPage">
-      <Link to="/hakyoku">
-        <HammerHeartButton />
-      </Link>
+      <HammerHeartButton onClick={() => { setHakyoku(true); }} />
       <div className="">
         <WithBackground>
           <>
